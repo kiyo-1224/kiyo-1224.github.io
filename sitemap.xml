@@ -2,10 +2,52 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://example.org/categories/</loc>
+    <loc>https://kiyo-1224.github.io/categories/</loc>
+    <lastmod>2022-06-01T01:07:00+08:00</lastmod>
   </url><url>
-    <loc>http://example.org/tags/</loc>
+    <loc>https://kiyo-1224.github.io/posts/</loc>
+    <lastmod>2022-06-01T01:07:00+08:00</lastmod>
   </url><url>
-    <loc>http://example.org/</loc>
+    <loc>https://kiyo-1224.github.io/tags/</loc>
+    <lastmod>2022-06-01T01:07:00+08:00</lastmod>
+  </url><url>
+    <loc>https://kiyo-1224.github.io/posts/me/</loc>
+    <lastmod>2022-06-01T01:07:00+08:00</lastmod>
+  </url><url>
+    <loc>https://kiyo-1224.github.io/</loc>
+    <lastmod>2022-06-01T01:07:00+08:00</lastmod>
+  </url><url>
+    <loc>https://kiyo-1224.github.io/tags/%E6%8A%80%E6%9C%AF/</loc>
+    <lastmod>2022-06-01T01:07:00+08:00</lastmod>
+  </url><url>
+    <loc>https://kiyo-1224.github.io/categories/%E6%8A%80%E6%9C%AF/</loc>
+    <lastmod>2022-06-01T01:07:00+08:00</lastmod>
+  </url><url>
+    <loc>https://kiyo-1224.github.io/tags/%E7%BB%98%E7%94%BB/</loc>
+    <lastmod>2022-06-01T01:07:00+08:00</lastmod>
+  </url><url>
+    <loc>https://kiyo-1224.github.io/categories/%E7%BB%98%E7%94%BB/</loc>
+    <lastmod>2022-06-01T01:07:00+08:00</lastmod>
+  </url><url>
+    <loc>https://kiyo-1224.github.io/links/</loc>
+    <lastmod>2022-06-01T01:02:00+08:00</lastmod>
+  </url><url>
+    <loc>https://kiyo-1224.github.io/tags/hugo/</loc>
+    <lastmod>2022-06-01T00:17:00+08:00</lastmod>
+  </url><url>
+    <loc>https://kiyo-1224.github.io/posts/newhugopage/</loc>
+    <lastmod>2022-06-01T00:17:00+08:00</lastmod>
+  </url><url>
+    <loc>https://kiyo-1224.github.io/posts/addblogcontent/</loc>
+    <lastmod>2022-06-01T00:17:00+08:00</lastmod>
+  </url><url>
+    <loc>https://kiyo-1224.github.io/page/</loc>
+    <lastmod>2022-05-31T23:41:50+08:00</lastmod>
+  </url><url>
+    <loc>https://kiyo-1224.github.io/about/</loc>
+    <lastmod>2019-04-20T23:08:32+08:00</lastmod>
+  </url><url>
+    <loc>https://kiyo-1224.github.io/archives/</loc>
+    <lastmod>2019-04-20T13:29:27+08:00</lastmod>
   </url>
 </urlset>

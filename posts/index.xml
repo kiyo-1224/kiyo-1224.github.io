@@ -33,5 +33,27 @@
  hugo new site path //path 为站点生成的路径 cd path //进入目录</description>
     </item>
     
+    <item>
+      <title>hugo博客的更新</title>
+      <link>https://kiyo-1224.github.io/posts/addblogcontent/</link>
+      <pubDate>Wed, 01 Jun 2022 00:17:00 +0800</pubDate>
+      
+      <guid>https://kiyo-1224.github.io/posts/addblogcontent/</guid>
+      <description>博客的更新 在更新了博客的内容之后，我们需要对远端也进行一次更新操作
+0.预览博客的更新内容 在博客根目录下，使用命令对更新的内容进行预览
+ hugo server --theme=你的主题名 --buildDrafts
+ 确定无误后开始更新操作
+1.初始化博客，更新public目录 在博客根目录下，使用 hugo 命令即可初始化博客并更新public目录
+ hugo
+hugo --theme=你的主题名 --baseUrl=&amp;ldquo;url&amp;rdquo; //url为之前创建的仓库名 --buildDrafts
+ 2.提交并更新 首先需要进入 public 目录下 然后执行更新和提交操作
+ cd public
+git add -A
+git commit -m &amp;ldquo;提交说明&amp;rdquo;
+git remote set-url origin https://token @github.com/GitHub用户名/仓库名.git
+git push -f origin master
+ 至此即可完成更新操作</description>
+    </item>
+    
   </channel>
 </rss>
