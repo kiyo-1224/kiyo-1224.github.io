@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>技术 on 忆遇惜·真白 的个人博客</title>
+    <link>https://kiyo-1224.github.io/tags/%E6%8A%80%E6%9C%AF/</link>
+    <description>Recent content in 技术 on 忆遇惜·真白 的个人博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 01 Jun 2022 01:07:00 +0800</lastBuildDate><atom:link href="https://kiyo-1224.github.io/tags/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>this Blog Web</title>
+      <link>https://kiyo-1224.github.io/posts/me/</link>
+      <pubDate>Wed, 01 Jun 2022 01:07:00 +0800</pubDate>
+      
+      <guid>https://kiyo-1224.github.io/posts/me/</guid>
+      <description>关于此博客 此博客将用于上传我的个人技术博客以及绘画的作品</description>
+    </item>
+    
+    <item>
+      <title>hugo博客的搭建</title>
+      <link>https://kiyo-1224.github.io/posts/newhugopage/</link>
+      <pubDate>Wed, 01 Jun 2022 00:17:00 +0800</pubDate>
+      
+      <guid>https://kiyo-1224.github.io/posts/newhugopage/</guid>
+      <description>Welcom  Welcom to iyu_mashiro&amp;rsquo;s Blog感谢您花费宝贵的时间前来阅读我的第一篇博客，这篇博客是我在搭建好博客之后，对于搭建个人博客所做的记录，希望能帮助到您,如果文章内容有错误，请发送邮件至：iyu_mashiro@163.com 我将不胜感激
+前言  此篇博客为我的第一篇博客，原本只耗费了一个小时便完成了博客的基本搭建，但因后续对主题设置的不满，便对主题进行了修改导致后续出现了一系列的问题，使得我最终花费了六个小时才完善博客的搭建
+初次搭建个人博客 使用 Hugo+github 部署的方案 通过 Hugo 可以快速搭建静态网站,然后将其部署到GitHub上，使其可以在公网访问到
+搭建流程 0.前置 在搭建博客之前需要先完成 git 安装与配置，并且设置好用户名和电子邮件，否则后续的步骤将无法进行
+1. Hugo文件下载 在使用 hugo 之前，需要先在 Hugo 官网下载 hugo.exe 文件 地址为： https://www.gohugo.org/
+2. Hugo 环境变量配置 下载完成之后，需要对环境变量进行配置，否则将无法识别 hugo指令，只需将 hugo.exe 路径加入 path 中即可完成环境变量的配置
+ win10 右键此电脑 -&amp;gt; 属性 -&amp;gt; 高级系统设置 -&amp;gt; 环境变量 -&amp;gt; 系统变量 -&amp;gt; path -&amp;gt; 添加即可
+ 3.生成站点 使用 Hugo 快速生成站点
+ hugo new site path //path 为站点生成的路径 cd path //进入目录</description>
+    </item>
+    
+  </channel>
+</rss>

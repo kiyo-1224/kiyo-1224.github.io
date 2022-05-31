@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html><head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate">
+  <title>hugo博客的搭建 &middot; 忆遇惜·真白 的个人博客</title>
+  <meta name="keywords" content="素锦, inspiration, customization, rainmeter, design, web, 壁纸, 设计, 收集, wallpaper, collection, jaku, icon">
+  <meta name="description" content="世界上每个角落都有人过着相似的人生">
+  <meta name="author" content="iyu_mashiro">
+  <link rel="icon" type="image/png" href="">
+  <link rel="stylesheet" href="/css/diaspora.css">
+  <link rel="stylesheet" href="/css/insight.css">
+  <link rel="stylesheet" href="/css/custom.css">
+</head><body class="loading">
+        <div id="loading"></div>
+				<div id="nav"></div>
+				<div class="nav-user"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+        <div class="bar">
+        </div>
+        <a class="icon-icon" href="javascript:history.back()">
+        </a>
+        <div title="播放/暂停" class="icon-play">
+        </div>
+        
+        <h3 class="subtitle" style="display: none;">
+        hugo博客的搭建</h3>
+        <div class="social">
+            <div>
+                <div class="share">
+                    <a title="获取二维码" class="icon-wechat" href="javascript:;"></a>
+                </div>
+                <div id="qr"></div>
+            </div>
+        </div>
+        <div class="scrollbar" style="width: 1.1636%;"></div>
+    </div>
+    <div class="section">
+        <div class="article">
+            <div>
+                <h1 class="title">
+                hugo博客的搭建</h1>
+                <div class="stuff">
+                    
+                    <span>June 1, 2022</span>
+                    <span>字数 1367</span>
+                    
+                    
+                </div>
+                <div class="content">
+                    <h1 id="welcom">Welcom</h1>
+<hr>
+<p>Welcom to iyu_mashiro&rsquo;s Blog<!-- raw HTML omitted -->
+感谢您花费宝贵的时间前来阅读我的第一篇博客，这篇博客是我在搭建好博客之后，对于搭建个人博客所做的记录，希望能帮助到您,如果文章内容有错误，请发送邮件至：iyu_<a href="mailto:mashiro@163.com">mashiro@163.com</a> 我将不胜感激</p>
+<h2 id="前言">前言</h2>
+<hr>
+<p>此篇博客为我的第一篇博客，原本只耗费了一个小时便完成了博客的基本搭建，但因后续对主题设置的不满，便对主题进行了修改导致后续出现了一系列的问题，使得我最终花费了六个小时才完善博客的搭建</p>
+<h3 id="初次搭建个人博客">初次搭建个人博客</h3>
+<p>使用 Hugo+github 部署的方案 <!-- raw HTML omitted -->
+通过 Hugo 可以快速搭建静态网站,然后将其部署到GitHub上，使其可以在公网访问到</p>
+<h3 id="搭建流程">搭建流程</h3>
+<h4 id="0前置">0.前置</h4>
+<p>在搭建博客之前需要先完成 git 安装与配置，并且设置好用户名和电子邮件，否则后续的步骤将无法进行</p>
+<h4 id="1-hugo文件下载">1. Hugo文件下载</h4>
+<p>在使用 hugo 之前，需要先在 Hugo 官网下载 hugo.exe 文件 <!-- raw HTML omitted --> 地址为： <a href="https://www.gohugo.org/">https://www.gohugo.org/</a></p>
+<h4 id="2-hugo-环境变量配置">2. Hugo 环境变量配置</h4>
+<p>下载完成之后，需要对环境变量进行配置，否则将无法识别 hugo指令，只需将 hugo.exe 路径加入 path 中即可完成环境变量的配置</p>
+<blockquote>
+<p>win10 右键此电脑 -&gt; 属性 -&gt; 高级系统设置 -&gt; 环境变量 -&gt; 系统变量 -&gt; path -&gt; 添加即可</p>
+</blockquote>
+<h4 id="3生成站点">3.生成站点</h4>
+<p>使用 Hugo 快速生成站点</p>
+<blockquote>
+<p>hugo new site  path //path 为站点生成的路径
+cd path //进入目录</p>
+</blockquote>
+<p>站点目录结构：</p>
+<blockquote>
+<p>archetypes/
+content/
+layouts/
+static/
+     config.toml</p>
+</blockquote>
+<h4 id="4创建文章">4.创建文章</h4>
+<p>hugo 使用Markdown对内容进行管理<!-- raw HTML omitted -->
+若要创建一个页面</p>
+<blockquote>
+<p>hugo new pageName.md</p>
+</blockquote>
+<p>pageName.md 将自动生成到content目录下</p>
+<blockquote>
+<p>+++
+date = &ldquo;2015-10-25T08:36:54-07:00&rdquo;
+draft = true
+title = &ldquo;myPage&rdquo;</p>
+<p>+++
+正文内容</p>
+</blockquote>
+<p><code>+++</code>之间的内容是TOML格式，是页面的配置，还可以使用YAML格式<code>---</code>标记</p>
+<h4 id="5安装主题">5.安装主题</h4>
+<p>在 Hugo 官网中的皮肤列表一栏提供了许多主题，选择一款主题，在主题的介绍中包含了其安装方法，只需执行对应的指令即可完成安装<!-- raw HTML omitted --></p>
+<blockquote>
+<p>一般的步骤为:
+创建themes目录
+cd themes
+git clone url //url 页面提供的GitHub地址</p>
+</blockquote>
+<h4 id="6使用主题">6.使用主题</h4>
+<p>在下载的主题目录下<!-- raw HTML omitted -->
+使用：hugo server &ndash;theme=你的主题名 &ndash;buildDrafts<!-- raw HTML omitted -->
+随后复制命令行中提供的地址，复制到浏览器中，在浏览器中浏览其效果<!-- raw HTML omitted -->
+如果发生错误请检查，主题目录下的theme属性和themeDir属性名称与路径需要与其对应</p>
+<h4 id="7部署">7.部署</h4>
+<p>首先需要在GitHub上创建一个仓库<!-- raw HTML omitted -->
+命名为：你的GitHub用户名.github.io<!-- raw HTML omitted -->
+然后在主题根目录下执行 Hugo 指令生成最终界面</p>
+<blockquote>
+<p>hugo  &ndash;theme=你的主题名 &ndash;baseUrl=&ldquo;url&rdquo; //url为之前创建的仓库名 &ndash;buildDrafts</p>
+</blockquote>
+<p>在一切顺利的情况下，所有的静态页面都会生成到 <code>public</code> 目录，将pubilc目录里所有文件 <code>push</code> 到刚创建的Repository的 <code>master</code> 分支</p>
+<blockquote>
+<p>cd public
+git init
+git remote add origin <a href="https://github.com/">https://github.com/</a>用户名/仓库名.git
+git add -A
+git commit -m &ldquo;提交说明&rdquo;</p>
+</blockquote>
+<p>由于GitHub不再支持密码授权，因此需要通过个人<code>token</code> 的方式获得授权</p>
+<blockquote>
+<p>点击头像 -&gt; settings -&gt; Developer Settings -&gt; Personal access tokens -&gt; Genetate new token 填入说明，选择有效期 -&gt; 点击Generate token -&gt;复制token
+使用命令： git remote set-url origin https://token @github.com/GitHub用户名/仓库名.git
+git push -u origin master</p>
+</blockquote>
+<p>在一切正常的情况下，将可以使用仓库名访问到博客页面</p>
+<h3 id="结语">结语</h3>
+<p>在搭建过程中并不是一帆风顺，比如最后的推送尝试许多次密码授权都未能成功，花费了许多时间才发现是Github不再支持密码授权。还有忘记进入public目录就进行关联，导致上传错误的文件，以至于最后推送访问时显示错误的页面，一些问题解决下来花费的时间，加上GitHub访问的问题，导致花费了大量的时间才完成博客的搭建</p>
+
+                    
+                    <audio id="audio" loop="1" preload="auto" style="width: 100%;" controls="controls">
+                        <source type="audio/mpeg" src="/mp3/Unicorn.mp3">
+                        <a href="/mp3/Unicorn.mp3">/mp3/Unicorn.mp3</a>
+                    </audio>
+                </div>
+                <div class="comment-wrap">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="relate">
+        <ul>
+            <h3 id="prev_next">
+                <em>相 关 文 章</em>
+                <span>
+                    <a href="javascript: window.scrollTo(0, 0);">
+                    返回顶部</a>
+                    
+                    
+                        <a href="https://kiyo-1224.github.io/posts/me/" rel="next">下一篇</a>
+                    
+                </span>
+            </h3>
+            
+            
+            
+                
+                    
+                
+            
+        </ul>
+    </div>
+</div>
+<p style="text-align: center;">
+  <a style="color: inherit" target="_blank" href="https://github.com/honjun/hugo-theme-diaspora"></a>
+</p>
+
+<script>
+  var siteTitle = "忆遇惜·真白 的个人博客";
+</script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<script src="/js/custom.js"></script>
+<script src="/js/InsightSearch.js"></script>
+</body>
+</html>
+
