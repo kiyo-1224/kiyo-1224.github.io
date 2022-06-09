@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Spring on 忆遇惜·真白 的个人博客</title>
-    <link>https://kiyo-1224/kiyo-1224.github.io/tags/spring/</link>
+    <link>https://kiyo-1224.github.io/tags/spring/</link>
     <description>Recent content in Spring on 忆遇惜·真白 的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 10 Jun 2022 01:10:00 +0800</lastBuildDate><atom:link href="https://kiyo-1224/kiyo-1224.github.io/tags/spring/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 10 Jun 2022 01:10:00 +0800</lastBuildDate><atom:link href="https://kiyo-1224.github.io/tags/spring/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>IOC容器</title>
-      <link>https://kiyo-1224/kiyo-1224.github.io/posts/ioc/</link>
+      <link>https://kiyo-1224.github.io/posts/ioc/</link>
       <pubDate>Fri, 10 Jun 2022 01:10:00 +0800</pubDate>
       
-      <guid>https://kiyo-1224/kiyo-1224.github.io/posts/ioc/</guid>
+      <guid>https://kiyo-1224.github.io/posts/ioc/</guid>
       <description>IOC的概念 IOC(控制反转)，把对象创建和对象之间的调用过程，交给Spring进行管理，其目的为降低耦合度
 IOC底层使用：xml解析、工厂模式、反射
  IOC接口(BeanFactory) Spring 提供IOC容器实现方式有两种：

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>技术 on 忆遇惜·真白 的个人博客</title>
-    <link>https://kiyo-1224/kiyo-1224.github.io/tags/%E6%8A%80%E6%9C%AF/</link>
+    <link>https://kiyo-1224.github.io/tags/%E6%8A%80%E6%9C%AF/</link>
     <description>Recent content in 技术 on 忆遇惜·真白 的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 10 Jun 2022 01:10:00 +0800</lastBuildDate><atom:link href="https://kiyo-1224/kiyo-1224.github.io/tags/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 10 Jun 2022 01:10:00 +0800</lastBuildDate><atom:link href="https://kiyo-1224.github.io/tags/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>C&#43;&#43;指针基础</title>
-      <link>https://kiyo-1224/kiyo-1224.github.io/posts/c&#43;&#43;pointbase/</link>
+      <link>https://kiyo-1224.github.io/posts/c&#43;&#43;pointbase/</link>
       <pubDate>Fri, 10 Jun 2022 01:10:00 +0800</pubDate>
       
-      <guid>https://kiyo-1224/kiyo-1224.github.io/posts/c&#43;&#43;pointbase/</guid>
+      <guid>https://kiyo-1224.github.io/posts/c&#43;&#43;pointbase/</guid>
       <description>指针 指针的基本内容 指针本身是一个变量，其储存值的地址，而不是值。因此我们使用 *操作符声明一个指针变量，使用地址操作符 (&amp;amp;) 来获取常规变量的地址。 例：
  int i = 10; int *point = &amp;amp;i; int j = *point;
  其中 &amp;amp;i 是 i 的地址值，指针名 point 表示地址 可以使用 * (解除引用操作符) 来获取该地址处储存的值，但需要注意的是在对一个指针使用解除引用操作符前，该指针一定要被初始化为一个确定的地址值。
@@ -25,10 +25,10 @@ delete 关键字 每次一个 new 开辟一个内存空间都会消耗内存，�
     
     <item>
       <title>IOC容器</title>
-      <link>https://kiyo-1224/kiyo-1224.github.io/posts/ioc/</link>
+      <link>https://kiyo-1224.github.io/posts/ioc/</link>
       <pubDate>Fri, 10 Jun 2022 01:10:00 +0800</pubDate>
       
-      <guid>https://kiyo-1224/kiyo-1224.github.io/posts/ioc/</guid>
+      <guid>https://kiyo-1224.github.io/posts/ioc/</guid>
       <description>IOC的概念 IOC(控制反转)，把对象创建和对象之间的调用过程，交给Spring进行管理，其目的为降低耦合度
 IOC底层使用：xml解析、工厂模式、反射
  IOC接口(BeanFactory) Spring 提供IOC容器实现方式有两种：
@@ -49,19 +49,19 @@ bean标签常用属性
     
     <item>
       <title>this Blog Web</title>
-      <link>https://kiyo-1224/kiyo-1224.github.io/posts/me/</link>
+      <link>https://kiyo-1224.github.io/posts/me/</link>
       <pubDate>Wed, 01 Jun 2022 01:07:00 +0800</pubDate>
       
-      <guid>https://kiyo-1224/kiyo-1224.github.io/posts/me/</guid>
+      <guid>https://kiyo-1224.github.io/posts/me/</guid>
       <description>关于此博客 此博客将用于上传我的个人技术博客以及绘画的作品</description>
     </item>
     
     <item>
       <title>hugo博客的搭建</title>
-      <link>https://kiyo-1224/kiyo-1224.github.io/posts/newhugopage/</link>
+      <link>https://kiyo-1224.github.io/posts/newhugopage/</link>
       <pubDate>Wed, 01 Jun 2022 00:17:00 +0800</pubDate>
       
-      <guid>https://kiyo-1224/kiyo-1224.github.io/posts/newhugopage/</guid>
+      <guid>https://kiyo-1224.github.io/posts/newhugopage/</guid>
       <description>Welcom  Welcom to iyu_mashiro&amp;rsquo;s Blog感谢您花费宝贵的时间前来阅读我的第一篇博客，这篇博客是我在搭建好博客之后，对于搭建个人博客所做的记录，希望能帮助到您,如果文章内容有错误，请发送邮件至：iyu_mashiro@163.com 我将不胜感激
 前言  此篇博客为我的第一篇博客，原本只耗费了一个小时便完成了博客的基本搭建，但因后续对主题设置的不满，便对主题进行了修改导致后续出现了一系列的问题，使得我最终花费了六个小时才完善博客的搭建
 初次搭建个人博客 使用 Hugo+github 部署的方案 通过 Hugo 可以快速搭建静态网站,然后将其部署到GitHub上，使其可以在公网访问到
@@ -75,10 +75,10 @@ bean标签常用属性
     
     <item>
       <title>hugo博客的更新</title>
-      <link>https://kiyo-1224/kiyo-1224.github.io/posts/addblogcontent/</link>
+      <link>https://kiyo-1224.github.io/posts/addblogcontent/</link>
       <pubDate>Wed, 01 Jun 2022 00:17:00 +0800</pubDate>
       
-      <guid>https://kiyo-1224/kiyo-1224.github.io/posts/addblogcontent/</guid>
+      <guid>https://kiyo-1224.github.io/posts/addblogcontent/</guid>
       <description>博客的更新 在更新了博客的内容之后，我们需要对远端也进行一次更新操作
 0.预览博客的更新内容 在博客根目录下，使用命令对更新的内容进行预览
  hugo server --theme=你的主题名 --buildDrafts
