@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C&#43;&#43; on 忆遇惜·真白 的个人博客</title>
+    <link>https://kiyo-1224/kiyo-1224.github.io/tags/c&#43;&#43;/</link>
+    <description>Recent content in C&#43;&#43; on 忆遇惜·真白 的个人博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 10 Jun 2022 01:10:00 +0800</lastBuildDate><atom:link href="https://kiyo-1224/kiyo-1224.github.io/tags/c++/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>C&#43;&#43;指针基础</title>
+      <link>https://kiyo-1224/kiyo-1224.github.io/posts/c&#43;&#43;pointbase/</link>
+      <pubDate>Fri, 10 Jun 2022 01:10:00 +0800</pubDate>
+      
+      <guid>https://kiyo-1224/kiyo-1224.github.io/posts/c&#43;&#43;pointbase/</guid>
+      <description>指针 指针的基本内容 指针本身是一个变量，其储存值的地址，而不是值。因此我们使用 *操作符声明一个指针变量，使用地址操作符 (&amp;amp;) 来获取常规变量的地址。 例：
+ int i = 10; int *point = &amp;amp;i; int j = *point;
+ 其中 &amp;amp;i 是 i 的地址值，指针名 point 表示地址 可以使用 * (解除引用操作符) 来获取该地址处储存的值，但需要注意的是在对一个指针使用解除引用操作符前，该指针一定要被初始化为一个确定的地址值。
+我们可以将常规变量想象为一个硬币，一面为值，另一面为地址。值为指定量而地址为派生量
+内存的动态开辟与释放 new 关键字 对于指针，C++ 通过指针实现重要的 OOP 技术——在程序运行时分配内存 指针可以在运行阶段分配未命名的内存以存储值，在这种情况下只能使用指针来访问内存。 在C++ 中使用 new 关键字分配内存，new 将找到一个长度正确的内存块，并返回该内存块的地址，我们需要将该地址赋予一个指针
+ int *prts = new int;
+ 由于 prts 指向的内存空间没有名字，我们说 prts 指向一个数据对象，此对象并不是面向对象中的对象，它指的是为数据项分配的内存块。变量是一个数据对象，但 prts 指向的内存并不是一个变量
+delete 关键字 每次一个 new 开辟一个内存空间都会消耗内存，如果不对内存进行释放，内存一旦消耗殆尽，计算机将无法满足 new 请求，此时 new 将返回 0。对于值为 0 的指针我们称作为空指针，C++ 确保空指针不会指向一个有效的数据</description>
+    </item>
+    
+  </channel>
+</rss>

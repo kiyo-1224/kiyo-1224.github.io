@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html><head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate">
+  <title>IOC容器 &middot; 忆遇惜·真白 的个人博客</title>
+  <meta name="keywords" content="素锦, inspiration, customization, rainmeter, design, web, 壁纸, 设计, 收集, wallpaper, collection, jaku, icon">
+  <meta name="description" content="世界上每个角落都有人过着相似的人生">
+  <meta name="author" content="iyu_mashiro">
+  <link rel="icon" type="image/png" href="">
+  <link rel="stylesheet" href="/css/diaspora.css">
+  <link rel="stylesheet" href="/css/insight.css">
+  <link rel="stylesheet" href="/css/custom.css">
+</head><body class="loading">
+        <div id="loading"></div>
+				<div id="nav"></div>
+				<div class="nav-user"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+        <div class="bar">
+        </div>
+        <a class="icon-icon" href="javascript:history.back()">
+        </a>
+        <div title="播放/暂停" class="icon-play">
+        </div>
+        
+        <h3 class="subtitle" style="display: none;">
+        IOC容器</h3>
+        <div class="social">
+            <div>
+                <div class="share">
+                    <a title="获取二维码" class="icon-wechat" href="javascript:;"></a>
+                </div>
+                <div id="qr"></div>
+            </div>
+        </div>
+        <div class="scrollbar" style="width: 1.1636%;"></div>
+    </div>
+    <div class="section">
+        <div class="article">
+            <div>
+                <h1 class="title">
+                IOC容器</h1>
+                <div class="stuff">
+                    
+                    <span>June 10, 2022</span>
+                    <span>字数 3244</span>
+                    
+                    
+                </div>
+                <div class="content">
+                    <h2 id="ioc的概念">IOC的概念</h2>
+<p>IOC(控制反转)，把对象创建和对象之间的调用过程，交给Spring进行管理，其目的为降低耦合度</p>
+<p>IOC底层使用：xml解析、工厂模式、反射</p>
+<hr>
+<h2 id="ioc接口beanfactory">IOC接口(BeanFactory)</h2>
+<p>Spring 提供IOC容器实现方式有两种：</p>
+<ul>
+<li>BeanFactory：IOC容器基本实现，是spring内部使用的接口，加载配置文件时不会创建对象，在获取对象才去创建</li>
+<li>ApplicationContext：BeanFactory接口的子接口，提供更多的功能，加载文件时就会创建对象</li>
+</ul>
+<p>ApplicationContext实现类：</p>
+<ol>
+<li>FileSystemXmlApplicationContext  :读取文件绝对路径</li>
+<li>ClassPathXmlApplicationContext	:读取文件类路径</li>
+</ol>
+<p>通常使用 ApplicationContext 接口来获取配置文件
+例：</p>
+<blockquote>
+<p>ApplicationContext context =<br>
+    new ClassPathXmlApplicationContext(&ldquo;bean.xml&rdquo;);</p>
+</blockquote>
+<hr>
+<h2 id="ioc操作bean管理基于xml">IOC操作Bean管理(基于xml)</h2>
+<p>Bean管理指的是两个操作：1.Spring创建对象 2.Spring注入属性</p>
+<hr>
+<h3 id="1基于xml配置文件实现">1.基于xml配置文件实现</h3>
+<p>在Spring配置文件中使用bean标签，标签里添加对应属性，就可以实现对象创建</p>
+<p>bean标签常用属性</p>
+<ul>
+<li>id 属性：唯一标识</li>
+<li>class 属性：类全路径</li>
+</ul>
+<blockquote>
+<p>&lt;bean id=&ldquo;user&rdquo; class=&ldquo;pojo.user&rdquo;&gt; &lt;/bean&gt;</p>
+</blockquote>
+<p>创建对象时，默认执行无参构造方法完成对象的创建</p>
+<p>使用 getBean 方法获取对象，其形参列表为(id值，类)</p>
+<blockquote>
+<p>User user = context.getBean(&ldquo;user&rdquo;,User.class)</p>
+</blockquote>
+<hr>
+<h3 id="2基于xml注入属性">2.基于xml注入属性</h3>
+<p>DI：依赖注入，即注入属性</p>
+<ul>
+<li>name 填入属性名</li>
+<li>使用set方法注入，在&lt;bean&gt;标签中使用&lt;property&gt;，配置属性注入</li>
+<li>使用有参构造方法注入,在&lt;bean&gt;标签中使用&lt;constructor-arg&gt;，配置属性注入</li>
+</ul>
+<p>set 方法注入</p>
+<blockquote>
+<p>&lt;bean id=&ldquo;user&rdquo; class=&ldquo;pojo.User&rdquo;&gt;<br>
+  &lt;property name=&ldquo;name&rdquo; value=&ldquo;Tom&rdquo;/&gt;<br>
+  &lt;property name=&ldquo;age&rdquo; value=&ldquo;12&rdquo;/&gt;<br>
+&lt;/bean&gt;</p>
+</blockquote>
+<p>有参构造方法注入</p>
+<blockquote>
+<p>&lt;bean id=&ldquo;user&rdquo; class=&ldquo;pojo.User&rdquo; &gt;<br>
+  &lt;constructor-arg name=&ldquo;name&rdquo; value=&ldquo;tom&rdquo;/&gt;<br>
+  &lt;constructor-arg name=&ldquo;age&rdquo; value=&ldquo;12&rdquo;/&gt;<br>
+&lt;/bean&gt;</p>
+</blockquote>
+<p>注意使用以上方法类中必须存在 set 方法 或 有参构造方法</p>
+<p>P名称空间注入</p>
+<ul>
+<li>使用P名称空间注入，可以简化基于xml配置方式</li>
+<li>添加P名称空间在配置文件中：xmlns:p=&ldquo;<a href="http://www.springframework.org/schema/p%22">http://www.springframework.org/schema/p&quot;</a></li>
+<li>在bean标签中使用p:进行操作</li>
+</ul>
+<blockquote>
+<p>&lt;bean id=&ldquo;user&rdquo; class=&ldquo;pojo.User&rdquo; p:name=&ldquo;Tom&rdquo; p:age=&ldquo;8&rdquo;&gt;&lt;/bean&gt;</p>
+</blockquote>
+<hr>
+<h3 id="3-xml注入其他类型属性">3 xml注入其他类型属性</h3>
+<p>3.1 字面量
+null值：在标签内部使用null标签</p>
+<blockquote>
+<p>&lt;bean id=&ldquo;user&rdquo; class=&ldquo;pojo.User&rdquo; &gt;<br>
+  &lt;property name=&ldquo;name&rdquo; &gt;<br>
+        &lt;null/&gt;
+  &lt;/property&gt;
+&lt;/bean&gt;</p>
+</blockquote>
+<p>属性值包含特殊符号：使用转义或者把特殊符号写入CDATA</p>
+<blockquote>
+<p>&lt;bean id=&ldquo;user&rdquo; class=&ldquo;pojo.User&rdquo; &gt;<br>
+  &lt;property name=&ldquo;name&rdquo; &gt;<br>
+     &lt;value&gt;
+        &lt;![CDATA[ 《TOM &amp; Jerry》 ]]&gt;
+     &lt;/value&gt;<br>
+  &lt;/property&gt;
+&lt;/bean&gt;</p>
+</blockquote>
+<p>3.2注入属性-外部bean
+当注入的属性为类时，在bean中使用ref属性而不是value，ref属性填入外部bean id名</p>
+<blockquote>
+<p>&lt;bean id=&ldquo;user&rdquo; class=&ldquo;pojo.User&rdquo;&gt;<br>
+  &lt;property name=&ldquo;student&rdquo; ref=&ldquo;student&rdquo;/&gt;<br>
+&lt;/bean&gt;</p>
+<p>&lt;bean id=&ldquo;student&rdquo; class=&ldquo;pojo.Student&rdquo; p:id=&ldquo;1002&rdquo; /&gt;</p>
+</blockquote>
+<p>3.3注入属性-内部bean和级联赋值
+内部bean:在注入属性时使用bean标签创建一个类对象并为该对象注入属性</p>
+<blockquote>
+<p>&lt;bean id=&ldquo;user&rdquo; class=&ldquo;pojo.User&rdquo;&gt;<br>
+  &lt;property name=&ldquo;student&rdquo;&gt;<br>
+    &lt;bean class=&ldquo;pojo.Student&rdquo; p:id=&ldquo;1002&rdquo;/&gt;
+  &lt;/property&gt;
+&lt;/bean&gt;</p>
+</blockquote>
+<p>级联赋值：
+方法一：在外部bean中为类对象注入属性</p>
+<blockquote>
+<p>&lt;bean id=&ldquo;user&rdquo; class=&ldquo;pojo.User&rdquo;&gt;<br>
+  &lt;property name=&ldquo;student&rdquo; ref=&ldquo;student&rdquo;/&gt;<br>
+&lt;/bean&gt;</p>
+<p>&lt;bean id=&ldquo;student&rdquo; class=&ldquo;pojo.Student&rdquo; &gt;
+  &lt;property name=&ldquo;id&rdquo; value=&ldquo;1002&rdquo;/&gt;<br>
+&lt;/bean&gt;</p>
+</blockquote>
+<p>方法二：为需要注入的属性提供get方法，使用类名.属性的方法注入属性值</p>
+<blockquote>
+<p>&lt;bean id=&ldquo;user&rdquo; class=&ldquo;pojo.User&rdquo;&gt;<br>
+  &lt;property name=&ldquo;student&rdquo; ref=&ldquo;student&rdquo;/&gt;<br>
+  &lt;\property name=&ldquo;student.id&rdquo; value=&ldquo;1002&rdquo;/&gt;<br>
+&lt;/bean&gt;</p>
+<p>&lt;bean id=&ldquo;student&rdquo; class=&ldquo;pojo.Student&rdquo;/&gt;</p>
+</blockquote>
+<hr>
+<h3 id="4xml注入集合属性">4.xml注入集合属性</h3>
+<p>4.1 注入数组类型属性
+使用list或array标签注入值</p>
+<blockquote>
+<p>&lt;bean id=&ldquo;user&rdquo; class=&ldquo;pojo.User&rdquo;&gt;<br>
+  &lt;property name=&ldquo;array&rdquo;&gt;<br>
+    &lt;array&gt;                    <br>
+      &lt;value&gt;1&lt;/value&gt;<br>
+      &lt;value&gt;1&lt;/value&gt;<br>
+    &lt;/array&gt;     <br>
+   &lt;/property&gt;
+&lt;/bean&gt;</p>
+</blockquote>
+<p>4.2注入list集合类型属性
+使用list标签注入值</p>
+<blockquote>
+<p>&lt;bean id=&ldquo;user&rdquo; class=&ldquo;pojo.User&rdquo;&gt;<br>
+  &lt;property name=&ldquo;list&rdquo;&gt;<br>
+    &lt;list&gt;                    <br>
+      &lt;value&gt;1&lt;/value&gt;<br>
+      &lt;value&gt;1&lt;/value&gt;<br>
+    &lt;/list&gt;     <br>
+   &lt;/property&gt;
+&lt;/bean&gt;</p>
+</blockquote>
+<p>4.3注入Map集合类型属性
+使用map标签并在内部使用entry标签注入值</p>
+<blockquote>
+<p>&lt;bean id=&ldquo;user&rdquo; class=&ldquo;pojo.User&rdquo;&gt;<br>
+  &lt;property name=&ldquo;map&rdquo;&gt;<br>
+    &lt;map&gt;                    <br>
+      &lt;entry key=&ldquo;a&rdquo; value=&ldquo;A&rdquo;/&gt;
+      &lt;entry key=&ldquo;b&rdquo; value=&ldquo;B&rdquo;/&gt;
+    &lt;/map&gt;     <br>
+   &lt;/property&gt;
+&lt;/bean&gt;</p>
+</blockquote>
+<p>4.4注入Set类型属性
+使用set标签注入值</p>
+<blockquote>
+<p>&lt;bean id=&ldquo;user&rdquo; class=&ldquo;pojo.User&rdquo;&gt;<br>
+  &lt;property name=&ldquo;set&rdquo;&gt;<br>
+    &lt;set&gt;                    <br>
+      &lt;value&gt;A&lt;/value&gt;<br>
+      &lt;value&gt;B&lt;/value&gt;<br>
+    &lt;/set&gt;     <br>
+   &lt;/property&gt;
+&lt;/bean&gt;</p>
+</blockquote>
+<hr>
+<h3 id="5在集合里设置对象类型值">5.在集合里设置对象类型值</h3>
+<p>使用ref标签在bean属性内填入对象类型的id</p>
+<blockquote>
+<p>&lt;bean id=&ldquo;user&rdquo; class=&ldquo;pojo.User&rdquo;&gt;<br>
+  &lt;property name=&ldquo;list&rdquo;&gt;<br>
+    &lt;list&gt;                    <br>
+      &lt;ref bean = &ldquo;student1&rdquo;/&gt;
+      &lt;ref bean = &ldquo;student2&rdquo;/&gt;
+    &lt;/lst&gt;     <br>
+   &lt;/property&gt;
+&lt;/bean&gt;</p>
+<p>&lt;bean id=&ldquo;student1&rdquo; class=&ldquo;pojo.Student&rdquo; p:id=&ldquo;1&rdquo;/&gt;
+&lt;bean id=&ldquo;student2&rdquo; class=&ldquo;pojo.Student&rdquo; p:id=&ldquo;2&rdquo;/&gt;</p>
+</blockquote>
+<p>5.1把集合注入部分提取出来
+在spring配置文件中引入命名空间util</p>
+<blockquote>
+<p>xmlns:util =&ldquo;<a href="http://www.springframework.org/schema/util%22">http://www.springframework.org/schema/util&quot;</a></p>
+<p>xsi:schemaLocation=
+&ldquo;<a href="http://www.springframework.org/schema/beans">http://www.springframework.org/schema/beans</a>
+  <a href="http://www.springframework.org/schema/beans/spring-beans.xsd">http://www.springframework.org/schema/beans/spring-beans.xsd</a>
+//新增如下内容<br>
+ http://www.springframework.org/schema/util
+ http://www.springframework.org/schema/util/spring-util.xsd&rdquo;</p>
+</blockquote>
+<p>使用util标签完成list集合注入提取</p>
+<blockquote>
+<p>&lt;util:list id=&ldquo;outList&rdquo;&gt;<br>
+  &lt;ref bean=&ldquo;student1&rdquo;/&gt;<br>
+  &lt;ref bean=&ldquo;student2&rdquo;/&gt;<br>
+&lt;/util:list&gt;</p>
+<p>&lt;bean id=&ldquo;user&rdquo; class=&ldquo;pojo.User&rdquo;&gt;<br>
+  &lt;property name=&ldquo;list&rdquo; ref=&ldquo;outList&rdquo;/&gt;<br>
+&lt;/bean&gt;</p>
+<p>&lt;bean id=&ldquo;student1&rdquo; class=&ldquo;pojo.Student&rdquo; p:id=&ldquo;1&rdquo;/&gt;<br>
+&lt;bean id=&ldquo;student2&rdquo; class=&ldquo;pojo.Student&rdquo; p:id=&ldquo;2&rdquo;/&gt;</p>
+</blockquote>
+<hr>
+<h2 id="ioc操作bean管理factorybean">IOC操作Bean管理(FactoryBean)</h2>
+<p>1.Spring有两种类型Bean,一种普通bean,另一种工厂bean(FactoryBean)</p>
+<p>2.普通bean：在配置文件中定义bean类型就是返回值类型</p>
+<p>3.工厂bean：在配置文件中定义bean类型可以和返回值类型不一样</p>
+<p>第一步：创建类，让此类作为工厂bean，实现接口FactoryBean
+第二步：实现接口方法，在实现的方法中返回的bean类型</p>
+<hr>
+<h2 id="ioc操作bean管理bean作用域">IOC操作Bean管理(bean作用域)</h2>
+<p>1.在spring中，默认情况下，bean是一个单实例对象
+2.使用scope属性设置实例是单例还是多例(prototype)
+3.singleton和prototype的区别：scope值为singleton时，加载spring配置文件时就会创建对象。而scope值为prototype时，不是在加载spring配置文件时创建对象，在调用getbean方法时创建多实例对象</p>
+<hr>
+<h2 id="ioc操作bean管理bean生命周期">IOC操作Bean管理(bean生命周期)</h2>
+<ul>
+<li>通过构造器创建bean实例(无参数构造)</li>
+<li>为bean的属性设置值和对其他bean引用(调用set方法)</li>
+<li>使用bean后置处理器，把bean实例传递bean后置处理器的方法(postProcessBoforeInitialization)</li>
+<li>调用bean的初始化方法(需要进行配置初始化的方法)</li>
+</ul>
+<blockquote>
+<p>&lt;bean id=&ldquo;myBean&rdquo; class=&ldquo;pojo.MyBean&rdquo; init-method=&ldquo;initMethod&rdquo;&gt;</p>
+</blockquote>
+<ul>
+<li>使用bean后置处理器，把bean实例传递bean后置处理器的方法(postProcessAfterInitialization)</li>
+<li>bean可以使用(获取到对象)</li>
+<li>当容器关闭，调用bean销毁的方法(需要进行配置销毁的方法)</li>
+</ul>
+<blockquote>
+<p>&lt;bean id=&ldquo;myBean&rdquo; class=&ldquo;pojo.MyBean&rdquo; destroy-method=&ldquo;destroyMethod&rdquo; &gt;</p>
+</blockquote>
+<p>使用后置处理器需要实现接口 BeanPostProcessor,来创建后置处理器</p>
+<p>配置后置处理器，使用bean标签创建实现了后置处理器的对象</p>
+<blockquote>
+<p>&lt;bean id=&ldquo;myBeanPost&rdquo; class=&ldquo;pojo.myBeanPost&rdquo;/&gt;</p>
+</blockquote>
+<hr>
+<h2 id="ioc操作bean管理xml自动装配">IOC操作Bean管理(xml自动装配)</h2>
+<p>根据指定装配规则(属性名或者属性类型)，Spring自动将匹配的属性值进行注入</p>
+<p>在bean标签中使用autowire属性
+属性值:
+byType按类型注入,使用按类型注入同类型的bean不能定义多个</p>
+<p>byName按名称注入,注入值 bean 的 id 值和类属性的名称要相同</p>
+<blockquote>
+<p>&lt;bean id=&ldquo;user&rdquo; class=&ldquo;pojo.User&rdquo; autowire=&ldquo;byName&rdquo;/&gt;</p>
+<p>&lt;bean id=&ldquo;student&rdquo; class=&ldquo;pojo.Student&rdquo; p:id=&ldquo;1&rdquo;/&gt;</p>
+</blockquote>
+<hr>
+<h2 id="ioc操作bean管理外部属性文件">IOC操作Bean管理(外部属性文件)</h2>
+<p>创建外部属性文件，在properties文件中配置数据库信息
+把外部properties属性文件引入到spring配置文件中
+使用context名称空间进行引入
+使用<a href="context:property-placeholder">context:property-placeholder</a>标签中的location属性引入文件
+在spring配置文件中配置德鲁伊连接池
+使用表达式${}配置属性值</p>
+<blockquote>
+<p>&lt;context:property-placeholder location=&ldquo;JDBC.properties&rdquo;/&gt;</p>
+<p>&lt;bean id=&ldquo;JDBC&rdquo; class=&ldquo;com.alibaba.druid.pool.DruidDataSource&rdquo;&gt;<br>
+  &lt;property name=&ldquo;driverClassName&rdquo; value=&rdquo;${prop.driverClass}&rdquo;/&gt;<br>
+  &lt;property name=&ldquo;url&rdquo; value=&quot;${prop.url}&quot;/&gt;<br>
+  &lt;property name=&ldquo;username&rdquo; value=&quot;${prop.userName}&quot;/&gt;<br>
+  &lt;property name=&ldquo;password&rdquo; value=&quot;${prop.password}&quot;/&gt;<br>
+&lt;/bean&gt;</p>
+</blockquote>
+<hr>
+<h2 id="ioc操作bean管理基于注解">IOC操作Bean管理(基于注解)</h2>
+<p>Spring 针对 Bean 管理中创建对象提供注解</p>
+<ul>
+<li>@Component(普通组件)</li>
+<li>@Service(一般用于业务逻辑层或Service层)</li>
+<li>@Controller(web层)</li>
+<li>@Repository(dao层)</li>
+</ul>
+<p>注解中的value属性可以省略不写，默认值为类名称，首字母小写</p>
+<h3 id="基于注解方式实现对象创建">基于注解方式实现对象创建</h3>
+<p>1.引入依赖 spring-aop.jar
+2.开启组件扫描
+需要引入名称空间context，使用<a href="context:component-scan">context:component-scan</a>开始组件扫描,使用属性 base-package 指定扫描的包</p>
+<blockquote>
+<p>&lt;context:component-scan base-package=&ldquo;service,dao&rdquo;/&gt;</p>
+</blockquote>
+<h3 id="配置组件扫描">配置组件扫描</h3>
+<p>在 <a href="context:component-scan">context:component-scan</a> 中使用属性 use-default-filters 将其设置为 fasle 关闭默认配置
+使用<a href="context:include-filter">context:include-filter</a> 和 <a href="context:exclude-filter">context:exclude-filter</a> 配置扫描
+<a href="context:include-filter">context:include-filter</a> ：设置哪些内容进行扫描
+<a href="context:exclude-filter">context:exclude-filter</a>：设置哪些内容不进行扫描</p>
+<blockquote>
+<p>&lt;context:component-scan base-package=&ldquo;service,dao&rdquo; use-default-filters=&ldquo;false&rdquo;&gt;
+  &lt;context:include-filter type=&ldquo;annotation&rdquo;
+    expression=&ldquo;org.springframework.stereotype.Service&rdquo;/&gt;<br>
+  &lt;context:exclude-filter type=&ldquo;annotation&rdquo;
+    expression=&ldquo;org.springframework.stereotype.Component&rdquo;/&gt;<br>
+&lt;/context:component-scan&gt;</p>
+</blockquote>
+<h3 id="基于注解方式实现属性注入">基于注解方式实现属性注入</h3>
+<p>@AutoWired：根据属性类型进行自动装配
+@Qualifier：根据属性名称进行注入(需要和AutoWired一起使用)
+@Resource：根据类型注入也可以根据名称注入(默认为名称注入，高版本jdk已移除)
+@value：注入普通类型属性</p>
+<p>1.把service和dao对象创建，在service类和dao类添加创建对象注解
+2.在service注入dao对象，在service类添加dao类型属性，在属性上面使用注解</p>
+<blockquote>
+<p>@Service<br>
+public class UserService {<br>
+  @Autowired<br>
+  @Qualifier(value = &ldquo;userDaoImpl&rdquo;)<br>
+  private UserDao userDao;</p>
+<p>  @Value(value = &ldquo;Tom&rdquo;)<br>
+  private String name;</p>
+<p>}</p>
+</blockquote>
+<h3 id="完全注解开发">完全注解开发</h3>
+<p>1.创建配置类
+2.使用注解
+@Configuration  声明为配置类
+@ComponentScan(basePackages = {&quot; ”}) 扫描注解</p>
+<blockquote>
+<p>@Configuration<br>
+@ComponentScan(basePackages = {&ldquo;dao&rdquo;,&ldquo;service&rdquo;})<br>
+public class SpringConfig {</p>
+<p>}</p>
+</blockquote>
+<p>使用AnnotationConfigApplicationContext(配置类名.class) 获取配置类</p>
+<blockquote>
+<p>//加载配置类
+ApplicationContext context =<br>
+   new
+  AnnotationConfigApplicationContext(SpringConfig.class);</p>
+</blockquote>
+
+                    
+                    <audio id="audio" loop="1" preload="auto" style="width: 100%;" controls="controls">
+                        <source type="audio/mpeg" src="/mp3/Unicorn.mp3">
+                        <a href="/mp3/Unicorn.mp3">/mp3/Unicorn.mp3</a>
+                    </audio>
+                </div>
+                <div class="comment-wrap">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="relate">
+        <ul>
+            <h3 id="prev_next">
+                <em>相 关 文 章</em>
+                <span>
+                    <a href="javascript: window.scrollTo(0, 0);">
+                    返回顶部</a>
+                    
+                        <a href="https://kiyo-1224/kiyo-1224.github.io/posts/me/" rel="prev">上一篇</a>
+                    
+                    
+                        <a href="https://kiyo-1224/kiyo-1224.github.io/posts/c&#43;&#43;pointbase/" rel="next">下一篇</a>
+                    
+                </span>
+            </h3>
+            
+            
+            
+                
+                    
+                    <li>
+                        <div>
+                            <a class="relatea" href="https://kiyo-1224/kiyo-1224.github.io/posts/c&#43;&#43;pointbase/" title="C&#43;&#43;指针基础">
+                            C&#43;&#43;指针基础</a>
+                            <p>对于C&#43;&#43;指针基础的理解。...</p>
+                        </div>
+                        
+                        <a href="https://kiyo-1224/kiyo-1224.github.io/posts/c&#43;&#43;pointbase/" title="C&#43;&#43;指针基础">
+                            <img class="relateimg" src="/img/kano.jpg" alt="C&#43;&#43;指针基础">
+                        </a>
+                    </li>
+                    
+                
+                    
+                
+                    
+                    <li>
+                        <div>
+                            <a class="relatea" href="https://kiyo-1224/kiyo-1224.github.io/posts/newhugopage/" title="hugo博客的搭建">
+                            hugo博客的搭建</a>
+                            <p>感谢您花费宝贵的时间前来阅读我的第一篇博客，这篇博客是我在搭建好博客之后，对于搭建个人博客所做的记录，希望能帮助到您,如果文章内容有错误，请发送邮件至：iyu_mashiro@163.com 我将不胜感激。...</p>
+                        </div>
+                        
+                        <a href="https://kiyo-1224/kiyo-1224.github.io/posts/newhugopage/" title="hugo博客的搭建">
+                            <img class="relateimg" src="/img/kano.jpg" alt="hugo博客的搭建">
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <div>
+                            <a class="relatea" href="https://kiyo-1224/kiyo-1224.github.io/posts/addblogcontent/" title="hugo博客的更新">
+                            hugo博客的更新</a>
+                            <p>成功搭建后，对于博客内容的更新操作。...</p>
+                        </div>
+                        
+                        <a href="https://kiyo-1224/kiyo-1224.github.io/posts/addblogcontent/" title="hugo博客的更新">
+                            <img class="relateimg" src="/img/kano.jpg" alt="hugo博客的更新">
+                        </a>
+                    </li>
+                    
+                
+            
+        </ul>
+    </div>
+</div>
+<p style="text-align: center;">
+  <a style="color: inherit" target="_blank" href="https://github.com/honjun/hugo-theme-diaspora"></a>
+</p>
+
+<script>
+  var siteTitle = "忆遇惜·真白 的个人博客";
+</script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<script src="/js/custom.js"></script>
+<script src="/js/InsightSearch.js"></script>
+</body>
+</html>
+
