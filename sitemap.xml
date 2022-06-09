@@ -5,6 +5,9 @@
     <loc>https://kiyo-1224.github.io/tags/c&#43;&#43;/</loc>
     <lastmod>2022-06-10T01:10:00+08:00</lastmod>
   </url><url>
+    <loc>https://kiyo-1224.github.io/categories/c&#43;&#43;/</loc>
+    <lastmod>2022-06-10T01:10:00+08:00</lastmod>
+  </url><url>
     <loc>https://kiyo-1224.github.io/posts/c&#43;&#43;pointbase/</loc>
     <lastmod>2022-06-10T01:10:00+08:00</lastmod>
   </url><url>
@@ -20,6 +23,9 @@
     <loc>https://kiyo-1224.github.io/tags/spring/</loc>
     <lastmod>2022-06-10T01:10:00+08:00</lastmod>
   </url><url>
+    <loc>https://kiyo-1224.github.io/categories/ssm/</loc>
+    <lastmod>2022-06-10T01:10:00+08:00</lastmod>
+  </url><url>
     <loc>https://kiyo-1224.github.io/tags/</loc>
     <lastmod>2022-06-10T01:10:00+08:00</lastmod>
   </url><url>
@@ -29,8 +35,8 @@
     <loc>https://kiyo-1224.github.io/tags/%E6%8A%80%E6%9C%AF/</loc>
     <lastmod>2022-06-10T01:10:00+08:00</lastmod>
   </url><url>
-    <loc>https://kiyo-1224.github.io/categories/%E6%8A%80%E6%9C%AF/</loc>
-    <lastmod>2022-06-10T01:10:00+08:00</lastmod>
+    <loc>https://kiyo-1224.github.io/categories/me/</loc>
+    <lastmod>2022-06-01T01:07:00+08:00</lastmod>
   </url><url>
     <loc>https://kiyo-1224.github.io/posts/me/</loc>
     <lastmod>2022-06-01T01:07:00+08:00</lastmod>
@@ -38,13 +44,13 @@
     <loc>https://kiyo-1224.github.io/tags/%E7%BB%98%E7%94%BB/</loc>
     <lastmod>2022-06-01T01:07:00+08:00</lastmod>
   </url><url>
-    <loc>https://kiyo-1224.github.io/categories/%E7%BB%98%E7%94%BB/</loc>
-    <lastmod>2022-06-01T01:07:00+08:00</lastmod>
-  </url><url>
     <loc>https://kiyo-1224.github.io/links/</loc>
     <lastmod>2022-06-01T01:02:00+08:00</lastmod>
   </url><url>
     <loc>https://kiyo-1224.github.io/tags/hugo/</loc>
+    <lastmod>2022-06-01T00:17:00+08:00</lastmod>
+  </url><url>
+    <loc>https://kiyo-1224.github.io/categories/hugo/</loc>
     <lastmod>2022-06-01T00:17:00+08:00</lastmod>
   </url><url>
     <loc>https://kiyo-1224.github.io/posts/newhugopage/</loc>

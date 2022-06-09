@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SSM on 忆遇惜·真白 的个人博客</title>
+    <link>https://kiyo-1224.github.io/categories/ssm/</link>
+    <description>Recent content in SSM on 忆遇惜·真白 的个人博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 10 Jun 2022 01:10:00 +0800</lastBuildDate><atom:link href="https://kiyo-1224.github.io/categories/ssm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>IOC容器</title>
+      <link>https://kiyo-1224.github.io/posts/ioc/</link>
+      <pubDate>Fri, 10 Jun 2022 01:10:00 +0800</pubDate>
+      
+      <guid>https://kiyo-1224.github.io/posts/ioc/</guid>
+      <description>IOC的概念 IOC(控制反转)，把对象创建和对象之间的调用过程，交给Spring进行管理，其目的为降低耦合度
+IOC底层使用：xml解析、工厂模式、反射
+ IOC接口(BeanFactory) Spring 提供IOC容器实现方式有两种：
+ BeanFactory：IOC容器基本实现，是spring内部使用的接口，加载配置文件时不会创建对象，在获取对象才去创建 ApplicationContext：BeanFactory接口的子接口，提供更多的功能，加载文件时就会创建对象  ApplicationContext实现类：
+ FileSystemXmlApplicationContext :读取文件绝对路径 ClassPathXmlApplicationContext	:读取文件类路径  通常使用 ApplicationContext 接口来获取配置文件 例：
+ ApplicationContext context =
+new ClassPathXmlApplicationContext(&amp;ldquo;bean.xml&amp;rdquo;);
+  IOC操作Bean管理(基于xml) Bean管理指的是两个操作：1.Spring创建对象 2.Spring注入属性
+ 1.基于xml配置文件实现 在Spring配置文件中使用bean标签，标签里添加对应属性，就可以实现对象创建
+bean标签常用属性
+ id 属性：唯一标识 class 属性：类全路径   &amp;lt;bean id=&amp;ldquo;user&amp;rdquo; class=&amp;ldquo;pojo.user&amp;rdquo;&amp;gt; &amp;lt;/bean&amp;gt;
+ 创建对象时，默认执行无参构造方法完成对象的创建
+使用 getBean 方法获取对象，其形参列表为(id值，类)
+ User user = context.getBean(&amp;ldquo;user&amp;rdquo;,User.class)
+  2.基于xml注入属性 DI：依赖注入，即注入属性
+ name 填入属性名 使用set方法注入，在&amp;lt;bean&amp;gt;标签中使用&amp;lt;property&amp;gt;，配置属性注入 使用有参构造方法注入,在&amp;lt;bean&amp;gt;标签中使用&amp;lt;constructor-arg&amp;gt;，配置属性注入  set 方法注入</description>
+    </item>
+    
+  </channel>
+</rss>
