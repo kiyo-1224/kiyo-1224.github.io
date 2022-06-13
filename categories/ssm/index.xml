@@ -8,6 +8,29 @@
     <language>en-us</language>
     <lastBuildDate>Fri, 10 Jun 2022 01:10:00 +0800</lastBuildDate><atom:link href="https://kiyo-1224.github.io/categories/ssm/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>AOP</title>
+      <link>https://kiyo-1224.github.io/posts/aop/</link>
+      <pubDate>Fri, 10 Jun 2022 01:10:00 +0800</pubDate>
+      
+      <guid>https://kiyo-1224.github.io/posts/aop/</guid>
+      <description>AOP(面向切面编程) 什么是AOP: 面向切面编程，利用AOP可以对业务逻辑的各个部分进行隔离，从而使得业务逻辑各部分之间的耦合度降低，提高程序的可重用性，同时提高了开发的效率（即不通过修改源代码方式，在主干功能里添加新功能）
+AOP底层原理：
+ 有接口,使用 JDK 动态代理。创建接口实现类代理对象，增强类的方法 无接口,使用 CGLIB 动态代理。创建子类的代理对象，增强类的方法  AOP(JDK 动态代理) 使用 JDK 动态代理，需要使用 Proxy 类里面的方法创建代理对象
+代理类 需要实现 InvocationHandler 接口，首先使用有参构造传递需要代理的对象，然后在 invoke 方法中编写增强的逻辑 例：
+ class UserProxy implements InvocationHandler{
+//使用有参构造，传递需要代理的对象
+private Object obj;
+public UserDaoProxy(Object obj){ this.obj = obj; }
+ //增强方法
+ @Override
+public Object invoke(Object proxy, Method method, Object[] args) throws Throwable { System.out.println(&amp;ldquo;方法前执行&amp;rdquo;+method.getName()+&amp;ldquo;传递的参数：&amp;quot;+ Arrays.toString(args));
+ Object res = method.invoke(obj,args);
+ System.out.println(&amp;ldquo;方法后执行&amp;rdquo;);
+ return res;
+}</description>
+    </item>
+    
+    <item>
       <title>IOC容器</title>
       <link>https://kiyo-1224.github.io/posts/ioc/</link>
       <pubDate>Fri, 10 Jun 2022 01:10:00 +0800</pubDate>

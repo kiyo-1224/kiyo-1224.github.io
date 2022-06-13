@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html><head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate">
+  <title>AOP &middot; 忆遇惜·真白 的个人博客</title>
+  <meta name="keywords" content="素锦, inspiration, customization, rainmeter, design, web, 壁纸, 设计, 收集, wallpaper, collection, jaku, icon">
+  <meta name="description" content="世界上每个角落都有人过着相似的人生">
+  <meta name="author" content="iyu_mashiro">
+  <link rel="icon" type="image/png" href="">
+  <link rel="stylesheet" href="/css/diaspora.css">
+  <link rel="stylesheet" href="/css/insight.css">
+  <link rel="stylesheet" href="/css/custom.css">
+</head><body class="loading">
+        <div id="loading"></div>
+				<div id="nav"></div>
+				<div class="nav-user"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+        <div class="bar">
+        </div>
+        <a class="icon-icon" href="javascript:history.back()">
+        </a>
+        <div title="播放/暂停" class="icon-play">
+        </div>
+        
+        <h3 class="subtitle" style="display: none;">
+        AOP</h3>
+        <div class="social">
+            <div>
+                <div class="share">
+                    <a title="获取二维码" class="icon-wechat" href="javascript:;"></a>
+                </div>
+                <div id="qr"></div>
+            </div>
+        </div>
+        <div class="scrollbar" style="width: 1.1636%;"></div>
+    </div>
+    <div class="section">
+        <div class="article">
+            <div>
+                <h1 class="title">
+                AOP</h1>
+                <div class="stuff">
+                    
+                    <span>June 10, 2022</span>
+                    <span>字数 1377</span>
+                    
+                    
+                </div>
+                <div class="content">
+                    <h1 id="aop面向切面编程">AOP(面向切面编程)</h1>
+<p>什么是AOP:
+面向切面编程，利用AOP可以对业务逻辑的各个部分进行隔离，从而使得业务逻辑各部分之间的耦合度降低，提高程序的可重用性，同时提高了开发的效率（即不通过修改源代码方式，在主干功能里添加新功能）</p>
+<p>AOP底层原理：</p>
+<ul>
+<li>有接口,使用 JDK 动态代理。创建接口实现类代理对象，增强类的方法</li>
+<li>无接口,使用 CGLIB 动态代理。创建子类的代理对象，增强类的方法</li>
+</ul>
+<h2 id="aopjdk-动态代理">AOP(JDK 动态代理)</h2>
+<p>使用 JDK 动态代理，需要使用 Proxy 类里面的方法创建代理对象</p>
+<p>代理类 需要实现 InvocationHandler 接口，首先使用有参构造传递需要代理的对象，然后在 invoke 方法中编写增强的逻辑
+例：</p>
+<blockquote>
+<p>class UserProxy implements InvocationHandler{<br>
+//使用有参构造，传递需要代理的对象</p>
+<p>private Object obj;<br>
+public  UserDaoProxy(Object obj){ this.obj = obj;  }</p>
+<p>      //增强方法</p>
+<p>  @Override<br>
+  public Object invoke(Object proxy, Method  method, Object[] args) throws Throwable {     <br>
+    System.out.println(&ldquo;方法前执行&rdquo;+method.getName()+&ldquo;传递的参数：&quot;+
+              Arrays.toString(args));</p>
+<p>    Object res = method.invoke(obj,args);</p>
+<p>    System.out.println(&ldquo;方法后执行&rdquo;);</p>
+<p>    return res;<br>
+  }<br>
+}</p>
+</blockquote>
+<p>编写完代理类后，使用 newProxyInstance 启用代理，
+此方法有三个参数
+第一个参数：类加载器
+第二个参数：增强方法所在的类，这个类的接口，支持多个接口
+第三个参数：代理类对象</p>
+<blockquote>
+<p>public static void main(String[] args) {</p>
+<p>  Class[] interfaces = {User.class};</p>
+<p>  UserImpl user = new UserImpl();</p>
+<p>  User u_proxy =</p>
+<p>  (UserDao)Proxy.newProxyInstance(类.class.getClassLoader(),interfaces,new
+       UserProxy(user));</p>
+<p>  int result = u_proxy.method();</p>
+<p>}</p>
+</blockquote>
+<h2 id="aop操作术语">AOP(操作术语)</h2>
+<p>连接点：类里面哪些方法可以被增强，这些方法被称为连接点</p>
+<p>切入点：实际被增强的方法，称为切入点</p>
+<p>通知(增强)：实际增强的逻辑部分称为通知(增强)
+通知有多种类型：前置通知、后置通知、环绕通知、异常通知、最终通知</p>
+<p>切面：是动作，把通知应用到切入点的过程</p>
+<h2 id="aop操作">AOP操作</h2>
+<p>Spring 框架一般是基于 AspectJ 实现 AOP 操作</p>
+<p>AspectJ：AspectJ 不是 Spring 组成部分，是一个独立的 AOP 框架，一般和 Spring 一起使用，进行 AOP 操作</p>
+<p>基于 AspectJ 实现 AOP 操作有两种
+1.基于 xml 配置文件实现
+2.基于注解方式实现</p>
+<p>需要在工程项目中引入 AOP 相关依赖</p>
+<blockquote>
+<p>&lt;dependency&gt;<br>
+     &lt;groupId&gt;org.springframework&lt;/groupId&gt;<br>
+     &lt;artifactId&gt;spring-beans&lt;/artifactId&gt;<br>
+     &lt;version&gt;5.3.20&lt;/version&gt;<br>
+&lt;/dependency&gt;<br>
+&lt;dependency&gt;<br>
+   &lt;groupId&gt;org.springframework&lt;/groupId&gt;<br>
+   &lt;artifactId&gt;spring-context&lt;/artifactId&gt;<br>
+   &lt;version&gt;5.3.20&lt;/version&gt;<br>
+&lt;/dependency&gt;<br>
+&lt;dependency&gt;<br>
+   &lt;groupId&gt;org.springframework&lt;/groupId&gt;<br>
+   &lt;artifactId&gt;spring-core&lt;/artifactId&gt;<br>
+   &lt;version&gt;5.3.20&lt;/version&gt;<br>
+&lt;/dependency&gt;<br>
+&lt;dependency&gt;<br>
+   &lt;groupId&gt;org.springframework&lt;/groupId&gt;<br>
+   &lt;artifactId&gt;spring-expression&lt;/artifactId&gt;<br>
+   &lt;version&gt;5.3.20&lt;/version&gt;<br>
+&lt;/dependency&gt;<br>
+&lt;dependency&gt;<br>
+   &lt;groupId&gt;commons-logging&lt;/groupId&gt;<br>
+   &lt;artifactId&gt;commons-logging&lt;/artifactId&gt;<br>
+    &lt;version&gt;1.2&lt;/version&gt;<br>
+&lt;/dependency&gt;<br>
+&lt;dependency&gt;<br>
+   &lt;groupId&gt;org.aspectj&lt;/groupId&gt;<br>
+   &lt;artifactId&gt;aspectjweaver&lt;/artifactId&gt;<br>
+   &lt;version&gt;1.9.9.1&lt;/version&gt;<br>
+&lt;/dependency&gt;</p>
+</blockquote>
+<h3 id="基于注解方式实现">基于注解方式实现</h3>
+<p>首先需要创建配置文件开启注解扫描，并且开启 Aspect 生成代理对象</p>
+<blockquote>
+<p>&lt;cotext:component-scan base-package=&ldquo;Proxy&rdquo;/&gt;<br>
+&lt;!&ndash;开启 Aspect 生成代理对象-- &gt;<br>
+&lt;aop:aspectj-autoproxy/&gt;</p>
+</blockquote>
+<p>随后创建通知(增强)类，需要使用注解 @Aspect 声明为通知(增强)类，然后编写通知(增强)方法，使用注解声明为不同的通知(增强)类型</p>
+<p>例：</p>
+<blockquote>
+<p>@Component<br>
+@Aspect <br>
+public class PersonProxy {</p>
+<p>//前置通知<br>
+   @Before(value = &ldquo;execution(* Proxy.Person.add(..))&rdquo;)<br>
+   public void before(){<br>
+      System.out.println(&ldquo;PersonProxy.before&rdquo;);<br>
+   }</p>
+<p>}</p>
+</blockquote>
+<p>其中 value 中的值称之为切入点表达式，* 代表任意返回值</p>
+<p>切入点表达式
+作用：知道对哪个类里面的哪个方法进行增强</p>
+<p>语法结构：execution([权限修饰符] [返回类型] [类全路径] [方法名称] （[参数列表]) )</p>
+<p>其中五种通知的注解为
+@Before 前置通知
+@AfterReturning 返回通知
+@AfterThrowing 异常通知
+@After 后置通知
+@Around 环绕通知</p>
+<p>对于有许多相同切入点时，可以编写切入点抽取方法,使用 @Order 声明通知类的优先级，值越大优先级越高</p>
+<blockquote>
+<p>@Component<br>
+@Aspect<br>
+@Order(10)<br>
+public class PersonProxy {<br>
+//相同切入点抽取<br>
+   @Pointcut(value = &ldquo;execution(* Proxy.Person.add(..))&rdquo;)<br>
+   public void point(){</p>
+<p>   }</p>
+<p>//前置通知<br>
+   @Before(value = &ldquo;point()&rdquo;)<br>
+   public void before(){<br>
+      System.out.println(&ldquo;PersonProxy.before&rdquo;);<br>
+   }</p>
+<p>    @After(value = &ldquo;point()&rdquo;)<br>
+   public void after(){<br>
+        System.out.println(&ldquo;PersonProxy.after&rdquo;);<br>
+   }</p>
+<p>}</p>
+</blockquote>
+<h3 id="基于-xml-配置文件实现">基于 xml 配置文件实现</h3>
+<p>对于 xml 配置实现，首先需要创建 通知类和被通知类的 bean 对象</p>
+<blockquote>
+<p>&lt;bean id=&ldquo;person&rdquo; class=&ldquo;Proxy.Person&rdquo;/&gt;<br>
+&lt;bean id=&ldquo;proxy&rdquo; class=&ldquo;Proxy.PersonProxy&rdquo;/&gt;</p>
+</blockquote>
+<p>然后 配置 AOP 通知
+例：</p>
+<blockquote>
+<p>&lt;!&ndash;配置 aop 增强&ndash; &gt;<br>
+&lt;aop:config&gt;<br>
+&lt;!&ndash;切入点&ndash; &gt;<br>
+   &lt;aop:pointcut id=&ldquo;p&rdquo; expression=&ldquo;execution(* Proxy.Person.add())&rdquo;/&gt;<br>
+&lt;!&ndash;配置切面&ndash; &gt;<br>
+      &lt;aop:aspect ref=&ldquo;proxy&rdquo;&gt;<br>
+          &lt;aop:before method=&ldquo;before&rdquo; pointcut-ref=&ldquo;p&rdquo;/&gt;<br>
+      &lt;/aop:aspect&gt;<br>
+&lt;/aop:config&gt;</p>
+</blockquote>
+
+                    
+                    <audio id="audio" loop="1" preload="auto" style="width: 100%;" controls="controls">
+                        <source type="audio/mpeg" src="/mp3/Unicorn.mp3">
+                        <a href="/mp3/Unicorn.mp3">/mp3/Unicorn.mp3</a>
+                    </audio>
+                </div>
+                <div class="comment-wrap">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="relate">
+        <ul>
+            <h3 id="prev_next">
+                <em>相 关 文 章</em>
+                <span>
+                    <a href="javascript: window.scrollTo(0, 0);">
+                    返回顶部</a>
+                    
+                        <a href="https://kiyo-1224.github.io/posts/c&#43;&#43;pointbase/" rel="prev">上一篇</a>
+                    
+                    
+                </span>
+            </h3>
+            
+            
+            
+                
+                    
+                
+                    
+                    <li>
+                        <div>
+                            <a class="relatea" href="https://kiyo-1224.github.io/posts/ioc/" title="IOC容器">
+                            IOC容器</a>
+                            <p>对于IOC容器学习的记录...</p>
+                        </div>
+                        
+                        <a href="https://kiyo-1224.github.io/posts/ioc/" title="IOC容器">
+                            <img class="relateimg" src="/img/kano.jpg" alt="IOC容器">
+                        </a>
+                    </li>
+                    
+                
+            
+        </ul>
+    </div>
+</div>
+<p style="text-align: center;">
+  <a style="color: inherit" target="_blank" href="https://github.com/honjun/hugo-theme-diaspora"></a>
+</p>
+
+<script>
+  var siteTitle = "忆遇惜·真白 的个人博客";
+</script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<script src="/js/custom.js"></script>
+<script src="/js/InsightSearch.js"></script>
+</body>
+</html>
+

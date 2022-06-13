@@ -47,7 +47,7 @@
                 <div class="stuff">
                     
                     <span>June 10, 2022</span>
-                    <span>字数 3244</span>
+                    <span>字数 3242</span>
                     
                     
                 </div>
@@ -131,19 +131,19 @@ null值：在标签内部使用null标签</p>
 <blockquote>
 <p>&lt;bean id=&ldquo;user&rdquo; class=&ldquo;pojo.User&rdquo; &gt;<br>
   &lt;property name=&ldquo;name&rdquo; &gt;<br>
-        &lt;null/&gt;
-  &lt;/property&gt;
-&lt;/bean&gt;</p>
+        &lt;null/&gt;</p>
+<p>  &lt;/property&gt;</p>
+<p>&lt;/bean&gt;</p>
 </blockquote>
 <p>属性值包含特殊符号：使用转义或者把特殊符号写入CDATA</p>
 <blockquote>
 <p>&lt;bean id=&ldquo;user&rdquo; class=&ldquo;pojo.User&rdquo; &gt;<br>
   &lt;property name=&ldquo;name&rdquo; &gt;<br>
      &lt;value&gt;
-        &lt;![CDATA[ 《TOM &amp; Jerry》 ]]&gt;
-     &lt;/value&gt;<br>
-  &lt;/property&gt;
-&lt;/bean&gt;</p>
+     &lt;![CDATA[ 《TOM &amp; Jerry》 ]]&gt;
+  &lt;/value&gt;<br>
+  &lt;/property&gt;</p>
+<p>&lt;/bean&gt;</p>
 </blockquote>
 <p>3.2注入属性-外部bean
 当注入的属性为类时，在bean中使用ref属性而不是value，ref属性填入外部bean id名</p>
@@ -158,9 +158,9 @@ null值：在标签内部使用null标签</p>
 <blockquote>
 <p>&lt;bean id=&ldquo;user&rdquo; class=&ldquo;pojo.User&rdquo;&gt;<br>
   &lt;property name=&ldquo;student&rdquo;&gt;<br>
-    &lt;bean class=&ldquo;pojo.Student&rdquo; p:id=&ldquo;1002&rdquo;/&gt;
-  &lt;/property&gt;
-&lt;/bean&gt;</p>
+    &lt;bean class=&ldquo;pojo.Student&rdquo; p:id=&ldquo;1002&rdquo;/&gt;</p>
+<p>  &lt;/property&gt;</p>
+<p>&lt;/bean&gt;</p>
 </blockquote>
 <p>级联赋值：
 方法一：在外部bean中为类对象注入属性</p>
@@ -168,15 +168,15 @@ null值：在标签内部使用null标签</p>
 <p>&lt;bean id=&ldquo;user&rdquo; class=&ldquo;pojo.User&rdquo;&gt;<br>
   &lt;property name=&ldquo;student&rdquo; ref=&ldquo;student&rdquo;/&gt;<br>
 &lt;/bean&gt;</p>
-<p>&lt;bean id=&ldquo;student&rdquo; class=&ldquo;pojo.Student&rdquo; &gt;
-  &lt;property name=&ldquo;id&rdquo; value=&ldquo;1002&rdquo;/&gt;<br>
+<p>&lt;bean id=&ldquo;student&rdquo; class=&ldquo;pojo.Student&rdquo; &gt;</p>
+<p>  &lt;property name=&ldquo;id&rdquo; value=&ldquo;1002&rdquo;/&gt;<br>
 &lt;/bean&gt;</p>
 </blockquote>
 <p>方法二：为需要注入的属性提供get方法，使用类名.属性的方法注入属性值</p>
 <blockquote>
 <p>&lt;bean id=&ldquo;user&rdquo; class=&ldquo;pojo.User&rdquo;&gt;<br>
   &lt;property name=&ldquo;student&rdquo; ref=&ldquo;student&rdquo;/&gt;<br>
-  &lt;\property name=&ldquo;student.id&rdquo; value=&ldquo;1002&rdquo;/&gt;<br>
+  &lt;property name=&ldquo;student.id&rdquo; value=&ldquo;1002&rdquo;/&gt;<br>
 &lt;/bean&gt;</p>
 <p>&lt;bean id=&ldquo;student&rdquo; class=&ldquo;pojo.Student&rdquo;/&gt;</p>
 </blockquote>
@@ -191,7 +191,7 @@ null值：在标签内部使用null标签</p>
       &lt;value&gt;1&lt;/value&gt;<br>
       &lt;value&gt;1&lt;/value&gt;<br>
     &lt;/array&gt;     <br>
-   &lt;/property&gt;
+   &lt;/property&gt;<!-- raw HTML omitted -->
 &lt;/bean&gt;</p>
 </blockquote>
 <p>4.2注入list集合类型属性
@@ -203,7 +203,7 @@ null值：在标签内部使用null标签</p>
       &lt;value&gt;1&lt;/value&gt;<br>
       &lt;value&gt;1&lt;/value&gt;<br>
     &lt;/list&gt;     <br>
-   &lt;/property&gt;
+   &lt;/property&gt;<!-- raw HTML omitted -->
 &lt;/bean&gt;</p>
 </blockquote>
 <p>4.3注入Map集合类型属性
@@ -212,11 +212,11 @@ null值：在标签内部使用null标签</p>
 <p>&lt;bean id=&ldquo;user&rdquo; class=&ldquo;pojo.User&rdquo;&gt;<br>
   &lt;property name=&ldquo;map&rdquo;&gt;<br>
     &lt;map&gt;                    <br>
-      &lt;entry key=&ldquo;a&rdquo; value=&ldquo;A&rdquo;/&gt;
-      &lt;entry key=&ldquo;b&rdquo; value=&ldquo;B&rdquo;/&gt;
-    &lt;/map&gt;     <br>
-   &lt;/property&gt;
-&lt;/bean&gt;</p>
+      &lt;entry key=&ldquo;a&rdquo; value=&ldquo;A&rdquo;/&gt;</p>
+<p>      &lt;entry key=&ldquo;b&rdquo; value=&ldquo;B&rdquo;/&gt;</p>
+<p>    &lt;/map&gt;     <br>
+   &lt;/property&gt;</p>
+<p>&lt;/bean&gt;</p>
 </blockquote>
 <p>4.4注入Set类型属性
 使用set标签注入值</p>
@@ -237,13 +237,13 @@ null值：在标签内部使用null标签</p>
 <p>&lt;bean id=&ldquo;user&rdquo; class=&ldquo;pojo.User&rdquo;&gt;<br>
   &lt;property name=&ldquo;list&rdquo;&gt;<br>
     &lt;list&gt;                    <br>
-      &lt;ref bean = &ldquo;student1&rdquo;/&gt;
-      &lt;ref bean = &ldquo;student2&rdquo;/&gt;
-    &lt;/lst&gt;     <br>
-   &lt;/property&gt;
-&lt;/bean&gt;</p>
-<p>&lt;bean id=&ldquo;student1&rdquo; class=&ldquo;pojo.Student&rdquo; p:id=&ldquo;1&rdquo;/&gt;
-&lt;bean id=&ldquo;student2&rdquo; class=&ldquo;pojo.Student&rdquo; p:id=&ldquo;2&rdquo;/&gt;</p>
+      &lt;ref bean = &ldquo;student1&rdquo;/&gt;</p>
+<p>      &lt;ref bean = &ldquo;student2&rdquo;/&gt;</p>
+<p>    &lt;/list&gt;     <br>
+   &lt;/property&gt;</p>
+<p>&lt;/bean&gt;</p>
+<p>&lt;bean id=&ldquo;student1&rdquo; class=&ldquo;pojo.Student&rdquo; p:id=&ldquo;1&rdquo;/&gt;</p>
+<p>&lt;bean id=&ldquo;student2&rdquo; class=&ldquo;pojo.Student&rdquo; p:id=&ldquo;2&rdquo;/&gt;</p>
 </blockquote>
 <p>5.1把集合注入部分提取出来
 在spring配置文件中引入命名空间util</p>
@@ -251,8 +251,8 @@ null值：在标签内部使用null标签</p>
 <p>xmlns:util =&ldquo;<a href="http://www.springframework.org/schema/util%22">http://www.springframework.org/schema/util&quot;</a></p>
 <p>xsi:schemaLocation=
 &ldquo;<a href="http://www.springframework.org/schema/beans">http://www.springframework.org/schema/beans</a>
-  <a href="http://www.springframework.org/schema/beans/spring-beans.xsd">http://www.springframework.org/schema/beans/spring-beans.xsd</a>
-//新增如下内容<br>
+  <a href="http://www.springframework.org/schema/beans/spring-beans.xsd">http://www.springframework.org/schema/beans/spring-beans.xsd</a></p>
+<p>//新增如下内容<br>
  http://www.springframework.org/schema/util
  http://www.springframework.org/schema/util/spring-util.xsd&rdquo;</p>
 </blockquote>
@@ -428,6 +428,20 @@ ApplicationContext context =<br>
             
             
             
+                
+                    
+                    <li>
+                        <div>
+                            <a class="relatea" href="https://kiyo-1224.github.io/posts/aop/" title="AOP">
+                            AOP</a>
+                            <p>对于AOP学习的记录...</p>
+                        </div>
+                        
+                        <a href="https://kiyo-1224.github.io/posts/aop/" title="AOP">
+                            <img class="relateimg" src="/img/kano.jpg" alt="AOP">
+                        </a>
+                    </li>
+                    
                 
                     
                 

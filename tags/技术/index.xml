@@ -8,13 +8,38 @@
     <language>en-us</language>
     <lastBuildDate>Fri, 10 Jun 2022 01:10:00 +0800</lastBuildDate><atom:link href="https://kiyo-1224.github.io/tags/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>AOP</title>
+      <link>https://kiyo-1224.github.io/posts/aop/</link>
+      <pubDate>Fri, 10 Jun 2022 01:10:00 +0800</pubDate>
+      
+      <guid>https://kiyo-1224.github.io/posts/aop/</guid>
+      <description>AOP(面向切面编程) 什么是AOP: 面向切面编程，利用AOP可以对业务逻辑的各个部分进行隔离，从而使得业务逻辑各部分之间的耦合度降低，提高程序的可重用性，同时提高了开发的效率（即不通过修改源代码方式，在主干功能里添加新功能）
+AOP底层原理：
+ 有接口,使用 JDK 动态代理。创建接口实现类代理对象，增强类的方法 无接口,使用 CGLIB 动态代理。创建子类的代理对象，增强类的方法  AOP(JDK 动态代理) 使用 JDK 动态代理，需要使用 Proxy 类里面的方法创建代理对象
+代理类 需要实现 InvocationHandler 接口，首先使用有参构造传递需要代理的对象，然后在 invoke 方法中编写增强的逻辑 例：
+ class UserProxy implements InvocationHandler{
+//使用有参构造，传递需要代理的对象
+private Object obj;
+public UserDaoProxy(Object obj){ this.obj = obj; }
+ //增强方法
+ @Override
+public Object invoke(Object proxy, Method method, Object[] args) throws Throwable { System.out.println(&amp;ldquo;方法前执行&amp;rdquo;+method.getName()+&amp;ldquo;传递的参数：&amp;quot;+ Arrays.toString(args));
+ Object res = method.invoke(obj,args);
+ System.out.println(&amp;ldquo;方法后执行&amp;rdquo;);
+ return res;
+}</description>
+    </item>
+    
+    <item>
       <title>C&#43;&#43;指针基础</title>
       <link>https://kiyo-1224.github.io/posts/c&#43;&#43;pointbase/</link>
       <pubDate>Fri, 10 Jun 2022 01:10:00 +0800</pubDate>
       
       <guid>https://kiyo-1224.github.io/posts/c&#43;&#43;pointbase/</guid>
       <description>指针 指针的基本内容 指针本身是一个变量，其储存值的地址，而不是值。因此我们使用 *操作符声明一个指针变量，使用地址操作符 (&amp;amp;) 来获取常规变量的地址。 例：
- int i = 10; int *point = &amp;amp;i; int j = *point;
+ int i = 10;
+int *point = &amp;amp;i;
+int j = *point;
  其中 &amp;amp;i 是 i 的地址值，指针名 point 表示地址 可以使用 * (解除引用操作符) 来获取该地址处储存的值，但需要注意的是在对一个指针使用解除引用操作符前，该指针一定要被初始化为一个确定的地址值。
 我们可以将常规变量想象为一个硬币，一面为值，另一面为地址。值为指定量而地址为派生量
 内存的动态开辟与释放 new 关键字 对于指针，C++ 通过指针实现重要的 OOP 技术——在程序运行时分配内存 指针可以在运行阶段分配未命名的内存以存储值，在这种情况下只能使用指针来访问内存。 在C++ 中使用 new 关键字分配内存，new 将找到一个长度正确的内存块，并返回该内存块的地址，我们需要将该地址赋予一个指针

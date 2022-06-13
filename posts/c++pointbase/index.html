@@ -57,9 +57,9 @@
 <p>指针本身是一个变量，其储存值的地址，而不是值。因此我们使用 *操作符声明一个指针变量，使用地址操作符 (&amp;) 来获取常规变量的地址。
 例：</p>
 <blockquote>
-<p>int i = 10;
-int *point = &amp;i;
-int j = *point;</p>
+<p>int i = 10;</p>
+<p>int *point = &amp;i;</p>
+<p>int j = *point;</p>
 </blockquote>
 <p>其中 &amp;i 是 i 的地址值，指针名 point 表示地址 可以使用 * (解除引用操作符)  来获取该地址处储存的值，但需要注意的是在对一个指针使用解除引用操作符前，该指针一定要被初始化为一个确定的地址值。</p>
 <p>我们可以将常规变量想象为一个硬币，一面为值，另一面为地址。值为指定量而地址为派生量</p>
@@ -82,9 +82,9 @@ int j = *point;</p>
 <p>注意：一定要配对的使用 new 和 delete 否则将发生内存泄漏，这意味着被分配的内存将无法使用。如果内存泄漏严重，程序将由于不断寻找更多的内存而终止。另外不要尝试释放已经释放的内存块，C++ 标准指出，这样的结果是不确定的。也不能使用 delete 释放 不是由 new 获得的内存块
 例：</p>
 <blockquote>
-<p>int value = 10;
-int *pt = &amp;value;
-delete pt;</p>
+<p>int value = 10;</p>
+<p>int *pt = &amp;value;</p>
+<p>delete pt;</p>
 </blockquote>
 <p>上述操作是错误的，只能使用 delete 释放 使用 new 分配的内存，不过对于空指针使用 delete 是安全的</p>
 <h3 id="使用-new-创建动态数组">使用 new 创建动态数组</h3>
@@ -92,9 +92,9 @@ delete pt;</p>
 在使用 new 时，如果在运行阶段需要数组，则创建，不需要，则不创建。且可以在程序运行时选择数组的长度。这被称为动态联编，即数组是运行阶段创建的，这种数组称之为动态数组</p>
 <p>在使用 new 创建数组时我们只需要将数组的元素类型与长度告诉 new 即可,new 返回第一个元素的地址值，对于 使用 new 创建的数组，使用 delete [] 来释放内存；</p>
 <blockquote>
-<p>int *arr = new int[10];
-&hellip;&hellip;
-delete [] arr;</p>
+<p>int *arr = new int[10];</p>
+<p>&hellip;&hellip;</p>
+<p>delete [] arr;</p>
 </blockquote>
 <p>对于动态数组的使用，只需把指针名当作数组名使用即可</p>
 <p>对于 new 和 delete 的使用，应当遵守以下规则</p>
@@ -116,17 +116,17 @@ delete [] arr;</p>
 首先，将整数变量加 1 后，其值将加 1。但如果将指针变量加 1 ，增加的量是其指向类型的字节数，这意味对指针加 1 其地址将会是指向数组第二个值的地址。在多数情况下 C++ 将数组名解释为数组第一个元素的地址</p>
 <p>数组表达式 arr[1]， 在 C++ 编译器中看作 *(arr + 1)，因此在很多情况下可以以相同的方式使用指针名和数组名。而这二者的区别在于，指针名可以修改指针的值，而数组名是常量</p>
 <blockquote>
-<p>int arr[5];
-int *pr = new int[5];</p>
-<p>arr = arr + 1; // 不可行
-pr = pr + 1;  // 可行</p>
+<p>int arr[5];</p>
+<p>int *pr = new int[5];</p>
+<p>arr = arr + 1; // 不可行</p>
+<p>pr = pr + 1;  // 可行</p>
 </blockquote>
 <p>另外对于 sizeof 操作符，应用于数组得到的是数组的长度，而应用于指针得到是指针的长度，即使是指针指向一个数组</p>
 <blockquote>
-<p>int* arr = new int[5];
-int arr1[5];</p>
-<p>cout &laquo; sizeof(arr) &laquo; endl; // 结果为 4
-cout &laquo; sizeof(arr1) &laquo; endl; //结果为 20</p>
+<p>int* arr = new int[5];</p>
+<p>int arr1[5];</p>
+<p>cout &laquo; sizeof(arr) &laquo; endl; // 结果为 4</p>
+<p>cout &laquo; sizeof(arr1) &laquo; endl; //结果为 20</p>
 </blockquote>
 <p>这种情况下数组名将不会解释为地址</p>
 <p>对于解除引用，可以使用数组表示法 arr[0] 或解除引用操作符 *arr 来获得值，注意不要对未被初始化的值解除引用</p>
@@ -162,6 +162,8 @@ cout &laquo; sizeof(arr1) &laquo; endl; //结果为 20</p>
                     
                         <a href="https://kiyo-1224.github.io/posts/ioc/" rel="prev">上一篇</a>
                     
+                    
+                        <a href="https://kiyo-1224.github.io/posts/aop/" rel="next">下一篇</a>
                     
                 </span>
             </h3>
