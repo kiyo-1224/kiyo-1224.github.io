@@ -6,7 +6,46 @@
     <description>Recent content in Posts on 忆遇惜·真白 的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 10 Jun 2022 01:10:00 +0800</lastBuildDate><atom:link href="https://kiyo-1224.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 17 Jun 2022 01:10:00 +0800</lastBuildDate><atom:link href="https://kiyo-1224.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JdbcTemplate和事务操作</title>
+      <link>https://kiyo-1224.github.io/posts/jdbctemplate/</link>
+      <pubDate>Fri, 17 Jun 2022 01:10:00 +0800</pubDate>
+      
+      <guid>https://kiyo-1224.github.io/posts/jdbctemplate/</guid>
+      <description>JdbcTemplate和事务操作 JdbcTemplate JdbcTemplate(概念和准备) 概念：
+JdbcTemplate Spring 框架对 JDBC 进行封装，使用 JdbcTemplate 方便实现对数据库操作
+准备工资 导入相关依赖
+ &amp;lt;dependency&amp;gt;
+&amp;lt;groupId&amp;gt;com.alibaba&amp;lt;/groupId&amp;gt;
+&amp;lt;artifactId&amp;gt;druid&amp;lt;/artifactId&amp;gt;
+&amp;lt;version&amp;gt;1.2.9&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt;
+&amp;lt;groupId&amp;gt;mysql&amp;lt;/groupId&amp;gt;
+&amp;lt;artifactId&amp;gt;mysql-connector-java&amp;lt;/artifactId&amp;gt;
+&amp;lt;version&amp;gt;8.0.29&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&amp;lt;dependency&amp;gt;
+&amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt;
+&amp;lt;artifactId&amp;gt;spring-jdbc&amp;lt;/artifactId&amp;gt;
+&amp;lt;version&amp;gt;5.3.20&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&amp;lt;dependency&amp;gt;
+&amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt;
+&amp;lt;artifactId&amp;gt;spring-tx&amp;lt;/artifactId&amp;gt;
+&amp;lt;version&amp;gt;5.3.20&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&amp;lt;dependency&amp;gt;
+&amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt;
+&amp;lt;artifactId&amp;gt;spring-orm&amp;lt;/artifactId&amp;gt;
+&amp;lt;version&amp;gt;4.3.21.RELEASE&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt;
+ 配置数据库连接池 配置 JBDCTemplate 对象，注入 DataSource 创建 service、dao类,在 dao 注入 JDBCTemplate 对象 ，并且在配置文件中开启组件扫描
+JdbcTeplate 操作数据库 首先创建相应的实体类，随后在service Dao类中添加相应的方法，最后使用测试类进行测试 例： 增删改使用 jdbcTemplate 中的 update 方法 查询使用 queryForObject 或 query 方法
+对于返回对象或集合的查询，需要使用其重载的方法，其参数为： (sql语句，RowMapper&amp;lt;T&amp;gt;,sql语句值)
+其中 RowMapper 是接口，针对返回不同类型数据，使用此接口的实现类完成数据封装</description>
+    </item>
+    
     <item>
       <title>AOP</title>
       <link>https://kiyo-1224.github.io/posts/aop/</link>
@@ -16,18 +55,15 @@
       <description>AOP(面向切面编程) 什么是AOP: 面向切面编程，利用AOP可以对业务逻辑的各个部分进行隔离，从而使得业务逻辑各部分之间的耦合度降低，提高程序的可重用性，同时提高了开发的效率（即不通过修改源代码方式，在主干功能里添加新功能）
 AOP底层原理：
  有接口,使用 JDK 动态代理。创建接口实现类代理对象，增强类的方法 无接口,使用 CGLIB 动态代理。创建子类的代理对象，增强类的方法  AOP(JDK 动态代理) 使用 JDK 动态代理，需要使用 Proxy 类里面的方法创建代理对象
-代理类 需要实现 InvocationHandler 接口，首先使用有参构造传递需要代理的对象，然后在 invoke 方法中编写增强的逻辑 例：
- class UserProxy implements InvocationHandler{
-//使用有参构造，传递需要代理的对象
-private Object obj;
-public UserDaoProxy(Object obj){ this.obj = obj; }
- //增强方法
- @Override
-public Object invoke(Object proxy, Method method, Object[] args) throws Throwable { System.out.println(&amp;ldquo;方法前执行&amp;rdquo;+method.getName()+&amp;ldquo;传递的参数：&amp;quot;+ Arrays.toString(args));
- Object res = method.invoke(obj,args);
- System.out.println(&amp;ldquo;方法后执行&amp;rdquo;);
- return res;
-}</description>
+代理类 需要实现 InvocationHandler 接口，首先使用有参构造传递需要代理的对象，然后在 invoke 方法中编写增强的逻辑 例： 编写完代理类后，使用 newProxyInstance 启用代理， 此方法有三个参数 第一个参数：类加载器 第二个参数：增强方法所在的类，这个类的接口，支持多个接口 第三个参数：代理类对象 例： AOP(操作术语) 连接点：类里面哪些方法可以被增强，这些方法被称为连接点
+切入点：实际被增强的方法，称为切入点
+通知(增强)：实际增强的逻辑部分称为通知(增强) 通知有多种类型：前置通知、后置通知、环绕通知、异常通知、最终通知
+切面：是动作，把通知应用到切入点的过程
+AOP操作 Spring 框架一般是基于 AspectJ 实现 AOP 操作
+AspectJ：AspectJ 不是 Spring 组成部分，是一个独立的 AOP 框架，一般和 Spring 一起使用，进行 AOP 操作
+基于 AspectJ 实现 AOP 操作有两种 1.基于 xml 配置文件实现 2.基于注解方式实现
+需要在工程项目中引入 AOP 相关依赖
+ &amp;lt;dependency&amp;gt;</description>
     </item>
     
     <item>

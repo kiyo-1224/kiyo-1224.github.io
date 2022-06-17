@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html><head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate">
+  <title>JdbcTemplate和事务操作 &middot; 忆遇惜·真白 的个人博客</title>
+  <meta name="keywords" content="素锦, inspiration, customization, rainmeter, design, web, 壁纸, 设计, 收集, wallpaper, collection, jaku, icon">
+  <meta name="description" content="世界上每个角落都有人过着相似的人生">
+  <meta name="author" content="iyu_mashiro">
+  <link rel="icon" type="image/png" href="">
+  <link rel="stylesheet" href="/css/diaspora.css">
+  <link rel="stylesheet" href="/css/insight.css">
+  <link rel="stylesheet" href="/css/custom.css">
+</head><body class="loading">
+        <div id="loading"></div>
+				<div id="nav"></div>
+				<div class="nav-user"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+        <div class="bar">
+        </div>
+        <a class="icon-icon" href="javascript:history.back()">
+        </a>
+        <div title="播放/暂停" class="icon-play">
+        </div>
+        
+        <h3 class="subtitle" style="display: none;">
+        JdbcTemplate和事务操作</h3>
+        <div class="social">
+            <div>
+                <div class="share">
+                    <a title="获取二维码" class="icon-wechat" href="javascript:;"></a>
+                </div>
+                <div id="qr"></div>
+            </div>
+        </div>
+        <div class="scrollbar" style="width: 1.1636%;"></div>
+    </div>
+    <div class="section">
+        <div class="article">
+            <div>
+                <h1 class="title">
+                JdbcTemplate和事务操作</h1>
+                <div class="stuff">
+                    
+                    <span>June 17, 2022</span>
+                    <span>字数 1193</span>
+                    
+                    
+                </div>
+                <div class="content">
+                    <h1 id="jdbctemplate和事务操作">JdbcTemplate和事务操作</h1>
+<h2 id="jdbctemplate">JdbcTemplate</h2>
+<h3 id="jdbctemplate概念和准备">JdbcTemplate(概念和准备)</h3>
+<p>概念：</p>
+<p>JdbcTemplate Spring 框架对 JDBC 进行封装，使用 JdbcTemplate 方便实现对数据库操作</p>
+<p>准备工资
+导入相关依赖</p>
+<blockquote>
+<p>&lt;dependency&gt;<br>
+  &lt;groupId&gt;com.alibaba&lt;/groupId&gt;<br>
+  &lt;artifactId&gt;druid&lt;/artifactId&gt;<br>
+  &lt;version&gt;1.2.9&lt;/version&gt;<br>
+&lt;/dependency&gt;
+&lt;dependency&gt;<br>
+  &lt;groupId&gt;mysql&lt;/groupId&gt;<br>
+  &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;<br>
+  &lt;version&gt;8.0.29&lt;/version&gt;<br>
+&lt;/dependency&gt;</p>
+<p>&lt;dependency&gt;<br>
+  &lt;groupId&gt;org.springframework&lt;/groupId&gt;<br>
+  &lt;artifactId&gt;spring-jdbc&lt;/artifactId&gt;<br>
+  &lt;version&gt;5.3.20&lt;/version&gt;<br>
+&lt;/dependency&gt;<br>
+&lt;dependency&gt;<br>
+  &lt;groupId&gt;org.springframework&lt;/groupId&gt;<br>
+  &lt;artifactId&gt;spring-tx&lt;/artifactId&gt;<br>
+  &lt;version&gt;5.3.20&lt;/version&gt;<br>
+&lt;/dependency&gt;<br>
+&lt;dependency&gt;<br>
+  &lt;groupId&gt;org.springframework&lt;/groupId&gt;<br>
+  &lt;artifactId&gt;spring-orm&lt;/artifactId&gt;<br>
+  &lt;version&gt;4.3.21.RELEASE&lt;/version&gt;<br>
+&lt;/dependency&gt;</p>
+</blockquote>
+<p>配置数据库连接池
+<img src="/img/JDBCTemplate.png" alt=""></p>
+<p>配置 JBDCTemplate 对象，注入 DataSource
+<img src="/img/JDBCTemplate1.png" alt=""></p>
+<p>创建 service、dao类,在 dao 注入 JDBCTemplate 对象 ，并且在配置文件中开启组件扫描</p>
+<h3 id="jdbcteplate-操作数据库">JdbcTeplate 操作数据库</h3>
+<p>首先创建相应的实体类，随后在service Dao类中添加相应的方法，最后使用测试类进行测试
+例：
+<img src="/img/JdbcTemplate2.png" alt=""></p>
+<p><img src="/img/JdbcTemplate3.png" alt=""></p>
+<p>增删改使用 jdbcTemplate 中的 update 方法
+查询使用 queryForObject 或 query 方法</p>
+<p>对于返回对象或集合的查询，需要使用其重载的方法，其参数为：
+(sql语句，RowMapper&lt;T&gt;,sql语句值)</p>
+<p>其中 RowMapper 是接口，针对返回不同类型数据，使用此接口的实现类完成数据封装</p>
+<p>批量操作 使用 batchXXX 方法</p>
+<h2 id="事务操作">事务操作</h2>
+<h3 id="事务的概念">事务的概念</h3>
+<p>事务是数据库操作的最基本单元，是逻辑上的一组操作，如果有一个失败所以操作都失败</p>
+<p>事务的四个特性：原子性、一致性、隔离性、持久性</p>
+<p>在 Spring 进行事务操作有两种方式：编程事务管理和声明式事务管理</p>
+<h3 id="声明式事务管理">声明式事务管理</h3>
+<p>方式：
+基于注解方式
+基于 xml 配置文件方式</p>
+<p>在 Spring 进行声明式事务管理，底层使用 AOP</p>
+<p>Spring 事务管理 API
+提供一个接口，代表事务管理器，这个接口针对不同的框架提供不同的实现类
+<img src="/img/transactionManager.png" alt=""></p>
+<h4 id="基于注解">基于注解</h4>
+<p>首先创建事务管理器，并开启事务注解和配置 tx 命名空间
+<img src="/img/transaction1.png" alt=""></p>
+<p>然后再所需的类或方法上添加 @Transactional 注解</p>
+<p>注：在类添加此注解，该类的所有方法都将添加事务。而在方法上添加此注解，则只为该方法添加事务</p>
+<h5 id="对于-transactional-注解中参数的配置">对于 @Transactional 注解中参数的配置</h5>
+<p>propagation: 事务传播行为
+多事务方法直接进行调用，这个过程中事务是如何进行管理的
+事务方法：对数据库表进行变化的操作
+<img src="/img/transation3.png" alt="">
+例：@Transactional(propagation = propagation.REQUIRED)</p>
+<hr>
+<p>isolation：事务隔离级别
+事务有一个特性称为隔离性，多事务之间操作不会产生影响</p>
+<p>不考虑隔离性所产生的问题：
+脏读：一个未提交事务读取到另一个未提交事务的数据
+不可重复读：一个未提交事务读取到另一提交事务修改的数据
+幻读：一个未提交事务读取到另一提交事务添加的数据</p>
+<p>通过事务隔离级别，解决读问题
+<img src="/img/transation4.png" alt=""></p>
+<p>例：@Transactional(isolation = Isolation.REPEATALE_READ)
+注：MySQL 默认为可重复读</p>
+<hr>
+<p>timeout：超时时间
+事务需要在一定时间内进行提交，如果不添加则进行回滚
+默认值为 -1，设置时间以秒为单位</p>
+<p>例：@Transactional(timeout = -1)</p>
+<hr>
+<p>readonly：是否只读
+默认值为 false,当值设置为 true 时只能进行查询操作</p>
+<p>例：@Transactional(readOnly = false)</p>
+<hr>
+<p>rollbackFor：回滚
+设置出现哪些异常进行事务回滚</p>
+<p>例：@Transactional(rollbackFor = NullPointerException.class)</p>
+<hr>
+<p>noRollbackFor：不回滚
+设置出现哪些异常不进行回滚</p>
+<p>例：@Transactional(noRollbackFor = NullPointerException.class)</p>
+<h4 id="基于-xml">基于 xml</h4>
+<p>首先配置事务管理器，随后配置通知、切入点和切面
+<img src="/img/transaction4.png" alt=""></p>
+<h4 id="完全注解">完全注解</h4>
+<p>创建配置类，使用配置类代替配置文件，如图
+<img src="/img/transaction5.png" alt=""></p>
+
+                    
+                    <audio id="audio" loop="1" preload="auto" style="width: 100%;" controls="controls">
+                        <source type="audio/mpeg" src="/mp3/Unicorn.mp3">
+                        <a href="/mp3/Unicorn.mp3">/mp3/Unicorn.mp3</a>
+                    </audio>
+                </div>
+                <div class="comment-wrap">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="relate">
+        <ul>
+            <h3 id="prev_next">
+                <em>相 关 文 章</em>
+                <span>
+                    <a href="javascript: window.scrollTo(0, 0);">
+                    返回顶部</a>
+                    
+                        <a href="https://kiyo-1224.github.io/posts/aop/" rel="prev">上一篇</a>
+                    
+                    
+                </span>
+            </h3>
+            
+            
+            
+                
+                    
+                
+                    
+                    <li>
+                        <div>
+                            <a class="relatea" href="https://kiyo-1224.github.io/posts/aop/" title="AOP">
+                            AOP</a>
+                            <p>对于AOP学习的记录...</p>
+                        </div>
+                        
+                        <a href="https://kiyo-1224.github.io/posts/aop/" title="AOP">
+                            <img class="relateimg" src="/img/kano.jpg" alt="AOP">
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <div>
+                            <a class="relatea" href="https://kiyo-1224.github.io/posts/ioc/" title="IOC容器">
+                            IOC容器</a>
+                            <p>对于IOC容器学习的记录...</p>
+                        </div>
+                        
+                        <a href="https://kiyo-1224.github.io/posts/ioc/" title="IOC容器">
+                            <img class="relateimg" src="/img/kano.jpg" alt="IOC容器">
+                        </a>
+                    </li>
+                    
+                
+            
+        </ul>
+    </div>
+</div>
+<p style="text-align: center;">
+  <a style="color: inherit" target="_blank" href="https://github.com/honjun/hugo-theme-diaspora"></a>
+</p>
+
+<script>
+  var siteTitle = "忆遇惜·真白 的个人博客";
+</script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<script src="/js/custom.js"></script>
+<script src="/js/InsightSearch.js"></script>
+</body>
+</html>
+

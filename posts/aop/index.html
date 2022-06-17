@@ -47,7 +47,7 @@
                 <div class="stuff">
                     
                     <span>June 10, 2022</span>
-                    <span>字数 1377</span>
+                    <span>字数 1109</span>
                     
                     
                 </div>
@@ -63,38 +63,15 @@
 <h2 id="aopjdk-动态代理">AOP(JDK 动态代理)</h2>
 <p>使用 JDK 动态代理，需要使用 Proxy 类里面的方法创建代理对象</p>
 <p>代理类 需要实现 InvocationHandler 接口，首先使用有参构造传递需要代理的对象，然后在 invoke 方法中编写增强的逻辑
-例：</p>
-<blockquote>
-<p>class UserProxy implements InvocationHandler{<br>
-//使用有参构造，传递需要代理的对象</p>
-<p>private Object obj;<br>
-public  UserDaoProxy(Object obj){ this.obj = obj;  }</p>
-<p>      //增强方法</p>
-<p>  @Override<br>
-  public Object invoke(Object proxy, Method  method, Object[] args) throws Throwable {     <br>
-    System.out.println(&ldquo;方法前执行&rdquo;+method.getName()+&ldquo;传递的参数：&quot;+
-              Arrays.toString(args));</p>
-<p>    Object res = method.invoke(obj,args);</p>
-<p>    System.out.println(&ldquo;方法后执行&rdquo;);</p>
-<p>    return res;<br>
-  }<br>
-}</p>
-</blockquote>
+例：
+<img src="/img/AOP.png" alt=""></p>
 <p>编写完代理类后，使用 newProxyInstance 启用代理，
 此方法有三个参数
 第一个参数：类加载器
 第二个参数：增强方法所在的类，这个类的接口，支持多个接口
-第三个参数：代理类对象</p>
-<blockquote>
-<p>public static void main(String[] args) {</p>
-<p>  Class[] interfaces = {User.class};</p>
-<p>  UserImpl user = new UserImpl();</p>
-<p>  User u_proxy =</p>
-<p>  (UserDao)Proxy.newProxyInstance(类.class.getClassLoader(),interfaces,new
-       UserProxy(user));</p>
-<p>  int result = u_proxy.method();</p>
-<p>}</p>
-</blockquote>
+第三个参数：代理类对象
+例：
+<img src="/img/AOP2.png" alt=""></p>
 <h2 id="aop操作术语">AOP(操作术语)</h2>
 <p>连接点：类里面哪些方法可以被增强，这些方法被称为连接点</p>
 <p>切入点：实际被增强的方法，称为切入点</p>
@@ -234,11 +211,27 @@ public class PersonProxy {<br>
                         <a href="https://kiyo-1224.github.io/posts/c&#43;&#43;pointbase/" rel="prev">上一篇</a>
                     
                     
+                        <a href="https://kiyo-1224.github.io/posts/jdbctemplate/" rel="next">下一篇</a>
+                    
                 </span>
             </h3>
             
             
             
+                
+                    
+                    <li>
+                        <div>
+                            <a class="relatea" href="https://kiyo-1224.github.io/posts/jdbctemplate/" title="JdbcTemplate和事务操作">
+                            JdbcTemplate和事务操作</a>
+                            <p>对于AOP学习的记录...</p>
+                        </div>
+                        
+                        <a href="https://kiyo-1224.github.io/posts/jdbctemplate/" title="JdbcTemplate和事务操作">
+                            <img class="relateimg" src="/img/kano.jpg" alt="JdbcTemplate和事务操作">
+                        </a>
+                    </li>
+                    
                 
                     
                 
