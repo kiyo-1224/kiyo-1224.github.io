@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html><head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate">
+  <title>JDBC概述和获取数据库连接 &middot; 忆遇惜·真白 的个人博客</title>
+  <meta name="keywords" content="素锦, inspiration, customization, rainmeter, design, web, 壁纸, 设计, 收集, wallpaper, collection, jaku, icon">
+  <meta name="description" content="世界上每个角落都有人过着相似的人生">
+  <meta name="author" content="iyu_mashiro">
+  <link rel="icon" type="image/png" href="">
+  <link rel="stylesheet" href="/css/diaspora.css">
+  <link rel="stylesheet" href="/css/insight.css">
+  <link rel="stylesheet" href="/css/custom.css">
+</head><body class="loading">
+        <div id="loading"></div>
+				<div id="nav"></div>
+				<div class="nav-user"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+        <div class="bar">
+        </div>
+        <a class="icon-icon" href="javascript:history.back()">
+        </a>
+        <div title="播放/暂停" class="icon-play">
+        </div>
+        
+        <h3 class="subtitle" style="display: none;">
+        JDBC概述和获取数据库连接</h3>
+        <div class="social">
+            <div>
+                <div class="share">
+                    <a title="获取二维码" class="icon-wechat" href="javascript:;"></a>
+                </div>
+                <div id="qr"></div>
+            </div>
+        </div>
+        <div class="scrollbar" style="width: 1.1636%;"></div>
+    </div>
+    <div class="section">
+        <div class="article">
+            <div>
+                <h1 class="title">
+                JDBC概述和获取数据库连接</h1>
+                <div class="stuff">
+                    
+                    <span>June 18, 2022</span>
+                    <span>字数 1462</span>
+                    
+                    
+                </div>
+                <div class="content">
+                    <h2 id="jdbc概述">JDBC概述</h2>
+<h3 id="持久化">持久化</h3>
+<h3 id="java中的数据存储技术">Java中的数据存储技术</h3>
+<p>在Java中，数据库存取技术可分为如下几类：</p>
+<ul>
+<li>JDBC 直接访问数据库</li>
+<li>JDO(Java Data Object)技术</li>
+<li>第三方O/R工具，如Hibernate、MyBatis等
+JDBC是Java访问数据库的基石，JDO、Hibernate、MyBatis等只是更好的封装了JDBC</li>
+</ul>
+<h3 id="jdbc介绍">JDBC介绍</h3>
+<ul>
+<li>JDBC(Java DataBase Connectivity)是一个<strong>独立于特定数据库管理系统、通用的SQL数据库存取和操作的公共接口</strong>(一组API)，定义了用来访问数据库的标准Java类库，(<strong>java.sql,javax.sql</strong>) 使用这些类库可以以一种标准的方法、方便地访问数据库资源</li>
+<li>JDBC 为访问不同的数据库提供了一种<strong>统一的途径</strong>，为开发者屏蔽了一些细节问题</li>
+<li>JDBC的目标是使Java程序员使用 JDBC 可以连接任何<strong>提供了 JDBC 驱动程序</strong>的数据库系统，使得程序员无需对特定的数据库系统的特点做过多的了解，以简化和加快开发过程</li>
+<li><img src="/img/JDBC%E4%BD%93%E7%B3%BB.png" alt=""></li>
+</ul>
+<h3 id="jdbc-体系结构">JDBC 体系结构</h3>
+<p>JDBC接口(API)包含两个层次：</p>
+<ul>
+<li>面向应用的API：Java API，抽象接口，供应用程序开发人员使用(连接数据库，执行SQL语句，获得结果)</li>
+<li>面向数据库的API：Java Driver API，供开发商开发数据库驱动程序用</li>
+</ul>
+<p>JDBC是 sun 公司提供的一套用于数据库操作的接口，程序员只需面向此接口编程即可，不同的数据库厂商，需要针对这套接口，提供不同实现。不同的实现集合，即为不同数据库的驱动</p>
+<h3 id="jdbc-程序的编写过程">JDBC 程序的编写过程</h3>
+<p><img src="/img/JDBC%E7%A8%8B%E5%BA%8F%E7%BC%96%E5%86%99%E6%AD%A5%E9%AA%A4.png" alt=""></p>
+<p>补充：ODBC(Open DataBase Connectivity,开放式数据库连接)，是微软在 Windows 平台推出的。使用者在程序中只需调用 ODBC API，由 ODBC 驱动程序将调用转换为对特定的数据库的调用请求</p>
+<hr>
+<h2 id="获取数据库连接">获取数据库连接</h2>
+<h3 id="要素一-driver-接口实现类">要素一： Driver 接口实现类</h3>
+<h4 id="driver接口介绍">Driver接口介绍</h4>
+<p>java.sql.Driver 接口是所有 JDBC 驱动程序需要实现的接口
+在程序中不需要直接去访问实现 Driver 接口的实现类，而是由驱动程序管理器类(java.sql.DriverManager)去调用这些Driver实现</p>
+<h4 id="加载与注册驱动">加载与注册驱动</h4>
+<p>加载驱动：加载 JDBC 驱动需调用 Class 类的静态方法 forName()，向其传递要加载的 JDBC 驱动的类名</p>
+<ul>
+<li>Class.forName(&ldquo;com.mysql.jdbc.Driver&rdquo;) 8.0以下</li>
+<li>Class.forName(&ldquo;com.mysql.cj.jdbc.Driver&rdquo;) 8.0以上</li>
+</ul>
+<p>注册驱动：DriverManager 类是驱动管理器类，负责管理驱动程序</p>
+<ul>
+<li>使用 DriverManager.registerDriver(com.mysql.jdbc.Driver)来注册 8.0以下</li>
+<li>使用 DriverManager.registerDriver(com.mysql.cj.jdbc.Driver)来注册 8.0以上</li>
+<li>通常情况下用显式调用 DriverManager 类的 registerDirver() 方法来注册驱动程序的实例，因为 Driver 接口的驱动程序类都包含了静态代码块，在这个静态代码块中，会调用 DriverManager.registerDriver() 方法来注册自身的一个实例。
+<img src="/img/DriverManager.png" alt=""></li>
+</ul>
+<h4 id="编写-jdbc-配置文件">编写 JDBC 配置文件</h4>
+<p>一般我们会将数据库连接的四个基本配置声明在配置文件中，而不是写在代码中,实现了数据与代码的分离，实现了解耦。如果需要修改配置文件信息，可以避免程序重新打包。</p>
+<p>例：
+<img src="/img/JdbcProp.png" alt=""></p>
+<p>使用系统类加载器读取配置文件，随后使用 Properties 类加载配置文件，使用 getProperty 方法获取文件中的参数</p>
+<h4 id="完成数据库连接">完成数据库连接</h4>
+<p>通过加载 JDBC 配置文件 和 驱动 最终获取数据库连接</p>
+<p>例：
+<img src="/img/JDBC.png" alt=""></p>
+<h3 id="要素二url统一资源定位器">要素二：URL(统一资源定位器)</h3>
+<p>JDBC URL 用于标识一个被注册的驱动程序，驱动程序管理器通过这个 URL 选择正确的驱动程序，从而建立数据库连接</p>
+<p>JDBC URL 的标准由三部分组成，各部分用冒号分隔</p>
+<ul>
+<li>jdbc：子协议：子名称</li>
+<li>协议：JDBC URL 中的协议总是jdbc</li>
+<li>子协议：子协议用于标识一个数据库驱动程序</li>
+<li>子名称：一种标识数据库的方法。子名称可以依赖不同的子协议而变化，用子名称的目的是为了<strong>定位数据库</strong>提供足够的信息。包含** 主机名(对应服务端的IP地址)，数据库端口号，数据库名**</li>
+</ul>
+<p><img src="/img/URL.png" alt=""></p>
+
+                    
+                    <audio id="audio" loop="1" preload="auto" style="width: 100%;" controls="controls">
+                        <source type="audio/mpeg" src="/mp3/Unicorn.mp3">
+                        <a href="/mp3/Unicorn.mp3">/mp3/Unicorn.mp3</a>
+                    </audio>
+                </div>
+                <div class="comment-wrap">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="relate">
+        <ul>
+            <h3 id="prev_next">
+                <em>相 关 文 章</em>
+                <span>
+                    <a href="javascript: window.scrollTo(0, 0);">
+                    返回顶部</a>
+                    
+                        <a href="https://kiyo-1224.github.io/posts/jdbc3/" rel="prev">上一篇</a>
+                    
+                    
+                </span>
+            </h3>
+            
+            
+            
+                
+                    
+                
+                    
+                    <li>
+                        <div>
+                            <a class="relatea" href="https://kiyo-1224.github.io/posts/jdbc3/" title="事务处理、Druid连接池和DBuitl">
+                            事务处理、Druid连接池和DBuitl</a>
+                            <p>事务处理、Druid连接池和DBuitl...</p>
+                        </div>
+                        
+                        <a href="https://kiyo-1224.github.io/posts/jdbc3/" title="事务处理、Druid连接池和DBuitl">
+                            <img class="relateimg" src="/img/kano.jpg" alt="事务处理、Druid连接池和DBuitl">
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <div>
+                            <a class="relatea" href="https://kiyo-1224.github.io/posts/jdbc2/" title="使用PerparedStatement实现CRUD操作">
+                            使用PerparedStatement实现CRUD操作</a>
+                            <p>使用PerparedStatement实现CRUD操作...</p>
+                        </div>
+                        
+                        <a href="https://kiyo-1224.github.io/posts/jdbc2/" title="使用PerparedStatement实现CRUD操作">
+                            <img class="relateimg" src="/img/kano.jpg" alt="使用PerparedStatement实现CRUD操作">
+                        </a>
+                    </li>
+                    
+                
+            
+        </ul>
+    </div>
+</div>
+<p style="text-align: center;">
+  <a style="color: inherit" target="_blank" href="https://github.com/honjun/hugo-theme-diaspora"></a>
+</p>
+
+<script>
+  var siteTitle = "忆遇惜·真白 的个人博客";
+</script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<script src="/js/custom.js"></script>
+<script src="/js/InsightSearch.js"></script>
+</body>
+</html>
+

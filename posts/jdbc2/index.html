@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html><head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate">
+  <title>使用PerparedStatement实现CRUD操作 &middot; 忆遇惜·真白 的个人博客</title>
+  <meta name="keywords" content="素锦, inspiration, customization, rainmeter, design, web, 壁纸, 设计, 收集, wallpaper, collection, jaku, icon">
+  <meta name="description" content="世界上每个角落都有人过着相似的人生">
+  <meta name="author" content="iyu_mashiro">
+  <link rel="icon" type="image/png" href="">
+  <link rel="stylesheet" href="/css/diaspora.css">
+  <link rel="stylesheet" href="/css/insight.css">
+  <link rel="stylesheet" href="/css/custom.css">
+</head><body class="loading">
+        <div id="loading"></div>
+				<div id="nav"></div>
+				<div class="nav-user"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+        <div class="bar">
+        </div>
+        <a class="icon-icon" href="javascript:history.back()">
+        </a>
+        <div title="播放/暂停" class="icon-play">
+        </div>
+        
+        <h3 class="subtitle" style="display: none;">
+        使用PerparedStatement实现CRUD操作</h3>
+        <div class="social">
+            <div>
+                <div class="share">
+                    <a title="获取二维码" class="icon-wechat" href="javascript:;"></a>
+                </div>
+                <div id="qr"></div>
+            </div>
+        </div>
+        <div class="scrollbar" style="width: 1.1636%;"></div>
+    </div>
+    <div class="section">
+        <div class="article">
+            <div>
+                <h1 class="title">
+                使用PerparedStatement实现CRUD操作</h1>
+                <div class="stuff">
+                    
+                    <span>June 18, 2022</span>
+                    <span>字数 1367</span>
+                    
+                    
+                </div>
+                <div class="content">
+                    <h1 id="使用perparedstatement实现crud操作">使用PerparedStatement实现CRUD操作</h1>
+<h2 id="操作和访问数据库">操作和访问数据库</h2>
+<p>数据库连接被用于向数据库服务器发送命令和 SQL 语句，并接受数据库服务器返回的结果。其实一个数据库连接就是一个 Socket 连接</p>
+<p>在java.sql包中有三个接口分别定义了对数据库的调用的不同方式</p>
+<ul>
+<li>Statement：用于执行静态 SQL 语句并返回它所生成结果的对象</li>
+<li>PrepatedStatement：SQL 语句被预编译并储存在此对象中，可以使用此对象多次高效的执行该语句</li>
+<li>CallableStatement：用于执行 SQL 存储过程</li>
+</ul>
+<p><img src="/img/DriverManager%E6%8E%A5%E5%8F%A3%E7%BB%93%E6%9E%84.png" alt=""></p>
+<h2 id="使用-statement-操作数据表的弊端">使用 Statement 操作数据表的弊端</h2>
+<p>通过调用 Connection 对象的 createStatement() 方法创建该对象。该对象用于执行静态的 SQL 语句，并且返回结果；</p>
+<p>Statement 接口定义了下列方法用于执行 SQL 语句</p>
+<ul>
+<li>int excuteUpdate(String sql) ：执行更新操作 INSERT、UPDATE、DELETE</li>
+<li>ResultSet executeQuery(String sql)：执行查询操作 SELECT</li>
+</ul>
+<p>但是使用Statement操作数据表存在弊端</p>
+<ul>
+<li>存在拼串操作，繁琐</li>
+<li>存在 SQL 注入问题</li>
+</ul>
+<p>SQL 注入是利用某些系统没有对用户输入的数据进行充分的检查，而在用户输入数据中注入非法的 SQL 语句段或命令，从而利用系统的 SQL 引擎完成恶意注入行为的做法</p>
+<p>对于Java而言，要防范SQL注入，只要用PreparedStatement(从Statement扩展而来)取代Statement即可</p>
+<h2 id="preparedstatement-的使用">PreparedStatement 的使用</h2>
+<p>在使用 PreparedStatement 之前，需要先获取数据库连接，然后再预编译 sql 语句，获得 PreparedStatement 实例，如果有使用占位符，再填充占位符，然后执行操作，最后关闭资源。</p>
+<p>以插入为例：
+<img src="/img/Prepared.png" alt=""></p>
+<hr>
+<h3 id="封装数据库的连接和关闭操作">封装数据库的连接和关闭操作</h3>
+<p>对于需要重复使用的连接和关闭操作可以将其进行封装</p>
+<p>例：
+<img src="/img/JDBCUtils.png" alt="">
+之后即可使用封装好的操作，以简化代码</p>
+<p>以修改为例：
+<img src="/img/testUpdate.png" alt=""></p>
+<hr>
+<h3 id="实现通用增删改操作">实现通用增删改操作</h3>
+<p>通过之前的代码可以发现对于增删改的操作基本相似，故可以编写一个通用的增删改方法，以简化代码量。通过可变形参的方式来传入不同数量的占位符</p>
+<p>例：
+<img src="/img/commonUpdate.png" alt=""></p>
+<p>以删除为例：
+<img src="/img/test.png" alt=""></p>
+<hr>
+<h3 id="实现查询操作">实现查询操作</h3>
+<p>对于查询操作需要使用 executeQuery 方法，该方法会返回一个 resultSet 类型的结果集，因此还需要对处理做操作，且最后需要对其做关闭操作，所以可以重载之前封装的关闭操作；</p>
+<p>例：
+<img src="/img/Query.png" alt=""></p>
+<hr>
+<h3 id="实现单表的通用查询操作">实现单表的通用查询操作</h3>
+<p>对于单表的通用查询，由于不确定 sql 语句中结果集的数目，需要使用到 ResultSetMetaData 来获取元数据，以便得到结果集的列数，即可确定结果集的数目。另外由于获取的列是不确定的，还需要获得列名，再使用反射来获取类的属性名，匹配后再做值注入</p>
+<p>例：
+<img src="/img/Query1.png" alt=""></p>
+<p>但需要注意的是一旦类属性名和数据库列名不同，将无法匹配，此时需要在 sql 语句中取别名使其和类属性名一致，另外对于数据库需要获取其别名而不是列名
+<img src="/img/AS.png" alt=""></p>
+<hr>
+<h3 id="实现不同表的通用查询操作">实现不同表的通用查询操作</h3>
+<p>对于不同表的通用查询，只需在单表查询的基础上，将具体的类变更为泛型即可</p>
+<p>例：
+<img src="/img/Instance.png" alt=""></p>
+<p>如果需要返回多个对象，使用 list 即可</p>
+<p>例：
+<img src="/img/list.png" alt=""></p>
+<hr>
+<h3 id="读写-blog-类型数据">读写 Blog 类型数据</h3>
+<p>对于 Blog 类型的数据，Statement 不支持，而 PreparedStatement 支持操作 Blog 类型的数据。Blog 类型的数据以二进制存储，所以在 java 中对应 byte[] 类型。</p>
+<p>写操作 例：
+<img src="/img/Blog1.png" alt=""></p>
+<p>读操作 例:
+<img src="/img/Blog2.png" alt=""></p>
+<p>注意例中没有对 IO 流做释放，实际操作中不应当这样做</p>
+<p>另外 MySQL 有设置默认传入文件最大值，如果超出，在 MySQL 的安装目录下，寻找 my.ini 文件 ，配置如下参数 max_allowed_packet=xxM,且修改 my.ini 文件后需要重启 MySQL 服务</p>
+<hr>
+<h3 id="批量插入数据">批量插入数据</h3>
+<p>对于批量插入，如果使用 for 循环单条插入效率极其低下，可以通过批处理操作，取消自动提交，以及攒 batch 的方法提高其效率。
+注意 MySQL 默认关闭批处理，需要在 url 加上：<code>?rewriteBatchedStatements=true </code></p>
+<p>例：
+<img src="/img/Batch.png" alt=""></p>
+
+                    
+                    <audio id="audio" loop="1" preload="auto" style="width: 100%;" controls="controls">
+                        <source type="audio/mpeg" src="/mp3/Unicorn.mp3">
+                        <a href="/mp3/Unicorn.mp3">/mp3/Unicorn.mp3</a>
+                    </audio>
+                </div>
+                <div class="comment-wrap">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="relate">
+        <ul>
+            <h3 id="prev_next">
+                <em>相 关 文 章</em>
+                <span>
+                    <a href="javascript: window.scrollTo(0, 0);">
+                    返回顶部</a>
+                    
+                        <a href="https://kiyo-1224.github.io/posts/jdbctemplate/" rel="prev">上一篇</a>
+                    
+                    
+                        <a href="https://kiyo-1224.github.io/posts/jdbc3/" rel="next">下一篇</a>
+                    
+                </span>
+            </h3>
+            
+            
+            
+                
+                    
+                    <li>
+                        <div>
+                            <a class="relatea" href="https://kiyo-1224.github.io/posts/jdbc1/" title="JDBC概述和获取数据库连接">
+                            JDBC概述和获取数据库连接</a>
+                            <p>JDBC概述和获取数据库连接...</p>
+                        </div>
+                        
+                        <a href="https://kiyo-1224.github.io/posts/jdbc1/" title="JDBC概述和获取数据库连接">
+                            <img class="relateimg" src="/img/kano.jpg" alt="JDBC概述和获取数据库连接">
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <div>
+                            <a class="relatea" href="https://kiyo-1224.github.io/posts/jdbc3/" title="事务处理、Druid连接池和DBuitl">
+                            事务处理、Druid连接池和DBuitl</a>
+                            <p>事务处理、Druid连接池和DBuitl...</p>
+                        </div>
+                        
+                        <a href="https://kiyo-1224.github.io/posts/jdbc3/" title="事务处理、Druid连接池和DBuitl">
+                            <img class="relateimg" src="/img/kano.jpg" alt="事务处理、Druid连接池和DBuitl">
+                        </a>
+                    </li>
+                    
+                
+                    
+                
+            
+        </ul>
+    </div>
+</div>
+<p style="text-align: center;">
+  <a style="color: inherit" target="_blank" href="https://github.com/honjun/hugo-theme-diaspora"></a>
+</p>
+
+<script>
+  var siteTitle = "忆遇惜·真白 的个人博客";
+</script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<script src="/js/custom.js"></script>
+<script src="/js/InsightSearch.js"></script>
+</body>
+</html>
+
