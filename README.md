@@ -5,11 +5,6 @@
 预览：[demo](https://diaspora.hojun.cn/)
 ![](https://cdn.jsdelivr.net/gh/hojun2/hojun2.github.io/img/diaspora.jpg)
 
-## 交流群
-若你是使用者，加群QQ: 801511924
-
-若你是创作者，加群QQ: 194472590
-
 ## 下载安装
 ```cmd
 cd <YOUR Bolg Root Dir 到你博客根目录>
@@ -168,11 +163,3 @@ npm i hugo-lunr-diaspora
 ```
 最后cd到博客根目录下运行`npm run index`生成lunr.json文件即可以使用站内搜索。
 注意更新文章后需要更新lunr.json文件
-
-## 请主题作者喝杯咖啡
-### paypal
-[paypal](https://www.paypal.me/hojuncn)
-### 左手领红包，右手打赏
-![](https://cdn.jsdelivr.net/gh/honjun/cdn@1.8/img/custom/donate/AliPayQRsmall.jpg)
-### 微信支付
-![](https://cdn.jsdelivr.net/gh/honjun/cdn@1.8/img/custom/donate/WeChanSQsmall.jpg)
