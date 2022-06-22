@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>C&#43;&#43; on 忆遇惜·真白 的个人博客</title>
-    <link>https://kiyo.github.io/categories/c&#43;&#43;/</link>
+    <link>https://kiyo-1224.github.io/categories/c&#43;&#43;/</link>
     <description>Recent content in C&#43;&#43; on 忆遇惜·真白 的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 10 Jun 2022 01:10:00 +0800</lastBuildDate><atom:link href="https://kiyo.github.io/categories/c++/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 10 Jun 2022 01:10:00 +0800</lastBuildDate><atom:link href="https://kiyo-1224.github.io/categories/c++/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>C&#43;&#43;指针基础</title>
-      <link>https://kiyo.github.io/posts/c&#43;&#43;pointbase/</link>
+      <link>https://kiyo-1224.github.io/posts/c&#43;&#43;pointbase/</link>
       <pubDate>Fri, 10 Jun 2022 01:10:00 +0800</pubDate>
       
-      <guid>https://kiyo.github.io/posts/c&#43;&#43;pointbase/</guid>
+      <guid>https://kiyo-1224.github.io/posts/c&#43;&#43;pointbase/</guid>
       <description>指针 指针的基本内容 指针本身是一个变量，其储存值的地址，而不是值。因此我们使用 *操作符声明一个指针变量，使用地址操作符 (&amp;amp;) 来获取常规变量的地址。 例：
  int i = 10;
 int *point = &amp;amp;i;

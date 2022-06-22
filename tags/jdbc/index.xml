@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>JDBC on 忆遇惜·真白 的个人博客</title>
-    <link>https://kiyo.github.io/tags/jdbc/</link>
+    <link>https://kiyo-1224.github.io/tags/jdbc/</link>
     <description>Recent content in JDBC on 忆遇惜·真白 的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 18 Jun 2022 01:10:00 +0800</lastBuildDate><atom:link href="https://kiyo.github.io/tags/jdbc/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 18 Jun 2022 01:10:00 +0800</lastBuildDate><atom:link href="https://kiyo-1224.github.io/tags/jdbc/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>JDBC概述和获取数据库连接</title>
-      <link>https://kiyo.github.io/posts/jdbc1/</link>
+      <link>https://kiyo-1224.github.io/posts/jdbc1/</link>
       <pubDate>Sat, 18 Jun 2022 01:10:00 +0800</pubDate>
       
-      <guid>https://kiyo.github.io/posts/jdbc1/</guid>
+      <guid>https://kiyo-1224.github.io/posts/jdbc1/</guid>
       <description>JDBC概述 持久化 Java中的数据存储技术 在Java中，数据库存取技术可分为如下几类：
  JDBC 直接访问数据库 JDO(Java Data Object)技术 第三方O/R工具，如Hibernate、MyBatis等 JDBC是Java访问数据库的基石，JDO、Hibernate、MyBatis等只是更好的封装了JDBC  JDBC介绍  JDBC(Java DataBase Connectivity)是一个独立于特定数据库管理系统、通用的SQL数据库存取和操作的公共接口(一组API)，定义了用来访问数据库的标准Java类库，(java.sql,javax.sql) 使用这些类库可以以一种标准的方法、方便地访问数据库资源 JDBC 为访问不同的数据库提供了一种统一的途径，为开发者屏蔽了一些细节问题 JDBC的目标是使Java程序员使用 JDBC 可以连接任何提供了 JDBC 驱动程序的数据库系统，使得程序员无需对特定的数据库系统的特点做过多的了解，以简化和加快开发过程   JDBC 体系结构 JDBC接口(API)包含两个层次：
  面向应用的API：Java API，抽象接口，供应用程序开发人员使用(连接数据库，执行SQL语句，获得结果) 面向数据库的API：Java Driver API，供开发商开发数据库驱动程序用  JDBC是 sun 公司提供的一套用于数据库操作的接口，程序员只需面向此接口编程即可，不同的数据库厂商，需要针对这套接口，提供不同实现。不同的实现集合，即为不同数据库的驱动
@@ -23,10 +23,10 @@ JDBC 程序的编写过程 补充：ODBC(Open DataBase Connectivity,开放式数
     
     <item>
       <title>事务处理、Druid连接池和DBuitl</title>
-      <link>https://kiyo.github.io/posts/jdbc3/</link>
+      <link>https://kiyo-1224.github.io/posts/jdbc3/</link>
       <pubDate>Sat, 18 Jun 2022 01:10:00 +0800</pubDate>
       
-      <guid>https://kiyo.github.io/posts/jdbc3/</guid>
+      <guid>https://kiyo-1224.github.io/posts/jdbc3/</guid>
       <description>数据库事务 数据库事务介绍  事务：一组逻辑操作单元，使数据从一种状态变换到另一种状态 一组逻辑单元：一个或多个 DML 操作 事务处理：保证所有事务都作为一个工作单元来执行，即是出现了故障，都不能改变这种执行方式。当一个事务中执行多个操作时，要么所有的事务都被提交(commit),那么这些修改就永久的保存下来；要么数据库管控系统将放弃所作的所有修改，整个事务**回滚(rollback)**到最初状态，数据一旦提交，就不可回滚 自动提交操作：DDL 操作、DML(可设置取消自动提交)、关闭连接时 为确保数据库中数据的一致性，数据的操作应当是离散的成组的逻辑单元；当它全部完成时，数据的一致性可以保存，而这个单元中的一部分操作失败，整个事务应全部视为错误，所有从起始点的操作应当全部回退到开始状态  JDBC 事务处理 获取到数据库连接后设置关闭自动提交，在所有 sql 都正常执行就提交，否则回滚
 例： 事务的 ACID 属性 原子性(Atomicity): 原子性是指事务是一个不可分割的工作单位，事务中的操作要么都发生，要么都不发生
 一致性(Consistency): 事务必须使数据库从一个一致性状态变换到另一个一致性状态
@@ -44,10 +44,10 @@ MySQL 支持以上四种 默认为： REPEATABLE READ
     
     <item>
       <title>使用PerparedStatement实现CRUD操作</title>
-      <link>https://kiyo.github.io/posts/jdbc2/</link>
+      <link>https://kiyo-1224.github.io/posts/jdbc2/</link>
       <pubDate>Sat, 18 Jun 2022 01:10:00 +0800</pubDate>
       
-      <guid>https://kiyo.github.io/posts/jdbc2/</guid>
+      <guid>https://kiyo-1224.github.io/posts/jdbc2/</guid>
       <description>使用PerparedStatement实现CRUD操作 操作和访问数据库 数据库连接被用于向数据库服务器发送命令和 SQL 语句，并接受数据库服务器返回的结果。其实一个数据库连接就是一个 Socket 连接
 在java.sql包中有三个接口分别定义了对数据库的调用的不同方式
  Statement：用于执行静态 SQL 语句并返回它所生成结果的对象 PrepatedStatement：SQL 语句被预编译并储存在此对象中，可以使用此对象多次高效的执行该语句 CallableStatement：用于执行 SQL 存储过程  使用 Statement 操作数据表的弊端 通过调用 Connection 对象的 createStatement() 方法创建该对象。该对象用于执行静态的 SQL 语句，并且返回结果；
