@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html><head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate">
+  <title>SpringMVC获取请求参数 &middot; 忆遇惜·真白 的个人博客</title>
+  <meta name="keywords" content="素锦, inspiration, customization, rainmeter, design, web, 壁纸, 设计, 收集, wallpaper, collection, jaku, icon">
+  <meta name="description" content="世界上每个角落都有人过着相似的人生">
+  <meta name="author" content="iyu_mashiro">
+  <link rel="icon" type="image/png" href="">
+  <link rel="stylesheet" href="/css/diaspora.css">
+  <link rel="stylesheet" href="/css/insight.css">
+  <link rel="stylesheet" href="/css/custom.css">
+</head><body class="loading">
+        <div id="loading"></div>
+				<div id="nav"></div>
+				<div class="nav-user"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+        <div class="bar">
+        </div>
+        <a class="icon-icon" href="javascript:history.back()">
+        </a>
+        <div title="播放/暂停" class="icon-play">
+        </div>
+        
+        <h3 class="subtitle" style="display: none;">
+        SpringMVC获取请求参数</h3>
+        <div class="social">
+            <div>
+                <div class="share">
+                    <a title="获取二维码" class="icon-wechat" href="javascript:;"></a>
+                </div>
+                <div id="qr"></div>
+            </div>
+        </div>
+        <div class="scrollbar" style="width: 1.1636%;"></div>
+    </div>
+    <div class="section">
+        <div class="article">
+            <div>
+                <h1 class="title">
+                SpringMVC获取请求参数</h1>
+                <div class="stuff">
+                    
+                    <span>June 22, 2022</span>
+                    <span>字数 792</span>
+                    
+                    
+                </div>
+                <div class="content">
+                    <h1 id="springmvc获取请求参数">SpringMVC获取请求参数</h1>
+<h2 id="通过-servletapi-获取">通过 servletAPI 获取</h2>
+<p>将 HttpServletRquest 作为控制器方法的形参，此时 HttpServletRequest 类型的参数表示封装了当前请求的请求报文对象
+例：
+<img src="/img/SpringMVC15.png" alt=""></p>
+<p><img src="/img/SpringMVC7.png" alt=""></p>
+<h2 id="通过控制器方法的形参获取参数">通过控制器方法的形参获取参数</h2>
+<p>在控制器方法的形参位置，设置和请求参数同名的形参，当浏览器发送请求，匹配到请求映射时，在 DisPathcherServlet 中就会将请求参数赋值给相应的形参</p>
+<p>例：
+<img src="/img/SpringMVC10.png" alt=""></p>
+<p><img src="/img/SpringMVC9.png" alt=""></p>
+<p>若：</p>
+<p>请求参数所传输的请求参数中有多个同名的请求参数，此时可以在控制器方法的形参中设置字符串或字符串数组类型的形参接收此请求参数
+若使用字符串数组类型的形参，此参数的数组中包含了每一个数据
+若使用字符串类型的参数，此参数的值为每个数据中间使用逗号拼接的结果</p>
+<h2 id="requestparam">@RequestParam</h2>
+<p>@RequestParam 是将请求参数和控制器方法的形参创建映射关系</p>
+<p>@RequestParam 注解一共有三个属性：</p>
+<p>value：指定为形参赋值的请求参数名</p>
+<p>required：指定为形参赋值的请求参数的参数名，默认为 true</p>
+<p>若设置为 true 时，则当前请求必须传递 value 所指定的请求参数，若没有传输请求参数，且没有设置 defaultValue 属性，则页面报错 400；</p>
+<p>若设置为 false，则当前请求不是必须传输 value 所指定的请求传输，若没有传输，则注解标识的形参的值为 null</p>
+<p>defaultValue：不管 required 属性值为 true 或 false，当 value 所指定的请求参数没有传输时，则使用默认形参为形参赋值</p>
+<p>例：
+<img src="/img/SpringMVC11.png" alt=""></p>
+<h2 id="requestheader">@RequestHeader</h2>
+<p>@RequestHeader 是将请求头信息和控制器方法的形参创建映射关系
+@RequestHeader 注解一共有三个属性：value、required、defaultValue,用法和 @RequestParam 相同</p>
+<h2 id="cookievalue">@CookieValue</h2>
+<p>@CookieValue 是将 cookie 数据属性和控制器方法的形参创建映射关系
+@CookieValue 注解一共有三个属性：value、required、defaultValue,用法和 @RequestParam 相同</p>
+<h2 id="通过--pojo-获取数据">通过  POJO 获取数据</h2>
+<p>可以在控制器方法的形参位置设计一个实体类类型的形参，此时若浏览器传输的请求参数的参数名和实体类中的属性名一致，那么请求参数就会为此属性赋值</p>
+<h2 id="处理请求参数乱码的问题">处理请求参数乱码的问题</h2>
+<p>解决获取请求参数的乱码问题，可以使用 SpringMVC 提供的编码过滤器 CharacterEncodingFilter，但是必须在 web.xml 中进行注册
+<img src="/img/SpringMVC12.png" alt=""></p>
+
+                    
+                    <audio id="audio" loop="1" preload="auto" style="width: 100%;" controls="controls">
+                        <source type="audio/mpeg" src="/mp3/Unicorn.mp3">
+                        <a href="/mp3/Unicorn.mp3">/mp3/Unicorn.mp3</a>
+                    </audio>
+                </div>
+                <div class="comment-wrap">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="relate">
+        <ul>
+            <h3 id="prev_next">
+                <em>相 关 文 章</em>
+                <span>
+                    <a href="javascript: window.scrollTo(0, 0);">
+                    返回顶部</a>
+                    
+                        <a href="https://kiyo.github.io/posts/jdbc1/" rel="prev">上一篇</a>
+                    
+                    
+                        <a href="https://kiyo.github.io/posts/springmvc1/" rel="next">下一篇</a>
+                    
+                </span>
+            </h3>
+            
+            
+            
+                
+                    
+                    <li>
+                        <div>
+                            <a class="relatea" href="https://kiyo.github.io/posts/springmvc1/" title="SpringMVC_RequestMapping 注解">
+                            SpringMVC_RequestMapping 注解</a>
+                            <p>SpringMVC_RequestMapping 注解...</p>
+                        </div>
+                        
+                        <a href="https://kiyo.github.io/posts/springmvc1/" title="SpringMVC_RequestMapping 注解">
+                            <img class="relateimg" src="/img/kano.jpg" alt="SpringMVC_RequestMapping 注解">
+                        </a>
+                    </li>
+                    
+                
+                    
+                
+            
+        </ul>
+    </div>
+</div>
+<p style="text-align: center;">
+  <a style="color: inherit" target="_blank" href="https://github.com/honjun/hugo-theme-diaspora"></a>
+</p>
+
+<script>
+  var siteTitle = "忆遇惜·真白 的个人博客";
+</script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<script src="/js/custom.js"></script>
+<script src="/js/InsightSearch.js"></script>
+</body>
+</html>
+

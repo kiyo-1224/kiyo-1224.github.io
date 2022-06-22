@@ -2,17 +2,56 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>技术 on 忆遇惜·真白 的个人博客</title>
-    <link>https://kiyo-1224.github.io/tags/%E6%8A%80%E6%9C%AF/</link>
+    <link>https://kiyo.github.io/tags/%E6%8A%80%E6%9C%AF/</link>
     <description>Recent content in 技术 on 忆遇惜·真白 的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 18 Jun 2022 01:10:00 +0800</lastBuildDate><atom:link href="https://kiyo-1224.github.io/tags/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 22 Jun 2022 01:10:00 +0800</lastBuildDate><atom:link href="https://kiyo.github.io/tags/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SpringMVC_RequestMapping 注解</title>
+      <link>https://kiyo.github.io/posts/springmvc1/</link>
+      <pubDate>Wed, 22 Jun 2022 01:10:00 +0800</pubDate>
+      
+      <guid>https://kiyo.github.io/posts/springmvc1/</guid>
+      <description>环境搭建 第一步导入相关依赖，并设置打包方式为 war 第二步在工程中添加 web 模块，并在配置文件中配置前端控制器 第三步在配置文件中配置 thymeleaf 和 注解扫描 第四步在 WEB-INF 下创建 temlates 目录然后在该目录创建 index.html 并在页面中引入 thymeleaf 命名空间 第五步创建控制器 最后启动 Tomcat 访问
+@RequestMapping 注解 @RequestMapping 注解的功能 @RequestMapping 注解的作用是将请求和处理请求的控制器方法关联起来，建立映射关系，SpringMVC 接收到指定的请求，就会来找到在映射关系中对应的控制器方法来处理这个请求
+@RequestMapping 注解的位置 @RequestMapping 标识一个类：设置映射请求的请求路径的初始信息
+@RequestMapping 标识一个方法：设计映射请求的请求路径的具体信息
+@RequestMapping 注解的 value 属性 @RequestMapping 注解的 value 属性通过请求的请求地址匹配请求映射
+@RequestMapping 注解的 value 属性是一个字符串类型的数组，表示该请求映射能够匹配多个请求地址所对应的请求
+@RequestMapping 注解的 value 属性必须设置
+@RequestMapping 注解的 method 属性 @RequestMapping 注解的 method 属性通过请求的请求方式 (get 或 post) 匹配请求
+@RequestMapping 注解的 method 属性是一个 RequestMethod 类型的数组，表示该请求能够匹配多种请求方式的请求</description>
+    </item>
+    
+    <item>
+      <title>SpringMVC获取请求参数</title>
+      <link>https://kiyo.github.io/posts/springmvc2/</link>
+      <pubDate>Wed, 22 Jun 2022 01:10:00 +0800</pubDate>
+      
+      <guid>https://kiyo.github.io/posts/springmvc2/</guid>
+      <description>SpringMVC获取请求参数 通过 servletAPI 获取 将 HttpServletRquest 作为控制器方法的形参，此时 HttpServletRequest 类型的参数表示封装了当前请求的请求报文对象 例： 通过控制器方法的形参获取参数 在控制器方法的形参位置，设置和请求参数同名的形参，当浏览器发送请求，匹配到请求映射时，在 DisPathcherServlet 中就会将请求参数赋值给相应的形参
+例： 若：
+请求参数所传输的请求参数中有多个同名的请求参数，此时可以在控制器方法的形参中设置字符串或字符串数组类型的形参接收此请求参数 若使用字符串数组类型的形参，此参数的数组中包含了每一个数据 若使用字符串类型的参数，此参数的值为每个数据中间使用逗号拼接的结果
+@RequestParam @RequestParam 是将请求参数和控制器方法的形参创建映射关系
+@RequestParam 注解一共有三个属性：
+value：指定为形参赋值的请求参数名
+required：指定为形参赋值的请求参数的参数名，默认为 true
+若设置为 true 时，则当前请求必须传递 value 所指定的请求参数，若没有传输请求参数，且没有设置 defaultValue 属性，则页面报错 400；
+若设置为 false，则当前请求不是必须传输 value 所指定的请求传输，若没有传输，则注解标识的形参的值为 null
+defaultValue：不管 required 属性值为 true 或 false，当 value 所指定的请求参数没有传输时，则使用默认形参为形参赋值
+例： @RequestHeader @RequestHeader 是将请求头信息和控制器方法的形参创建映射关系 @RequestHeader 注解一共有三个属性：value、required、defaultValue,用法和 @RequestParam 相同
+@CookieValue @CookieValue 是将 cookie 数据属性和控制器方法的形参创建映射关系 @CookieValue 注解一共有三个属性：value、required、defaultValue,用法和 @RequestParam 相同
+通过 POJO 获取数据 可以在控制器方法的形参位置设计一个实体类类型的形参，此时若浏览器传输的请求参数的参数名和实体类中的属性名一致，那么请求参数就会为此属性赋值
+处理请求参数乱码的问题 解决获取请求参数的乱码问题，可以使用 SpringMVC 提供的编码过滤器 CharacterEncodingFilter，但是必须在 web.</description>
+    </item>
+    
     <item>
       <title>JDBC概述和获取数据库连接</title>
-      <link>https://kiyo-1224.github.io/posts/jdbc1/</link>
+      <link>https://kiyo.github.io/posts/jdbc1/</link>
       <pubDate>Sat, 18 Jun 2022 01:10:00 +0800</pubDate>
       
-      <guid>https://kiyo-1224.github.io/posts/jdbc1/</guid>
+      <guid>https://kiyo.github.io/posts/jdbc1/</guid>
       <description>JDBC概述 持久化 Java中的数据存储技术 在Java中，数据库存取技术可分为如下几类：
  JDBC 直接访问数据库 JDO(Java Data Object)技术 第三方O/R工具，如Hibernate、MyBatis等 JDBC是Java访问数据库的基石，JDO、Hibernate、MyBatis等只是更好的封装了JDBC  JDBC介绍  JDBC(Java DataBase Connectivity)是一个独立于特定数据库管理系统、通用的SQL数据库存取和操作的公共接口(一组API)，定义了用来访问数据库的标准Java类库，(java.sql,javax.sql) 使用这些类库可以以一种标准的方法、方便地访问数据库资源 JDBC 为访问不同的数据库提供了一种统一的途径，为开发者屏蔽了一些细节问题 JDBC的目标是使Java程序员使用 JDBC 可以连接任何提供了 JDBC 驱动程序的数据库系统，使得程序员无需对特定的数据库系统的特点做过多的了解，以简化和加快开发过程   JDBC 体系结构 JDBC接口(API)包含两个层次：
  面向应用的API：Java API，抽象接口，供应用程序开发人员使用(连接数据库，执行SQL语句，获得结果) 面向数据库的API：Java Driver API，供开发商开发数据库驱动程序用  JDBC是 sun 公司提供的一套用于数据库操作的接口，程序员只需面向此接口编程即可，不同的数据库厂商，需要针对这套接口，提供不同实现。不同的实现集合，即为不同数据库的驱动
@@ -23,10 +62,10 @@ JDBC 程序的编写过程 补充：ODBC(Open DataBase Connectivity,开放式数
     
     <item>
       <title>事务处理、Druid连接池和DBuitl</title>
-      <link>https://kiyo-1224.github.io/posts/jdbc3/</link>
+      <link>https://kiyo.github.io/posts/jdbc3/</link>
       <pubDate>Sat, 18 Jun 2022 01:10:00 +0800</pubDate>
       
-      <guid>https://kiyo-1224.github.io/posts/jdbc3/</guid>
+      <guid>https://kiyo.github.io/posts/jdbc3/</guid>
       <description>数据库事务 数据库事务介绍  事务：一组逻辑操作单元，使数据从一种状态变换到另一种状态 一组逻辑单元：一个或多个 DML 操作 事务处理：保证所有事务都作为一个工作单元来执行，即是出现了故障，都不能改变这种执行方式。当一个事务中执行多个操作时，要么所有的事务都被提交(commit),那么这些修改就永久的保存下来；要么数据库管控系统将放弃所作的所有修改，整个事务**回滚(rollback)**到最初状态，数据一旦提交，就不可回滚 自动提交操作：DDL 操作、DML(可设置取消自动提交)、关闭连接时 为确保数据库中数据的一致性，数据的操作应当是离散的成组的逻辑单元；当它全部完成时，数据的一致性可以保存，而这个单元中的一部分操作失败，整个事务应全部视为错误，所有从起始点的操作应当全部回退到开始状态  JDBC 事务处理 获取到数据库连接后设置关闭自动提交，在所有 sql 都正常执行就提交，否则回滚
 例： 事务的 ACID 属性 原子性(Atomicity): 原子性是指事务是一个不可分割的工作单位，事务中的操作要么都发生，要么都不发生
 一致性(Consistency): 事务必须使数据库从一个一致性状态变换到另一个一致性状态
@@ -44,10 +83,10 @@ MySQL 支持以上四种 默认为： REPEATABLE READ
     
     <item>
       <title>使用PerparedStatement实现CRUD操作</title>
-      <link>https://kiyo-1224.github.io/posts/jdbc2/</link>
+      <link>https://kiyo.github.io/posts/jdbc2/</link>
       <pubDate>Sat, 18 Jun 2022 01:10:00 +0800</pubDate>
       
-      <guid>https://kiyo-1224.github.io/posts/jdbc2/</guid>
+      <guid>https://kiyo.github.io/posts/jdbc2/</guid>
       <description>使用PerparedStatement实现CRUD操作 操作和访问数据库 数据库连接被用于向数据库服务器发送命令和 SQL 语句，并接受数据库服务器返回的结果。其实一个数据库连接就是一个 Socket 连接
 在java.sql包中有三个接口分别定义了对数据库的调用的不同方式
  Statement：用于执行静态 SQL 语句并返回它所生成结果的对象 PrepatedStatement：SQL 语句被预编译并储存在此对象中，可以使用此对象多次高效的执行该语句 CallableStatement：用于执行 SQL 存储过程  使用 Statement 操作数据表的弊端 通过调用 Connection 对象的 createStatement() 方法创建该对象。该对象用于执行静态的 SQL 语句，并且返回结果；
@@ -61,10 +100,10 @@ PreparedStatement 的使用 在使用 PreparedStatement 之前，需要先获取
     
     <item>
       <title>JdbcTemplate和事务操作</title>
-      <link>https://kiyo-1224.github.io/posts/jdbctemplate/</link>
+      <link>https://kiyo.github.io/posts/jdbctemplate/</link>
       <pubDate>Fri, 17 Jun 2022 01:10:00 +0800</pubDate>
       
-      <guid>https://kiyo-1224.github.io/posts/jdbctemplate/</guid>
+      <guid>https://kiyo.github.io/posts/jdbctemplate/</guid>
       <description>JdbcTemplate和事务操作 JdbcTemplate JdbcTemplate(概念和准备) 概念：
 JdbcTemplate Spring 框架对 JDBC 进行封装，使用 JdbcTemplate 方便实现对数据库操作
 准备工资 导入相关依赖
@@ -100,10 +139,10 @@ JdbcTeplate 操作数据库 首先创建相应的实体类，随后在service Da
     
     <item>
       <title>AOP</title>
-      <link>https://kiyo-1224.github.io/posts/aop/</link>
+      <link>https://kiyo.github.io/posts/aop/</link>
       <pubDate>Fri, 10 Jun 2022 01:10:00 +0800</pubDate>
       
-      <guid>https://kiyo-1224.github.io/posts/aop/</guid>
+      <guid>https://kiyo.github.io/posts/aop/</guid>
       <description>AOP(面向切面编程) 什么是AOP: 面向切面编程，利用AOP可以对业务逻辑的各个部分进行隔离，从而使得业务逻辑各部分之间的耦合度降低，提高程序的可重用性，同时提高了开发的效率（即不通过修改源代码方式，在主干功能里添加新功能）
 AOP底层原理：
  有接口,使用 JDK 动态代理。创建接口实现类代理对象，增强类的方法 无接口,使用 CGLIB 动态代理。创建子类的代理对象，增强类的方法  AOP(JDK 动态代理) 使用 JDK 动态代理，需要使用 Proxy 类里面的方法创建代理对象
@@ -120,10 +159,10 @@ AspectJ：AspectJ 不是 Spring 组成部分，是一个独立的 AOP 框架，�
     
     <item>
       <title>C&#43;&#43;指针基础</title>
-      <link>https://kiyo-1224.github.io/posts/c&#43;&#43;pointbase/</link>
+      <link>https://kiyo.github.io/posts/c&#43;&#43;pointbase/</link>
       <pubDate>Fri, 10 Jun 2022 01:10:00 +0800</pubDate>
       
-      <guid>https://kiyo-1224.github.io/posts/c&#43;&#43;pointbase/</guid>
+      <guid>https://kiyo.github.io/posts/c&#43;&#43;pointbase/</guid>
       <description>指针 指针的基本内容 指针本身是一个变量，其储存值的地址，而不是值。因此我们使用 *操作符声明一个指针变量，使用地址操作符 (&amp;amp;) 来获取常规变量的地址。 例：
  int i = 10;
 int *point = &amp;amp;i;
@@ -138,10 +177,10 @@ delete 关键字 每次一个 new 开辟一个内存空间都会消耗内存，�
     
     <item>
       <title>IOC容器</title>
-      <link>https://kiyo-1224.github.io/posts/ioc/</link>
+      <link>https://kiyo.github.io/posts/ioc/</link>
       <pubDate>Fri, 10 Jun 2022 01:10:00 +0800</pubDate>
       
-      <guid>https://kiyo-1224.github.io/posts/ioc/</guid>
+      <guid>https://kiyo.github.io/posts/ioc/</guid>
       <description>IOC的概念 IOC(控制反转)，把对象创建和对象之间的调用过程，交给Spring进行管理，其目的为降低耦合度
 IOC底层使用：xml解析、工厂模式、反射
  IOC接口(BeanFactory) Spring 提供IOC容器实现方式有两种：
@@ -162,19 +201,19 @@ bean标签常用属性
     
     <item>
       <title>this Blog Web</title>
-      <link>https://kiyo-1224.github.io/posts/me/</link>
+      <link>https://kiyo.github.io/posts/me/</link>
       <pubDate>Wed, 01 Jun 2022 01:07:00 +0800</pubDate>
       
-      <guid>https://kiyo-1224.github.io/posts/me/</guid>
+      <guid>https://kiyo.github.io/posts/me/</guid>
       <description>关于此博客 此博客将用于上传我的个人技术博客以及绘画的作品</description>
     </item>
     
     <item>
       <title>hugo博客的搭建</title>
-      <link>https://kiyo-1224.github.io/posts/newhugopage/</link>
+      <link>https://kiyo.github.io/posts/newhugopage/</link>
       <pubDate>Wed, 01 Jun 2022 00:17:00 +0800</pubDate>
       
-      <guid>https://kiyo-1224.github.io/posts/newhugopage/</guid>
+      <guid>https://kiyo.github.io/posts/newhugopage/</guid>
       <description>Welcom  Welcom to iyu_mashiro&amp;rsquo;s Blog感谢您花费宝贵的时间前来阅读我的第一篇博客，这篇博客是我在搭建好博客之后，对于搭建个人博客所做的记录，希望能帮助到您,如果文章内容有错误，请发送邮件至：iyu_mashiro@163.com 我将不胜感激
 前言  此篇博客为我的第一篇博客，原本只耗费了一个小时便完成了博客的基本搭建，但因后续对主题设置的不满，便对主题进行了修改导致后续出现了一系列的问题，使得我最终花费了六个小时才完善博客的搭建
 初次搭建个人博客 使用 Hugo+github 部署的方案 通过 Hugo 可以快速搭建静态网站,然后将其部署到GitHub上，使其可以在公网访问到
@@ -188,10 +227,10 @@ bean标签常用属性
     
     <item>
       <title>hugo博客的更新</title>
-      <link>https://kiyo-1224.github.io/posts/addblogcontent/</link>
+      <link>https://kiyo.github.io/posts/addblogcontent/</link>
       <pubDate>Wed, 01 Jun 2022 00:17:00 +0800</pubDate>
       
-      <guid>https://kiyo-1224.github.io/posts/addblogcontent/</guid>
+      <guid>https://kiyo.github.io/posts/addblogcontent/</guid>
       <description>博客的更新 在更新了博客的内容之后，我们需要对远端也进行一次更新操作
 0.预览博客的更新内容 在博客根目录下，使用命令对更新的内容进行预览
  hugo server --theme=你的主题名 --buildDrafts

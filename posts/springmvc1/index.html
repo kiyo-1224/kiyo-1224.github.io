@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html><head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate">
+  <title>SpringMVC_RequestMapping 注解 &middot; 忆遇惜·真白 的个人博客</title>
+  <meta name="keywords" content="素锦, inspiration, customization, rainmeter, design, web, 壁纸, 设计, 收集, wallpaper, collection, jaku, icon">
+  <meta name="description" content="世界上每个角落都有人过着相似的人生">
+  <meta name="author" content="iyu_mashiro">
+  <link rel="icon" type="image/png" href="">
+  <link rel="stylesheet" href="/css/diaspora.css">
+  <link rel="stylesheet" href="/css/insight.css">
+  <link rel="stylesheet" href="/css/custom.css">
+</head><body class="loading">
+        <div id="loading"></div>
+				<div id="nav"></div>
+				<div class="nav-user"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+        <div class="bar">
+        </div>
+        <a class="icon-icon" href="javascript:history.back()">
+        </a>
+        <div title="播放/暂停" class="icon-play">
+        </div>
+        
+        <h3 class="subtitle" style="display: none;">
+        SpringMVC_RequestMapping 注解</h3>
+        <div class="social">
+            <div>
+                <div class="share">
+                    <a title="获取二维码" class="icon-wechat" href="javascript:;"></a>
+                </div>
+                <div id="qr"></div>
+            </div>
+        </div>
+        <div class="scrollbar" style="width: 1.1636%;"></div>
+    </div>
+    <div class="section">
+        <div class="article">
+            <div>
+                <h1 class="title">
+                SpringMVC_RequestMapping 注解</h1>
+                <div class="stuff">
+                    
+                    <span>June 22, 2022</span>
+                    <span>字数 1519</span>
+                    
+                    
+                </div>
+                <div class="content">
+                    <h2 id="环境搭建">环境搭建</h2>
+<p>第一步导入相关依赖，并设置打包方式为 war
+<img src="/img/springMVC1.png" alt="">
+第二步在工程中添加 web 模块，并在配置文件中配置前端控制器
+<img src="/img/SpringMVC2.png" alt="">
+第三步在配置文件中配置 thymeleaf 和 注解扫描
+<img src="/img/SpringMVC4.png" alt="">
+第四步在 WEB-INF 下创建 temlates 目录然后在该目录创建 index.html
+并在页面中引入 thymeleaf 命名空间
+<img src="/img/SpringMVC5.png" alt="">
+第五步创建控制器
+<img src="/img/SpringMVC3.png" alt="">
+最后启动 Tomcat 访问</p>
+<h2 id="requestmapping-注解">@RequestMapping 注解</h2>
+<h3 id="requestmapping-注解的功能">@RequestMapping 注解的功能</h3>
+<p>@RequestMapping 注解的作用是将请求和处理请求的控制器方法关联起来，建立映射关系，SpringMVC 接收到指定的请求，就会来找到在映射关系中对应的控制器方法来处理这个请求</p>
+<h3 id="requestmapping-注解的位置">@RequestMapping 注解的位置</h3>
+<p>@RequestMapping 标识一个类：设置映射请求的请求路径的初始信息</p>
+<p>@RequestMapping 标识一个方法：设计映射请求的请求路径的具体信息</p>
+<h3 id="requestmapping-注解的-value-属性">@RequestMapping 注解的 value 属性</h3>
+<p>@RequestMapping 注解的 value 属性通过请求的请求地址匹配请求映射</p>
+<p>@RequestMapping 注解的 value 属性是一个字符串类型的数组，表示该请求映射能够匹配多个请求地址所对应的请求</p>
+<p>@RequestMapping 注解的 value 属性必须设置</p>
+<h3 id="requestmapping-注解的-method-属性">@RequestMapping 注解的 method 属性</h3>
+<p>@RequestMapping 注解的 method 属性通过请求的请求方式 (get 或 post) 匹配请求</p>
+<p>@RequestMapping 注解的 method 属性是一个 RequestMethod 类型的数组，表示该请求能够匹配多种请求方式的请求</p>
+<p>若当前请求地址满足请求映射的 value 属性，但是请求方式不满足 method 属性，则浏览器报错 405：Request method &lsquo;POST&rsquo; not supported</p>
+<p>注：</p>
+<p>1、对于处理指定请求方式的控制器方法，SpringMVC 提供了 @RequestMapping 的派生注解</p>
+<p>处理 get 请求的映射：@GetMapping</p>
+<p>处理 post 请求的映射：@PostMapping</p>
+<p>处理 put 请求的映射：@PutMapping</p>
+<p>请求 delete 请求的映射：@DeleteMapping</p>
+<p>2、常用的请求方式有get、post、put、delete</p>
+<p>但是目前浏览器只支持 get 和 post，若在表单提交时，为 method 设置了其他请求方式的字符串，则按照默认的请求方式 get 处理
+若要发送 put 和 delete 请求，则需要提供 spring 提供的过滤器 HiddenHttpMethodFilter</p>
+<h3 id="requestmapping-注解的-params-属性">@RequestMapping 注解的 params 属性</h3>
+<p>@RequestMapping 注解的 params 属性通过请求的请求参数匹配请求映射,其参数必须全部匹配</p>
+<p>@RequestMapping 注解的 params 属性是一个字符串类型的数组，可以通过四种表达式设置请求参数和请求映射的匹配关系</p>
+<p>&ldquo;param&rdquo;：要求请求映射所有的请求必须携带 param 请求参数</p>
+<p>&ldquo;!param&rdquo;：要求请求映射所有的请求不能携带 param 请求参数</p>
+<p>&ldquo;param = value&rdquo;：要求请求映射所匹配的请求携带 param 请求参数且 param = value</p>
+<p>&ldquo;param != value&rdquo;：要求请求映射所匹配的请求携带 param 请求参数且 param != value</p>
+<p>若当前请求满足 @RequestMapping 注解的 value 和 method 属性，但是不满足 params 属性,此时页面报错 400</p>
+<h3 id="requestmapping-注解的-headers-属性">@RequestMapping 注解的 headers 属性</h3>
+<p>@RequestMapping 注解的 headers 属性通过请求的请求头信息匹配请求映射</p>
+<p>@RequestMapping 注解的 headers 属性是一个字符串类型的数组，可以通过四种表达式设置请求头信息和请求映射的匹配关系</p>
+<p>&ldquo;header&rdquo;：要求请求映射必须映射所有的请求必须携带 header 请求头信息</p>
+<p>&ldquo;!header&rdquo;：要求请求映射必须映射所有的请求不能携带 header 请求头信息</p>
+<p>&ldquo;header=value&rdquo;：要求请求映射必须映射所有的请求必须携带 header 请求头信息且 header = value</p>
+<p>&ldquo;header!=value&rdquo;：要求请求映射必须映射所有的请求必须携带 header 请求头信息且 header != value</p>
+<p>若当前请求满足 @RequestMapping 注解的 value 和 method 属性，但是不满足 header 属性，此时页面报错 404</p>
+<h3 id="springmvc-支持-ant-风格的路径">SpringMVC 支持 ant 风格的路径</h3>
+<p>?：表示任意单个字符</p>
+<p>* ：表示任意的0个或者多个字符</p>
+<p>**：表示一层或者多层目录</p>
+<p>注意：在使用**时，只能使用/**/xxx 的方式</p>
+<h3 id="springmvc-支持路径中的占位符重点">SpringMVC 支持路径中的占位符(重点)</h3>
+<p>原始方式：/deleteUser?id=1</p>
+<p>rest方式：/deleteUser/1</p>
+<p>SpringMVC 路径中的占位符常用于 restful 风格中，当请求路径中将某些数据通过路径的方式传输到服务器中，就可以在相应的 @RequestMapping 注解的 value 属性中通过占位符(xxx)表示传输的数据，在通过 @PathVariable 注解，将占位符( {} )所表示的数据赋值给控制器方法的形参</p>
+<p>例：</p>
+<p><img src="/img/SpringMVC6.png" alt=""></p>
+<p>注意请求参数之后必须要有值否则报 404</p>
+
+                    
+                    <audio id="audio" loop="1" preload="auto" style="width: 100%;" controls="controls">
+                        <source type="audio/mpeg" src="/mp3/Unicorn.mp3">
+                        <a href="/mp3/Unicorn.mp3">/mp3/Unicorn.mp3</a>
+                    </audio>
+                </div>
+                <div class="comment-wrap">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="relate">
+        <ul>
+            <h3 id="prev_next">
+                <em>相 关 文 章</em>
+                <span>
+                    <a href="javascript: window.scrollTo(0, 0);">
+                    返回顶部</a>
+                    
+                        <a href="https://kiyo.github.io/posts/springmvc2/" rel="prev">上一篇</a>
+                    
+                    
+                </span>
+            </h3>
+            
+            
+            
+                
+                    
+                
+                    
+                    <li>
+                        <div>
+                            <a class="relatea" href="https://kiyo.github.io/posts/springmvc2/" title="SpringMVC获取请求参数">
+                            SpringMVC获取请求参数</a>
+                            <p>SpringMVC获取请求参数...</p>
+                        </div>
+                        
+                        <a href="https://kiyo.github.io/posts/springmvc2/" title="SpringMVC获取请求参数">
+                            <img class="relateimg" src="/img/kano.jpg" alt="SpringMVC获取请求参数">
+                        </a>
+                    </li>
+                    
+                
+            
+        </ul>
+    </div>
+</div>
+<p style="text-align: center;">
+  <a style="color: inherit" target="_blank" href="https://github.com/honjun/hugo-theme-diaspora"></a>
+</p>
+
+<script>
+  var siteTitle = "忆遇惜·真白 的个人博客";
+</script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<script src="/js/custom.js"></script>
+<script src="/js/InsightSearch.js"></script>
+</body>
+</html>
+
