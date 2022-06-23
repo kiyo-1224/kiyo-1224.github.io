@@ -6,7 +6,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate">
-  <title>SpringMVC获取请求参数 &middot; 忆遇惜·真白 的个人博客</title>
+  <title>域对象共享数据和SpringMVC的视图 &middot; 忆遇惜·真白 的个人博客</title>
   <meta name="keywords" content="素锦, inspiration, customization, rainmeter, design, web, 壁纸, 设计, 收集, wallpaper, collection, jaku, icon">
   <meta name="description" content="世界上每个角落都有人过着相似的人生">
   <meta name="author" content="iyu_mashiro">
@@ -28,7 +28,7 @@
         </div>
         
         <h3 class="subtitle" style="display: none;">
-        SpringMVC获取请求参数</h3>
+        域对象共享数据和SpringMVC的视图</h3>
         <div class="social">
             <div>
                 <div class="share">
@@ -43,51 +43,73 @@
         <div class="article">
             <div>
                 <h1 class="title">
-                SpringMVC获取请求参数</h1>
+                域对象共享数据和SpringMVC的视图</h1>
                 <div class="stuff">
                     
-                    <span>June 22, 2022</span>
-                    <span>字数 792</span>
+                    <span>June 23, 2022</span>
+                    <span>字数 787</span>
                     
                     
                 </div>
                 <div class="content">
-                    <h1 id="springmvc获取请求参数">SpringMVC获取请求参数</h1>
-<h2 id="通过-servletapi-获取">通过 servletAPI 获取</h2>
-<p>将 HttpServletRquest 作为控制器方法的形参，此时 HttpServletRequest 类型的参数表示封装了当前请求的请求报文对象
-例：
-<img src="/img/SpringMVC15.png" alt=""></p>
-<p><img src="/img/SpringMVC7.png" alt=""></p>
-<h2 id="通过控制器方法的形参获取参数">通过控制器方法的形参获取参数</h2>
-<p>在控制器方法的形参位置，设置和请求参数同名的形参，当浏览器发送请求，匹配到请求映射时，在 DisPathcherServlet 中就会将请求参数赋值给相应的形参</p>
+                    <h2 id="域对象共享数据">域对象共享数据</h2>
+<h3 id="使用-servlet-向-request-域对象共享数据">使用 servlet 向 request 域对象共享数据</h3>
 <p>例：
-<img src="/img/SpringMVC10.png" alt=""></p>
-<p><img src="/img/SpringMVC9.png" alt=""></p>
-<p>若：</p>
-<p>请求参数所传输的请求参数中有多个同名的请求参数，此时可以在控制器方法的形参中设置字符串或字符串数组类型的形参接收此请求参数
-若使用字符串数组类型的形参，此参数的数组中包含了每一个数据
-若使用字符串类型的参数，此参数的值为每个数据中间使用逗号拼接的结果</p>
-<h2 id="requestparam">@RequestParam</h2>
-<p>@RequestParam 是将请求参数和控制器方法的形参创建映射关系</p>
-<p>@RequestParam 注解一共有三个属性：</p>
-<p>value：指定为形参赋值的请求参数名</p>
-<p>required：指定为形参赋值的请求参数的参数名，默认为 true</p>
-<p>若设置为 true 时，则当前请求必须传递 value 所指定的请求参数，若没有传输请求参数，且没有设置 defaultValue 属性，则页面报错 400；</p>
-<p>若设置为 false，则当前请求不是必须传输 value 所指定的请求传输，若没有传输，则注解标识的形参的值为 null</p>
-<p>defaultValue：不管 required 属性值为 true 或 false，当 value 所指定的请求参数没有传输时，则使用默认形参为形参赋值</p>
+<img src="/img/SpringMVC16.png" alt=""></p>
+<p><img src="/img/SpringMVC17.png" alt=""></p>
+<h3 id="使用-modelandview-向request-域共享对象">使用 ModelAndView 向request 域共享对象</h3>
+<p>使用  ModelAndView 此方法必须以  modelAndView 为返回值类型</p>
 <p>例：
-<img src="/img/SpringMVC11.png" alt=""></p>
-<h2 id="requestheader">@RequestHeader</h2>
-<p>@RequestHeader 是将请求头信息和控制器方法的形参创建映射关系
-@RequestHeader 注解一共有三个属性：value、required、defaultValue,用法和 @RequestParam 相同</p>
-<h2 id="cookievalue">@CookieValue</h2>
-<p>@CookieValue 是将 cookie 数据属性和控制器方法的形参创建映射关系
-@CookieValue 注解一共有三个属性：value、required、defaultValue,用法和 @RequestParam 相同</p>
-<h2 id="通过--pojo-获取数据">通过  POJO 获取数据</h2>
-<p>可以在控制器方法的形参位置设计一个实体类类型的形参，此时若浏览器传输的请求参数的参数名和实体类中的属性名一致，那么请求参数就会为此属性赋值</p>
-<h2 id="处理请求参数乱码的问题">处理请求参数乱码的问题</h2>
-<p>解决获取请求参数的乱码问题，可以使用 SpringMVC 提供的编码过滤器 CharacterEncodingFilter，但是必须在 web.xml 中进行注册
-<img src="/img/SpringMVC12.png" alt=""></p>
+<img src="/img/SpringMVC18.png" alt=""></p>
+<h3 id="使用-model-向-request-域对象共享数据">使用 Model 向 request 域对象共享数据</h3>
+<p>需要在形参中创建 Model 类型的形参</p>
+<p>例：
+<img src="/img/SpringMVC19.png" alt=""></p>
+<h3 id="使用-map-向-request-域对象共享数据">使用 map 向 request 域对象共享数据</h3>
+<p>需要在形参中创建 Map 类型的形参</p>
+<p>例：
+<img src="/img/SpringMVC20.png" alt=""></p>
+<h3 id="使用-modelmap-向-request-域对象共享数据">使用 ModelMap 向 request 域对象共享数据</h3>
+<p>需要在形参中创建 ModelMap 类型的形参</p>
+<p>例：
+<img src="/img/SpringMVC21.png" alt=""></p>
+<h3 id="modelmodelmapmap-的关系">Model、ModelMap、Map 的关系</h3>
+<p>Model、ModelMap、Map类型的参数其实本质上都是 BindingAwareModelMap 类型
+<img src="/img/SpringMVC22.png" alt=""></p>
+<h3 id="向-session-域共享数据">向 session 域共享数据</h3>
+<p>对于 session 更加推荐使用 servlet 原生 API</p>
+<p>例：
+<img src="/img/SpringMVC23.png" alt=""></p>
+<p><img src="/img/SpringMVC24.png" alt=""></p>
+<h3 id="向-application-域共享数据">向 application 域共享数据</h3>
+<p>例：
+<img src="/img/SpringMVC25.png" alt=""></p>
+<p><img src="/img/SpringMVC26.png" alt=""></p>
+<h2 id="springmvc的视图">SpringMVC的视图</h2>
+<p>SpringMVC 中的视图是 view 接口，视图的作用是渲染数据，将模型 Model 中的数据展示给用户</p>
+<p>SpringMVC 的视图的种类很多，默认有转发视图和重定向视图
+当工程引入 jstl 的依赖，转发视图会自动转换为 jstlView
+若使用的视图技术为 Thymeleaf,在 SpringMVC 的配置文件中配置了   Thymeleaf 的视图解析器，由此视图解析器解析之后得到的时 ThymeleafView</p>
+<h3 id="thymeleafview">ThymeleafView</h3>
+<p>当控制器方法中所设置的视图名称没有任何前缀时，此时的视图名称会被 SpringMVC 配置文件中所配置的视图解析器解析，视图名称拼接视图前缀和后缀所得到的最终路径，会通过转发的方式实现跳转</p>
+<p>例：
+<img src="/img/SpringMVC27.png" alt=""></p>
+<h3 id="转发视图">转发视图</h3>
+<p>SpringMVC 默认的转发视图是 internalResourceView</p>
+<p>SpringMVC 中创建转发视图的情况：</p>
+<p>当控制器方法中设置的视图名称以 &ldquo;forward:&rdquo; 为前缀时，将会创建 internalResourceView 视图，此时的视图名称不会被 SpringMVC 配置文件中所配置的视图解析器解析，而是会将前缀 &ldquo;forward:&rdquo; 去掉，剩余部分作为最终路径通过转发的方式实现跳转</p>
+<p>例：
+<img src="/img/SpringMVC28.png" alt=""></p>
+<h3 id="重定向视图">重定向视图</h3>
+<p>SpringMVC 默认的重定向视图是 RedirectView</p>
+<p>当控制器方法中所设置的视图名称以 &ldquo;redirect:&rdquo; 为前缀时，创建 RedirectView 视图，此时的视图名称不会被 SpringMVC 配置文件中所配置的视图解析器解析，而是会将前缀 &ldquo;redirect:&rdquo; 去掉，剩余部分作为最终路径通过重定向的方式实现跳转</p>
+<p>例：
+<img src="/img/SpringMVC29.png" alt=""></p>
+<h3 id="视图控制器-view-controller">视图控制器 view-controller</h3>
+<p>当控制器方法中，仅仅用来实现页面跳转，即只需要设置视图名称时，可以将处理器方法使用 view-controller 标签进行表示</p>
+<p>注：</p>
+<p>当 SpringMVC 中设置任何一个 view-controller 时，其他控制器中的请求映射将全部失效，此时需要在 SpringMVC 核心配置文件中设置开启 MVC 注解驱动的标签</p>
+<p><img src="/img/SpringMVC30.png" alt=""></p>
 
                     
                     <audio id="audio" loop="1" preload="auto" style="width: 100%;" controls="controls">
@@ -109,10 +131,10 @@
                     <a href="javascript: window.scrollTo(0, 0);">
                     返回顶部</a>
                     
-                        <a href="https://kiyo-1224.github.io/posts/jdbc1/" rel="prev">上一篇</a>
+                        <a href="https://kiyo-1224.github.io/posts/springmvc1/" rel="prev">上一篇</a>
                     
                     
-                        <a href="https://kiyo-1224.github.io/posts/springmvc1/" rel="next">下一篇</a>
+                        <a href="https://kiyo-1224.github.io/posts/springmvc4/" rel="next">下一篇</a>
                     
                 </span>
             </h3>
@@ -135,18 +157,6 @@
                     
                 
                     
-                    <li>
-                        <div>
-                            <a class="relatea" href="https://kiyo-1224.github.io/posts/springmvc3/" title="域对象共享数据和SpringMVC的视图">
-                            域对象共享数据和SpringMVC的视图</a>
-                            <p>域对象共享数据和SpringMVC的视图...</p>
-                        </div>
-                        
-                        <a href="https://kiyo-1224.github.io/posts/springmvc3/" title="域对象共享数据和SpringMVC的视图">
-                            <img class="relateimg" src="/img/kano.jpg" alt="域对象共享数据和SpringMVC的视图">
-                        </a>
-                    </li>
-                    
                 
                     
                     <li>
@@ -162,6 +172,18 @@
                     </li>
                     
                 
+                    
+                    <li>
+                        <div>
+                            <a class="relatea" href="https://kiyo-1224.github.io/posts/springmvc2/" title="SpringMVC获取请求参数">
+                            SpringMVC获取请求参数</a>
+                            <p>SpringMVC获取请求参数...</p>
+                        </div>
+                        
+                        <a href="https://kiyo-1224.github.io/posts/springmvc2/" title="SpringMVC获取请求参数">
+                            <img class="relateimg" src="/img/kano.jpg" alt="SpringMVC获取请求参数">
+                        </a>
+                    </li>
                     
                 
                     

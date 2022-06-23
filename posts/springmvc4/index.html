@@ -6,7 +6,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate">
-  <title>SpringMVC获取请求参数 &middot; 忆遇惜·真白 的个人博客</title>
+  <title>SpringMVC RESTFul &middot; 忆遇惜·真白 的个人博客</title>
   <meta name="keywords" content="素锦, inspiration, customization, rainmeter, design, web, 壁纸, 设计, 收集, wallpaper, collection, jaku, icon">
   <meta name="description" content="世界上每个角落都有人过着相似的人生">
   <meta name="author" content="iyu_mashiro">
@@ -28,7 +28,7 @@
         </div>
         
         <h3 class="subtitle" style="display: none;">
-        SpringMVC获取请求参数</h3>
+        SpringMVC RESTFul</h3>
         <div class="social">
             <div>
                 <div class="share">
@@ -43,51 +43,53 @@
         <div class="article">
             <div>
                 <h1 class="title">
-                SpringMVC获取请求参数</h1>
+                SpringMVC RESTFul</h1>
                 <div class="stuff">
                     
-                    <span>June 22, 2022</span>
-                    <span>字数 792</span>
+                    <span>June 23, 2022</span>
+                    <span>字数 793</span>
                     
                     
                 </div>
                 <div class="content">
-                    <h1 id="springmvc获取请求参数">SpringMVC获取请求参数</h1>
-<h2 id="通过-servletapi-获取">通过 servletAPI 获取</h2>
-<p>将 HttpServletRquest 作为控制器方法的形参，此时 HttpServletRequest 类型的参数表示封装了当前请求的请求报文对象
-例：
-<img src="/img/SpringMVC15.png" alt=""></p>
-<p><img src="/img/SpringMVC7.png" alt=""></p>
-<h2 id="通过控制器方法的形参获取参数">通过控制器方法的形参获取参数</h2>
-<p>在控制器方法的形参位置，设置和请求参数同名的形参，当浏览器发送请求，匹配到请求映射时，在 DisPathcherServlet 中就会将请求参数赋值给相应的形参</p>
-<p>例：
-<img src="/img/SpringMVC10.png" alt=""></p>
-<p><img src="/img/SpringMVC9.png" alt=""></p>
-<p>若：</p>
-<p>请求参数所传输的请求参数中有多个同名的请求参数，此时可以在控制器方法的形参中设置字符串或字符串数组类型的形参接收此请求参数
-若使用字符串数组类型的形参，此参数的数组中包含了每一个数据
-若使用字符串类型的参数，此参数的值为每个数据中间使用逗号拼接的结果</p>
-<h2 id="requestparam">@RequestParam</h2>
-<p>@RequestParam 是将请求参数和控制器方法的形参创建映射关系</p>
-<p>@RequestParam 注解一共有三个属性：</p>
-<p>value：指定为形参赋值的请求参数名</p>
-<p>required：指定为形参赋值的请求参数的参数名，默认为 true</p>
-<p>若设置为 true 时，则当前请求必须传递 value 所指定的请求参数，若没有传输请求参数，且没有设置 defaultValue 属性，则页面报错 400；</p>
-<p>若设置为 false，则当前请求不是必须传输 value 所指定的请求传输，若没有传输，则注解标识的形参的值为 null</p>
-<p>defaultValue：不管 required 属性值为 true 或 false，当 value 所指定的请求参数没有传输时，则使用默认形参为形参赋值</p>
-<p>例：
-<img src="/img/SpringMVC11.png" alt=""></p>
-<h2 id="requestheader">@RequestHeader</h2>
-<p>@RequestHeader 是将请求头信息和控制器方法的形参创建映射关系
-@RequestHeader 注解一共有三个属性：value、required、defaultValue,用法和 @RequestParam 相同</p>
-<h2 id="cookievalue">@CookieValue</h2>
-<p>@CookieValue 是将 cookie 数据属性和控制器方法的形参创建映射关系
-@CookieValue 注解一共有三个属性：value、required、defaultValue,用法和 @RequestParam 相同</p>
-<h2 id="通过--pojo-获取数据">通过  POJO 获取数据</h2>
-<p>可以在控制器方法的形参位置设计一个实体类类型的形参，此时若浏览器传输的请求参数的参数名和实体类中的属性名一致，那么请求参数就会为此属性赋值</p>
-<h2 id="处理请求参数乱码的问题">处理请求参数乱码的问题</h2>
-<p>解决获取请求参数的乱码问题，可以使用 SpringMVC 提供的编码过滤器 CharacterEncodingFilter，但是必须在 web.xml 中进行注册
-<img src="/img/SpringMVC12.png" alt=""></p>
+                    <h1 id="restful">RESTFul</h1>
+<h2 id="restful-简介">RESTFul 简介</h2>
+<p>REST：Representational State Transfer,表现层资源状态转移</p>
+<p><strong>资源：</strong></p>
+<p>资源是一种看待服务器的方式。即，将服务器看作是由很多离散的资源组成，每个资源是服务器上一个可命名的抽象概念。因为资源是一个抽象概念，所以它不仅仅能代表服务器文件系统中的一个文件，数据库中的一张表等等具体的东西，可以将资源设计的要多抽象有多抽象，只要想象力允许而客户端应用开发者能够理解。与面向对象设计类似，资源是以名词为核心来组织的，首先关注的是名词。一个资源可以由一个或多个 URI 来标识。URI即是资源的名称，也是资源在 web 上的地址。对某个资源感兴趣的客户端应用，可以通过资源的 URI 与其进行交互</p>
+<p><strong>资源的表述：</strong></p>
+<p>资源的表述是一段对于资源在某个特定时刻的状态的描述。可以在客户端-服务器端之间转移(交换)。资源的表述可以有多种格式，如HTML/XML/JSON/纯文本/图片/视频/音频等等。资源的表述可以通过协商机制来确定。请求-响应方向的表述通常使用不同的格式</p>
+<p><strong>状态转移：</strong></p>
+<p>状态转移说的是：在客户端和服务器之间转移(transfer)代表资源状态的表述。通过转移和操作资源的表述，来间接实现操作资源的目的</p>
+<h2 id="restful-的实现">RESTFul 的实现</h2>
+<p>具体的说，就是 HTTP 协议里，四个表示操作方式的动词：GET、POST、PUT、DELETE</p>
+<p>分别对应四种基本操作：获取资源，新建资源，更新资源，删除资源</p>
+<p>REST 风格提倡 URL 地址使用统一的风格设计，从前到后各个单词使用斜杠分开，不使用问号键值对方式携带请求参数，而是将要发送给服务器的数据作为 URL 地址的一部分，以保证整体风格的一致性
+<img src="/img/SpringMVC31.png" alt=""></p>
+<h2 id="hiddenhttpmethodfilter">HiddenHttpMethodFilter</h2>
+<p>需要先在 web.xml 下进行配置，注意此过滤器需要在字符编码过滤器之后，因为在设置编码之前一旦获取了任何请求参数，设置编码将没有任何效果
+<img src="/img/SpringMVC32.png" alt=""></p>
+<p>以 put 请求为例:
+<img src="/img/SpringMVC33.png" alt="">
+<img src="/img/SpringMVC34.png" alt=""></p>
+<h2 id="restful-案例">RESTFul 案例</h2>
+<p>注意如果需要使用静态资源，需要在 SpringMVC 的配置文件中开启对静态资源的访问
+<img src="/img/SpringMVC43.png" alt=""></p>
+<p>查：
+<img src="/img/SpringMVC36.png" alt=""></p>
+<p>删：
+<img src="/img/SpringMVC35.png" alt=""></p>
+<p>改：
+<img src="/img/SpringMVC38.png" alt=""></p>
+<p>增：
+<img src="/img/SpringMVC37.png" alt=""></p>
+<p>页面：</p>
+<p>user主页面
+<img src="/img/SpringMVC39.png" alt=""></p>
+<p>user添加页面
+<img src="/img/SpringMVC40.png" alt=""></p>
+<p>user更改界面
+<img src="/img/SpringMVC41.png" alt=""></p>
 
                     
                     <audio id="audio" loop="1" preload="auto" style="width: 100%;" controls="controls">
@@ -109,10 +111,8 @@
                     <a href="javascript: window.scrollTo(0, 0);">
                     返回顶部</a>
                     
-                        <a href="https://kiyo-1224.github.io/posts/jdbc1/" rel="prev">上一篇</a>
+                        <a href="https://kiyo-1224.github.io/posts/springmvc3/" rel="prev">上一篇</a>
                     
-                    
-                        <a href="https://kiyo-1224.github.io/posts/springmvc1/" rel="next">下一篇</a>
                     
                 </span>
             </h3>
@@ -120,18 +120,6 @@
             
             
                 
-                    
-                    <li>
-                        <div>
-                            <a class="relatea" href="https://kiyo-1224.github.io/posts/springmvc4/" title="SpringMVC RESTFul">
-                            SpringMVC RESTFul</a>
-                            <p>SpringMVC RESTFul...</p>
-                        </div>
-                        
-                        <a href="https://kiyo-1224.github.io/posts/springmvc4/" title="SpringMVC RESTFul">
-                            <img class="relateimg" src="/img/kano.jpg" alt="SpringMVC RESTFul">
-                        </a>
-                    </li>
                     
                 
                     
@@ -162,6 +150,18 @@
                     </li>
                     
                 
+                    
+                    <li>
+                        <div>
+                            <a class="relatea" href="https://kiyo-1224.github.io/posts/springmvc2/" title="SpringMVC获取请求参数">
+                            SpringMVC获取请求参数</a>
+                            <p>SpringMVC获取请求参数...</p>
+                        </div>
+                        
+                        <a href="https://kiyo-1224.github.io/posts/springmvc2/" title="SpringMVC获取请求参数">
+                            <img class="relateimg" src="/img/kano.jpg" alt="SpringMVC获取请求参数">
+                        </a>
+                    </li>
                     
                 
                     
