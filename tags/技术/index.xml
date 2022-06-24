@@ -6,7 +6,71 @@
     <description>Recent content in 技术 on 忆遇惜·真白 的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 23 Jun 2022 01:10:00 +0800</lastBuildDate><atom:link href="https://kiyo-1224.github.io/tags/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 24 Jun 2022 01:20:00 +0800</lastBuildDate><atom:link href="https://kiyo-1224.github.io/tags/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SpringMVC执行流程</title>
+      <link>https://kiyo-1224.github.io/posts/springmvc6/</link>
+      <pubDate>Fri, 24 Jun 2022 01:20:00 +0800</pubDate>
+      
+      <guid>https://kiyo-1224.github.io/posts/springmvc6/</guid>
+      <description>SpringMVC执行流程 SpringMVC 常用组件  DispatcherServlet：前端控制器，不需要工程师开发，由框架提供 作用：统一处理请求和响应，整个流程控制的中心，由它调用其它组件处理用户的请求 HandlerMapping：处理映射器，不需要工程师开发，由框架提供 作用：根据请求的 url、method 等信息查找 Handler，即控制器方法 Handler：处理器，需要工程师开发 作用：在 DispatcherServlet 的控制下 Handler 对具体的用户请求进行处理 HandlerAdapter：处理器适配器，不需要工程师开发，由框架提供 作用：通过 HandlerAdapter 对处理器(控制器方法) 进行执行 ViewResolver：视图解析器，不需要工程师开发，由框架提供 作用：进行视图解析，得到相应的视图 View：视图，不需要工程师开发，由框架提供 作用：将模型数据通过页面展示给用户  4、SpringMVC的执行流程   用户向服务器发送请求，请求被SpringMVC 前端控制器 DispatcherServlet捕获。
+  DispatcherServlet对请求URL进行解析，得到请求资源标识符（URI），判断请求URI对应的映射：
+  a) 不存在
+i. 再判断是否配置了mvc:default-servlet-handler
+ii. 如果没配置，则控制台报映射查找不到，客户端展示404错误
+iii. 如果有配置，则访问目标资源（一般为静态资源，如：JS,CSS,HTML），找不到客户端也会展示404错误
+b) 存在则执行下面的流程
+ 根据该URI，调用HandlerMapping获得该Handler配置的所有相关的对象（包括Handler对象以及Handler对象对应的拦截器），最后以HandlerExecutionChain执行链对象的形式返回。
+  DispatcherServlet 根据获得的Handler，选择一个合适的HandlerAdapter。
+  如果成功获得HandlerAdapter，此时将开始执行拦截器的preHandler(…)方法【正向】
+  提取Request中的模型数据，填充Handler入参，开始执行Handler（Controller)方法，处理请求。在填充Handler的入参过程中，根据你的配置，Spring将帮你做一些额外的工作：
+  a) HttpMessageConveter： 将请求消息（如Json、xml等数据）转换成一个对象，将对象转换为指定的响应信息
+b) 数据转换：对请求消息进行数据转换。如String转换成Integer、Double等
+c) 数据格式化：对请求消息进行数据格式化。 如将字符串转换成格式化数字或格式化日期等</description>
+    </item>
+    
+    <item>
+      <title>拦截器和异常处理器</title>
+      <link>https://kiyo-1224.github.io/posts/springmvc7/</link>
+      <pubDate>Fri, 24 Jun 2022 01:11:00 +0800</pubDate>
+      
+      <guid>https://kiyo-1224.github.io/posts/springmvc7/</guid>
+      <description>拦截器 拦截器的配置 SpringMVC 的拦截器用于拦截控制器方法的执行
+SpringMVC 的拦截器需要实现 HandlerInterceptor 或者继承 HandlerInterceptorAdaoter 类
+SpringMVC 的拦截器必须在 SpringMVC 文件中配置
+拦截器的三个抽象方法 SpringMVC 的拦截器有三个抽象方法
+preHandle：控制器方法执行前执行 preHandle，其 boolean 类型的返回值表示其是否拦截或放行，返回 true 放行，即调用控制器方法，返回 false 拦截，即不调用控制器方法
+postHandle：控制器方法执行之后执行 postHandle
+afterComplation：处理完视图和模型数据，渲染视图完毕后执行 afterComplation
+多个拦截器的执行顺序 若每个拦截器的 preHandle 都返回 true
+此时多个拦截器的执行顺序和拦截器在 SpringMVC 配置文件的配置顺序有关
+preHandle 会按照配置的顺序执行，而 postHandle 和 afterComplation 按配置倒序执行
+若每个拦截器的 preHandle 都返回 false
+preHandle 返回 false 和它之前的拦截器 preHandle 都会执行，postHandle 不执行，返回 false 的拦截器之前的拦截器的 afterComplation 会执行
+异常处理器 基于配置的异常处理 SpringMVC 提供了一个控制处理器方法处理执行过程中所出现的所有异常的接口：HandlerExceptionResolver
+HandlerExceptionResolver 接口的实现类有：
+DefaultHandlerExceptionResolver 和 SimpleMappingExceptionResolver
+SpringMVC 提供了自定义的异常处理器 SimpleMappingExceptionResolver</description>
+    </item>
+    
+    <item>
+      <title>HttpMessageConverte</title>
+      <link>https://kiyo-1224.github.io/posts/springmvc5/</link>
+      <pubDate>Fri, 24 Jun 2022 01:10:00 +0800</pubDate>
+      
+      <guid>https://kiyo-1224.github.io/posts/springmvc5/</guid>
+      <description>HttpMessageConverter HttpMessageConverter 报文信息转换器，将请求报文转换为 Java 对象，或将 Java 对象转换为响应报文
+HttpMessageConverter 提供了两个注解和两个类型： @RequestBody、@ResponseBody、RequestEntity、ResponesEntity
+@RequestBody @RequestBody 可以获取请求体，需要在控制器方法设置一个形参，使用 @RequestBody 进行标识，当前请求的请求体就会为当前注解所标识的形参赋值
+例： 如输入中文乱码，可在表单添加 enctype=&amp;ldquo;text/plain&amp;rdquo;
+RequestEntity RequestEntity 封装请求报文的一种类型，需要在控制器方法的形参中设置该类型的形参，当前请求的请求报文就会赋值给该形参，可以通过 getHeaders() 获取请求头信息，通过 getBody() 获取请求体信息
+例： @ResponseBody @ResponseBody 用于标识一个控制器方法，可以将该方法的返回值直接作为响应报文的响应体响应到浏览器
+使用原生API 例： 如果中文乱码使用 response.setContentType(&amp;ldquo;text/html;charset=UTF-8&amp;rdquo;) 语句设置编码
+使用 @ResponseBody 例： @ResponseBody 处理 json @ResponseBody 处理 json 的步骤 首先需要导入相关依赖，然后在 SpringMVC 配置文件中开启 MVC 注解驱动
+在控制器方法上使用 @ResponseBody 进行标识 将 Java 对象直接作为控制器方法的返回值返回，就会自动转换为 json 格式的字符串
+例： 处理 AJAX 请求超链接： 通过 vue 和 axios 处理点击事件： 控制器： @RestController @RestController 注解是 SpringMVC 提供的一个复合注解，标识在控制器的类上，就相当于为类添加了 @Controller 注解，并且为其中的每个方法添加了 @ResponseBody 注解</description>
+    </item>
+    
     <item>
       <title>SpringMVC RESTFul</title>
       <link>https://kiyo-1224.github.io/posts/springmvc4/</link>
@@ -41,7 +105,7 @@ user主页面 user添加页面 user更改界面 </description>
     </item>
     
     <item>
-      <title>SpringMVC_RequestMapping 注解</title>
+      <title>RequestMapping 注解</title>
       <link>https://kiyo-1224.github.io/posts/springmvc1/</link>
       <pubDate>Wed, 22 Jun 2022 01:10:00 +0800</pubDate>
       
