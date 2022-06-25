@@ -2,53 +2,53 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on 忆遇惜·真白 的个人博客</title>
-    <link>https://kiyo-1224.github.io/categories/</link>
+    <link>http://example.org/categories/</link>
     <description>Recent content in Categories on 忆遇惜·真白 的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 24 Jun 2022 01:20:00 +0800</lastBuildDate><atom:link href="https://kiyo-1224.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 26 Jun 2022 01:11:00 +0800</lastBuildDate><atom:link href="http://example.org/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>SSM</title>
-      <link>https://kiyo-1224.github.io/categories/ssm/</link>
-      <pubDate>Fri, 24 Jun 2022 01:20:00 +0800</pubDate>
+      <link>http://example.org/categories/ssm/</link>
+      <pubDate>Sun, 26 Jun 2022 01:11:00 +0800</pubDate>
       
-      <guid>https://kiyo-1224.github.io/categories/ssm/</guid>
+      <guid>http://example.org/categories/ssm/</guid>
       <description></description>
     </item>
     
     <item>
       <title>JDBC</title>
-      <link>https://kiyo-1224.github.io/categories/jdbc/</link>
+      <link>http://example.org/categories/jdbc/</link>
       <pubDate>Sat, 18 Jun 2022 01:10:00 +0800</pubDate>
       
-      <guid>https://kiyo-1224.github.io/categories/jdbc/</guid>
+      <guid>http://example.org/categories/jdbc/</guid>
       <description></description>
     </item>
     
     <item>
       <title>C&#43;&#43;</title>
-      <link>https://kiyo-1224.github.io/categories/c&#43;&#43;/</link>
+      <link>http://example.org/categories/c&#43;&#43;/</link>
       <pubDate>Fri, 10 Jun 2022 01:10:00 +0800</pubDate>
       
-      <guid>https://kiyo-1224.github.io/categories/c&#43;&#43;/</guid>
+      <guid>http://example.org/categories/c&#43;&#43;/</guid>
       <description></description>
     </item>
     
     <item>
       <title>me</title>
-      <link>https://kiyo-1224.github.io/categories/me/</link>
+      <link>http://example.org/categories/me/</link>
       <pubDate>Wed, 01 Jun 2022 01:07:00 +0800</pubDate>
       
-      <guid>https://kiyo-1224.github.io/categories/me/</guid>
+      <guid>http://example.org/categories/me/</guid>
       <description></description>
     </item>
     
     <item>
       <title>hugo</title>
-      <link>https://kiyo-1224.github.io/categories/hugo/</link>
+      <link>http://example.org/categories/hugo/</link>
       <pubDate>Wed, 01 Jun 2022 00:17:00 +0800</pubDate>
       
-      <guid>https://kiyo-1224.github.io/categories/hugo/</guid>
+      <guid>http://example.org/categories/hugo/</guid>
       <description></description>
     </item>
     

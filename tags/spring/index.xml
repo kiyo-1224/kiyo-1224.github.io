@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Spring on 忆遇惜·真白 的个人博客</title>
-    <link>https://kiyo-1224.github.io/tags/spring/</link>
+    <link>http://example.org/tags/spring/</link>
     <description>Recent content in Spring on 忆遇惜·真白 的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 17 Jun 2022 01:10:00 +0800</lastBuildDate><atom:link href="https://kiyo-1224.github.io/tags/spring/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 17 Jun 2022 01:10:00 +0800</lastBuildDate><atom:link href="http://example.org/tags/spring/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>JdbcTemplate和事务操作</title>
-      <link>https://kiyo-1224.github.io/posts/jdbctemplate/</link>
+      <link>http://example.org/posts/jdbctemplate/</link>
       <pubDate>Fri, 17 Jun 2022 01:10:00 +0800</pubDate>
       
-      <guid>https://kiyo-1224.github.io/posts/jdbctemplate/</guid>
+      <guid>http://example.org/posts/jdbctemplate/</guid>
       <description>JdbcTemplate和事务操作 JdbcTemplate JdbcTemplate(概念和准备) 概念：
 JdbcTemplate Spring 框架对 JDBC 进行封装，使用 JdbcTemplate 方便实现对数据库操作
 准备工资 导入相关依赖
@@ -48,10 +48,10 @@ JdbcTeplate 操作数据库 首先创建相应的实体类，随后在service Da
     
     <item>
       <title>AOP</title>
-      <link>https://kiyo-1224.github.io/posts/aop/</link>
+      <link>http://example.org/posts/aop/</link>
       <pubDate>Fri, 10 Jun 2022 01:10:00 +0800</pubDate>
       
-      <guid>https://kiyo-1224.github.io/posts/aop/</guid>
+      <guid>http://example.org/posts/aop/</guid>
       <description>AOP(面向切面编程) 什么是AOP: 面向切面编程，利用AOP可以对业务逻辑的各个部分进行隔离，从而使得业务逻辑各部分之间的耦合度降低，提高程序的可重用性，同时提高了开发的效率（即不通过修改源代码方式，在主干功能里添加新功能）
 AOP底层原理：
  有接口,使用 JDK 动态代理。创建接口实现类代理对象，增强类的方法 无接口,使用 CGLIB 动态代理。创建子类的代理对象，增强类的方法  AOP(JDK 动态代理) 使用 JDK 动态代理，需要使用 Proxy 类里面的方法创建代理对象
@@ -68,10 +68,10 @@ AspectJ：AspectJ 不是 Spring 组成部分，是一个独立的 AOP 框架，�
     
     <item>
       <title>IOC容器</title>
-      <link>https://kiyo-1224.github.io/posts/ioc/</link>
+      <link>http://example.org/posts/ioc/</link>
       <pubDate>Fri, 10 Jun 2022 01:10:00 +0800</pubDate>
       
-      <guid>https://kiyo-1224.github.io/posts/ioc/</guid>
+      <guid>http://example.org/posts/ioc/</guid>
       <description>IOC的概念 IOC(控制反转)，把对象创建和对象之间的调用过程，交给Spring进行管理，其目的为降低耦合度
 IOC底层使用：xml解析、工厂模式、反射
  IOC接口(BeanFactory) Spring 提供IOC容器实现方式有两种：

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>me on 忆遇惜·真白 的个人博客</title>
-    <link>https://kiyo-1224.github.io/categories/me/</link>
+    <link>http://example.org/categories/me/</link>
     <description>Recent content in me on 忆遇惜·真白 的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 01 Jun 2022 01:07:00 +0800</lastBuildDate><atom:link href="https://kiyo-1224.github.io/categories/me/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 01 Jun 2022 01:07:00 +0800</lastBuildDate><atom:link href="http://example.org/categories/me/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>this Blog Web</title>
-      <link>https://kiyo-1224.github.io/posts/me/</link>
+      <link>http://example.org/posts/me/</link>
       <pubDate>Wed, 01 Jun 2022 01:07:00 +0800</pubDate>
       
-      <guid>https://kiyo-1224.github.io/posts/me/</guid>
+      <guid>http://example.org/posts/me/</guid>
       <description>关于此博客 此博客将用于上传我的个人技术博客以及绘画的作品</description>
     </item>
     

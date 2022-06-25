@@ -2,115 +2,130 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://kiyo-1224.github.io/categories/</loc>
+    <loc>http://example.org/categories/</loc>
+    <lastmod>2022-06-26T01:11:00+08:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tags/mybatis/</loc>
+    <lastmod>2022-06-26T01:11:00+08:00</lastmod>
+  </url><url>
+    <loc>http://example.org/posts/mybatis1/</loc>
+    <lastmod>2022-06-26T01:11:00+08:00</lastmod>
+  </url><url>
+    <loc>http://example.org/posts/</loc>
+    <lastmod>2022-06-26T01:11:00+08:00</lastmod>
+  </url><url>
+    <loc>http://example.org/categories/ssm/</loc>
+    <lastmod>2022-06-26T01:11:00+08:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tags/</loc>
+    <lastmod>2022-06-26T01:11:00+08:00</lastmod>
+  </url><url>
+    <loc>http://example.org/</loc>
+    <lastmod>2022-06-26T01:11:00+08:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tags/%E6%8A%80%E6%9C%AF/</loc>
+    <lastmod>2022-06-26T01:11:00+08:00</lastmod>
+  </url><url>
+    <loc>http://example.org/posts/mybatis2/</loc>
+    <lastmod>2022-06-26T01:10:00+08:00</lastmod>
+  </url><url>
+    <loc>http://example.org/posts/mybatis5/</loc>
+    <lastmod>2022-06-26T01:10:00+08:00</lastmod>
+  </url><url>
+    <loc>http://example.org/posts/mybatis4/</loc>
+    <lastmod>2022-06-26T01:10:00+08:00</lastmod>
+  </url><url>
+    <loc>http://example.org/posts/mybatis3/</loc>
+    <lastmod>2022-06-26T01:10:00+08:00</lastmod>
+  </url><url>
+    <loc>http://example.org/tags/springmvc/</loc>
     <lastmod>2022-06-24T01:20:00+08:00</lastmod>
   </url><url>
-    <loc>https://kiyo-1224.github.io/posts/</loc>
+    <loc>http://example.org/posts/springmvc6/</loc>
     <lastmod>2022-06-24T01:20:00+08:00</lastmod>
   </url><url>
-    <loc>https://kiyo-1224.github.io/tags/springmvc/</loc>
-    <lastmod>2022-06-24T01:20:00+08:00</lastmod>
-  </url><url>
-    <loc>https://kiyo-1224.github.io/posts/springmvc6/</loc>
-    <lastmod>2022-06-24T01:20:00+08:00</lastmod>
-  </url><url>
-    <loc>https://kiyo-1224.github.io/categories/ssm/</loc>
-    <lastmod>2022-06-24T01:20:00+08:00</lastmod>
-  </url><url>
-    <loc>https://kiyo-1224.github.io/tags/</loc>
-    <lastmod>2022-06-24T01:20:00+08:00</lastmod>
-  </url><url>
-    <loc>https://kiyo-1224.github.io/</loc>
-    <lastmod>2022-06-24T01:20:00+08:00</lastmod>
-  </url><url>
-    <loc>https://kiyo-1224.github.io/tags/%E6%8A%80%E6%9C%AF/</loc>
-    <lastmod>2022-06-24T01:20:00+08:00</lastmod>
-  </url><url>
-    <loc>https://kiyo-1224.github.io/posts/springmvc7/</loc>
+    <loc>http://example.org/posts/springmvc7/</loc>
     <lastmod>2022-06-24T01:11:00+08:00</lastmod>
   </url><url>
-    <loc>https://kiyo-1224.github.io/posts/springmvc5/</loc>
+    <loc>http://example.org/posts/springmvc5/</loc>
     <lastmod>2022-06-24T01:10:00+08:00</lastmod>
   </url><url>
-    <loc>https://kiyo-1224.github.io/posts/springmvc4/</loc>
+    <loc>http://example.org/posts/springmvc4/</loc>
     <lastmod>2022-06-23T01:10:00+08:00</lastmod>
   </url><url>
-    <loc>https://kiyo-1224.github.io/posts/springmvc3/</loc>
+    <loc>http://example.org/posts/springmvc3/</loc>
     <lastmod>2022-06-23T01:10:00+08:00</lastmod>
   </url><url>
-    <loc>https://kiyo-1224.github.io/posts/springmvc1/</loc>
+    <loc>http://example.org/posts/springmvc1/</loc>
     <lastmod>2022-06-22T01:10:00+08:00</lastmod>
   </url><url>
-    <loc>https://kiyo-1224.github.io/posts/springmvc2/</loc>
+    <loc>http://example.org/posts/springmvc2/</loc>
     <lastmod>2022-06-22T01:10:00+08:00</lastmod>
   </url><url>
-    <loc>https://kiyo-1224.github.io/tags/jdbc/</loc>
+    <loc>http://example.org/tags/jdbc/</loc>
     <lastmod>2022-06-18T01:10:00+08:00</lastmod>
   </url><url>
-    <loc>https://kiyo-1224.github.io/categories/jdbc/</loc>
+    <loc>http://example.org/categories/jdbc/</loc>
     <lastmod>2022-06-18T01:10:00+08:00</lastmod>
   </url><url>
-    <loc>https://kiyo-1224.github.io/posts/jdbc1/</loc>
+    <loc>http://example.org/posts/jdbc1/</loc>
     <lastmod>2022-06-18T01:10:00+08:00</lastmod>
   </url><url>
-    <loc>https://kiyo-1224.github.io/posts/jdbc3/</loc>
+    <loc>http://example.org/posts/jdbc3/</loc>
     <lastmod>2022-06-18T01:10:00+08:00</lastmod>
   </url><url>
-    <loc>https://kiyo-1224.github.io/posts/jdbc2/</loc>
+    <loc>http://example.org/posts/jdbc2/</loc>
     <lastmod>2022-06-18T01:10:00+08:00</lastmod>
   </url><url>
-    <loc>https://kiyo-1224.github.io/posts/jdbctemplate/</loc>
+    <loc>http://example.org/posts/jdbctemplate/</loc>
     <lastmod>2022-06-17T01:10:00+08:00</lastmod>
   </url><url>
-    <loc>https://kiyo-1224.github.io/tags/spring/</loc>
+    <loc>http://example.org/tags/spring/</loc>
     <lastmod>2022-06-17T01:10:00+08:00</lastmod>
   </url><url>
-    <loc>https://kiyo-1224.github.io/posts/aop/</loc>
+    <loc>http://example.org/posts/aop/</loc>
     <lastmod>2022-06-10T01:10:00+08:00</lastmod>
   </url><url>
-    <loc>https://kiyo-1224.github.io/tags/c&#43;&#43;/</loc>
+    <loc>http://example.org/tags/c&#43;&#43;/</loc>
     <lastmod>2022-06-10T01:10:00+08:00</lastmod>
   </url><url>
-    <loc>https://kiyo-1224.github.io/categories/c&#43;&#43;/</loc>
+    <loc>http://example.org/categories/c&#43;&#43;/</loc>
     <lastmod>2022-06-10T01:10:00+08:00</lastmod>
   </url><url>
-    <loc>https://kiyo-1224.github.io/posts/c&#43;&#43;pointbase/</loc>
+    <loc>http://example.org/posts/c&#43;&#43;pointbase/</loc>
     <lastmod>2022-06-10T01:10:00+08:00</lastmod>
   </url><url>
-    <loc>https://kiyo-1224.github.io/posts/ioc/</loc>
+    <loc>http://example.org/posts/ioc/</loc>
     <lastmod>2022-06-10T01:10:00+08:00</lastmod>
   </url><url>
-    <loc>https://kiyo-1224.github.io/categories/me/</loc>
+    <loc>http://example.org/categories/me/</loc>
     <lastmod>2022-06-01T01:07:00+08:00</lastmod>
   </url><url>
-    <loc>https://kiyo-1224.github.io/posts/me/</loc>
+    <loc>http://example.org/posts/me/</loc>
     <lastmod>2022-06-01T01:07:00+08:00</lastmod>
   </url><url>
-    <loc>https://kiyo-1224.github.io/tags/%E7%BB%98%E7%94%BB/</loc>
+    <loc>http://example.org/tags/%E7%BB%98%E7%94%BB/</loc>
     <lastmod>2022-06-01T01:07:00+08:00</lastmod>
   </url><url>
-    <loc>https://kiyo-1224.github.io/links/</loc>
+    <loc>http://example.org/links/</loc>
     <lastmod>2022-06-01T01:02:00+08:00</lastmod>
   </url><url>
-    <loc>https://kiyo-1224.github.io/tags/hugo/</loc>
+    <loc>http://example.org/tags/hugo/</loc>
     <lastmod>2022-06-01T00:17:00+08:00</lastmod>
   </url><url>
-    <loc>https://kiyo-1224.github.io/categories/hugo/</loc>
+    <loc>http://example.org/categories/hugo/</loc>
     <lastmod>2022-06-01T00:17:00+08:00</lastmod>
   </url><url>
-    <loc>https://kiyo-1224.github.io/posts/newhugopage/</loc>
+    <loc>http://example.org/posts/newhugopage/</loc>
     <lastmod>2022-06-01T00:17:00+08:00</lastmod>
   </url><url>
-    <loc>https://kiyo-1224.github.io/posts/addblogcontent/</loc>
+    <loc>http://example.org/posts/addblogcontent/</loc>
     <lastmod>2022-06-01T00:17:00+08:00</lastmod>
   </url><url>
-    <loc>https://kiyo-1224.github.io/page/</loc>
-    <lastmod>2022-05-31T23:41:50+08:00</lastmod>
-  </url><url>
-    <loc>https://kiyo-1224.github.io/about/</loc>
+    <loc>http://example.org/about/</loc>
     <lastmod>2019-04-20T23:08:32+08:00</lastmod>
   </url><url>
-    <loc>https://kiyo-1224.github.io/archives/</loc>
+    <loc>http://example.org/archives/</loc>
     <lastmod>2019-04-20T13:29:27+08:00</lastmod>
   </url>
 </urlset>

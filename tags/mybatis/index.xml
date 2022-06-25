@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mybatis on 忆遇惜·真白 的个人博客</title>
+    <link>http://example.org/tags/mybatis/</link>
+    <description>Recent content in mybatis on 忆遇惜·真白 的个人博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 26 Jun 2022 01:11:00 +0800</lastBuildDate><atom:link href="http://example.org/tags/mybatis/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MyBatis简介与环境搭建</title>
+      <link>http://example.org/posts/mybatis1/</link>
+      <pubDate>Sun, 26 Jun 2022 01:11:00 +0800</pubDate>
+      
+      <guid>http://example.org/posts/mybatis1/</guid>
+      <description>Mybatis简介 MyBatis特性  MyBatis 是支持定制化 SQL、存储过程以及高级映射的优秀的持久层框架 MyBatis 避免了几乎所有的 JDBC 代码和手动设置参数以及获取结果集 MyBatis可以使用简单的XML或注解用于配置和原始映射，将接口和Java的POJO（Plain Old Java Objects，普通的Java对象）映射成数据库中的记录 MyBatis 是一个 半自动的ORM（Object Relation Mapping）框架  和其它持久化层技术对比  JDBC  SQL 夹杂在Java代码中耦合度高，导致硬编码内伤 维护不易且实际开发需求中 SQL 有变化，频繁修改的情况多见 代码冗长，开发效率低   Hibernate 和 JPA  操作简便，开发效率高 程序中的长难复杂 SQL 需要绕过框架 内部自动生产的 SQL，不容易做特殊优化 基于全映射的全自动框架，大量字段的 POJO 进行部分映射时比较困难。 反射操作太多，导致数据库性能下降   MyBatis  轻量级，性能出色 SQL 和 Java 编码分开，功能边界清晰。Java代码专注业务、SQL语句专注数据 开发效率稍逊于HIbernate，但是完全能够接受    搭建MyBatis 配置所需依赖 	&amp;lt;dependencies&amp;gt; 	&amp;lt;!-- Mybatis核心 --&amp;gt; 	&amp;lt;dependency&amp;gt; 	&amp;lt;groupId&amp;gt;org.</description>
+    </item>
+    
+    <item>
+      <title>MyBatis的增删改查</title>
+      <link>http://example.org/posts/mybatis2/</link>
+      <pubDate>Sun, 26 Jun 2022 01:10:00 +0800</pubDate>
+      
+      <guid>http://example.org/posts/mybatis2/</guid>
+      <description>MyBatis的增删改查  添加 &amp;lt;!--int insertUser();--&amp;gt; &amp;lt;insert id=&amp;#34;insertUser&amp;#34;&amp;gt; 	insert into t_user values(null,&amp;#39;admin&amp;#39;,&amp;#39;123456&amp;#39;) &amp;lt;/insert&amp;gt; `` 删除 &amp;lt;!--int deleteUser();--&amp;gt; &amp;lt;delete id=&amp;#34;deleteUser&amp;#34;&amp;gt;  delete from t_user where id = 6 &amp;lt;/delete&amp;gt; `` 修改 &amp;lt;!--int updateUser();--&amp;gt; &amp;lt;update id=&amp;#34;updateUser&amp;#34;&amp;gt;  update t_user set username = &amp;#39;admin&amp;#39; where id = 5 &amp;lt;/update&amp;gt; `` 查询一个实体类对象 &amp;lt;!--User getUserById();--&amp;gt; &amp;lt;select id=&amp;#34;getUserById&amp;#34; resultType=&amp;#34;bean.User&amp;#34;&amp;gt; 	select * from t_user where id = 2 &amp;lt;/select&amp;gt; `` 查询集合 &amp;lt;!--List&amp;lt;User&amp;gt; getUserList();--&amp;gt; &amp;lt;select id=&amp;#34;getUserList&amp;#34; resultType=&amp;#34;bean.User&amp;#34;&amp;gt; 	select * from t_user &amp;lt;/select&amp;gt; ``   注意：  查询的标签select必须设置属性resultType或resultMap，用于设置实体类和数据库表的映射关系  resultType：自动映射，用于属性名和表中字段名一致的情况 resultMap：自定义映射，用于一对多或多对一或字段名和属性名不一致的情况   当查询的数据为多条时，不能使用实体类作为返回值，只能使用集合，否则会抛出异常TooManyResultsException；但是若查询的数据只有一条，可以使用实体类或集合作为返回值    MyBatis获取参数值的两种方式（重点）  MyBatis获取参数值的两种方式：${}和#{} ${}的本质就是字符串拼接，#{}的本质就是占位符赋值 ${}使用字符串拼接的方式拼接sql，若为字符串类型或日期类型的字段进行赋值时，需要手动加单引号；但是#{}使用占位符赋值的方式拼接sql，此时为字符串类型或日期类型的字段进行赋值时，可以自动添加单引号  单个字面量类型的参数  若mapper接口中的方法参数为单个的字面量类型，此时可以使用${}和#{}以任意的名称（最好见名识意）获取参数的值，注意${}需要手动加单引号  &amp;lt;!</description>
+    </item>
+    
+    <item>
+      <title>MyBatis的逆向工程</title>
+      <link>http://example.org/posts/mybatis5/</link>
+      <pubDate>Sun, 26 Jun 2022 01:10:00 +0800</pubDate>
+      
+      <guid>http://example.org/posts/mybatis5/</guid>
+      <description>MyBatis的逆向工程  正向工程：先创建Java实体类，由框架负责根据实体类生成数据库表。Hibernate是支持正向工程的 逆向工程：先创建数据库表，由框架负责根据数据库表，反向生成如下资源：  Java实体类 Mapper接口 Mapper映射文件    创建逆向工程的步骤 添加依赖和插件 &amp;lt;dependencies&amp;gt; 	&amp;lt;!-- MyBatis核心依赖包 --&amp;gt; 	&amp;lt;dependency&amp;gt; 	&amp;lt;groupId&amp;gt;org.mybatis&amp;lt;/groupId&amp;gt; 	&amp;lt;artifactId&amp;gt;mybatis&amp;lt;/artifactId&amp;gt; 	&amp;lt;version&amp;gt;3.5.9&amp;lt;/version&amp;gt; 	&amp;lt;/dependency&amp;gt; 	&amp;lt;!-- junit测试 --&amp;gt; 	&amp;lt;dependency&amp;gt; 	&amp;lt;groupId&amp;gt;junit&amp;lt;/groupId&amp;gt; 	&amp;lt;artifactId&amp;gt;junit&amp;lt;/artifactId&amp;gt; 	&amp;lt;version&amp;gt;4.13.2&amp;lt;/version&amp;gt; 	&amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt; 	&amp;lt;/dependency&amp;gt; 	&amp;lt;!-- MySQL驱动 --&amp;gt; 	&amp;lt;dependency&amp;gt; 	&amp;lt;groupId&amp;gt;mysql&amp;lt;/groupId&amp;gt; 	&amp;lt;artifactId&amp;gt;mysql-connector-java&amp;lt;/artifactId&amp;gt; 	&amp;lt;version&amp;gt;8.0.27&amp;lt;/version&amp;gt; 	&amp;lt;/dependency&amp;gt; 	&amp;lt;!-- log4j日志 --&amp;gt; 	&amp;lt;dependency&amp;gt; 	&amp;lt;groupId&amp;gt;log4j&amp;lt;/groupId&amp;gt; 	&amp;lt;artifactId&amp;gt;log4j&amp;lt;/artifactId&amp;gt; 	&amp;lt;version&amp;gt;1.2.17&amp;lt;/version&amp;gt; 	&amp;lt;/dependency&amp;gt; &amp;lt;/dependencies&amp;gt; &amp;lt;!</description>
+    </item>
+    
+    <item>
+      <title>动态SQL与缓存</title>
+      <link>http://example.org/posts/mybatis4/</link>
+      <pubDate>Sun, 26 Jun 2022 01:10:00 +0800</pubDate>
+      
+      <guid>http://example.org/posts/mybatis4/</guid>
+      <description>动态SQL  Mybatis框架的动态SQL技术是一种根据特定条件动态拼装SQL语句的功能，它存在的意义是为了解决拼接SQL语句字符串时的痛点问题  if  if标签可通过test属性（即传递过来的数据）的表达式进行判断，若表达式的结果为true，则标签中的内容会执行；反之标签中的内容不会执行 在where后面添加一个恒成立条件1=1  这个恒成立条件并不会影响查询的结果 这个1=1可以用来拼接and语句，例如：当empName为null时  如果不加上恒成立条件，则SQL语句为select * from t_emp where and age = ? and sex = ? and email = ?，此时where会与and连用，SQL语句会报错 如果加上一个恒成立条件，则SQL语句为select * from t_emp where 1= 1 and age = ? and sex = ? and email = ?，此时不报错      &amp;lt;!--List&amp;lt;Emp&amp;gt; getEmpByCondition(Emp emp);--&amp;gt; &amp;lt;select id=&amp;#34;getEmpByCondition&amp;#34; resultType=&amp;#34;Emp&amp;#34;&amp;gt; 	select * from t_emp where 1=1 	&amp;lt;if test=&amp;#34;empName != null and empName !</description>
+    </item>
+    
+    <item>
+      <title>自定义映射resultMap</title>
+      <link>http://example.org/posts/mybatis3/</link>
+      <pubDate>Sun, 26 Jun 2022 01:10:00 +0800</pubDate>
+      
+      <guid>http://example.org/posts/mybatis3/</guid>
+      <description>自定义映射resultMap resultMap处理字段和属性的映射关系  resultMap：设置自定义映射  属性：  id：表示自定义映射的唯一标识，不能重复 type：查询的数据要映射的实体类的类型   子标签：  id：设置主键的映射关系 result：设置普通字段的映射关系 子标签属性：  property：设置映射关系中实体类中的属性名 column：设置映射关系中表中的字段名       若字段名和实体类中的属性名不一致，则可以通过resultMap设置自定义映射，即使字段名和属性名一致的属性也要映射，也就是全部属性都要列出来  &amp;lt;resultMap id=&amp;#34;empResultMap&amp;#34; type=&amp;#34;Emp&amp;#34;&amp;gt; 	&amp;lt;id property=&amp;#34;eid&amp;#34; column=&amp;#34;eid&amp;#34;&amp;gt;&amp;lt;/id&amp;gt; 	&amp;lt;result property=&amp;#34;empName&amp;#34; column=&amp;#34;emp_name&amp;#34;&amp;gt;&amp;lt;/result&amp;gt; 	&amp;lt;result property=&amp;#34;age&amp;#34; column=&amp;#34;age&amp;#34;&amp;gt;&amp;lt;/result&amp;gt; 	&amp;lt;result property=&amp;#34;sex&amp;#34; column=&amp;#34;sex&amp;#34;&amp;gt;&amp;lt;/result&amp;gt; 	&amp;lt;result property=&amp;#34;email&amp;#34; column=&amp;#34;email&amp;#34;&amp;gt;&amp;lt;/result&amp;gt; &amp;lt;/resultMap&amp;gt; &amp;lt;!--List&amp;lt;Emp&amp;gt; getAllEmp();--&amp;gt; &amp;lt;select id=&amp;#34;getAllEmp&amp;#34; resultMap=&amp;#34;empResultMap&amp;#34;&amp;gt; 	select * from t_emp &amp;lt;/select&amp;gt;  若字段名和实体类中的属性名不一致，但是字段名符合数据库的规则（使用_），实体类中的属性名符合Java的规则（使用驼峰）。此时也可通过以下两种方式处理字段名和实体类中的属性的映射关系  可以通过为字段起别名的方式，保证和实体类中的属性名保持一致 &amp;lt;!--List&amp;lt;Emp&amp;gt; getAllEmp();--&amp;gt; &amp;lt;select id=&amp;#34;getAllEmp&amp;#34; resultType=&amp;#34;Emp&amp;#34;&amp;gt; 	select eid,emp_name empName,age,sex,email from t_emp &amp;lt;/select&amp;gt; `` 可以在MyBatis的核心配置文件中的setting标签中，设置一个全局配置信息mapUnderscoreToCamelCase，可以在查询表中数据时，自动将_类型的字段名转换为驼峰，例如：字段名user_name，设置了mapUnderscoreToCamelCase，此时字段名就会转换为userName。     多对一映射处理  查询员工信息以及员工所对应的部门信息</description>
+    </item>
+    
+  </channel>
+</rss>

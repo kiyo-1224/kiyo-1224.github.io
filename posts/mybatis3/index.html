@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html><head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate">
+  <title>自定义映射resultMap &middot; 忆遇惜·真白 的个人博客</title>
+  <meta name="keywords" content="素锦, inspiration, customization, rainmeter, design, web, 壁纸, 设计, 收集, wallpaper, collection, jaku, icon">
+  <meta name="description" content="世界上每个角落都有人过着相似的人生">
+  <meta name="author" content="iyu_mashiro">
+  <link rel="icon" type="image/png" href="">
+  <link rel="stylesheet" href="/css/diaspora.css">
+  <link rel="stylesheet" href="/css/insight.css">
+  <link rel="stylesheet" href="/css/custom.css">
+</head><body class="loading">
+        <div id="loading"></div>
+				<div id="nav"></div>
+				<div class="nav-user"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+        <div class="bar">
+        </div>
+        <a class="icon-icon" href="javascript:history.back()">
+        </a>
+        <div title="播放/暂停" class="icon-play">
+        </div>
+        
+        <h3 class="subtitle" style="display: none;">
+        自定义映射resultMap</h3>
+        <div class="social">
+            <div>
+                <div class="share">
+                    <a title="获取二维码" class="icon-wechat" href="javascript:;"></a>
+                </div>
+                <div id="qr"></div>
+            </div>
+        </div>
+        <div class="scrollbar" style="width: 1.1636%;"></div>
+    </div>
+    <div class="section">
+        <div class="article">
+            <div>
+                <h1 class="title">
+                自定义映射resultMap</h1>
+                <div class="stuff">
+                    
+                    <span>June 26, 2022</span>
+                    <span>字数 2013</span>
+                    
+                    
+                </div>
+                <div class="content">
+                    <h1 id="自定义映射resultmap">自定义映射resultMap</h1>
+<h2 id="resultmap处理字段和属性的映射关系">resultMap处理字段和属性的映射关系</h2>
+<ul>
+<li>resultMap：设置自定义映射
+<ul>
+<li>属性：
+<ul>
+<li>id：表示自定义映射的唯一标识，不能重复</li>
+<li>type：查询的数据要映射的实体类的类型</li>
+</ul>
+</li>
+<li>子标签：
+<ul>
+<li>id：设置主键的映射关系</li>
+<li>result：设置普通字段的映射关系</li>
+<li>子标签属性：
+<ul>
+<li>property：设置映射关系中实体类中的属性名</li>
+<li>column：设置映射关系中表中的字段名</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>若字段名和实体类中的属性名不一致，则可以通过resultMap设置自定义映射，即使字段名和属性名一致的属性也要映射，也就是全部属性都要列出来</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;resultMap</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;empResultMap&#34;</span> <span style="color:#a6e22e">type=</span><span style="color:#e6db74">&#34;Emp&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;id</span> <span style="color:#a6e22e">property=</span><span style="color:#e6db74">&#34;eid&#34;</span> <span style="color:#a6e22e">column=</span><span style="color:#e6db74">&#34;eid&#34;</span><span style="color:#f92672">&gt;&lt;/id&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;result</span> <span style="color:#a6e22e">property=</span><span style="color:#e6db74">&#34;empName&#34;</span> <span style="color:#a6e22e">column=</span><span style="color:#e6db74">&#34;emp_name&#34;</span><span style="color:#f92672">&gt;&lt;/result&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;result</span> <span style="color:#a6e22e">property=</span><span style="color:#e6db74">&#34;age&#34;</span> <span style="color:#a6e22e">column=</span><span style="color:#e6db74">&#34;age&#34;</span><span style="color:#f92672">&gt;&lt;/result&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;result</span> <span style="color:#a6e22e">property=</span><span style="color:#e6db74">&#34;sex&#34;</span> <span style="color:#a6e22e">column=</span><span style="color:#e6db74">&#34;sex&#34;</span><span style="color:#f92672">&gt;&lt;/result&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;result</span> <span style="color:#a6e22e">property=</span><span style="color:#e6db74">&#34;email&#34;</span> <span style="color:#a6e22e">column=</span><span style="color:#e6db74">&#34;email&#34;</span><span style="color:#f92672">&gt;&lt;/result&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/resultMap&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!--List&lt;Emp&gt; getAllEmp();--&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;select</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;getAllEmp&#34;</span> <span style="color:#a6e22e">resultMap=</span><span style="color:#e6db74">&#34;empResultMap&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>	select * from t_emp
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/select&gt;</span>
+</span></span></code></pre></div><ul>
+<li>若字段名和实体类中的属性名不一致，但是字段名符合数据库的规则（使用_），实体类中的属性名符合Java的规则（使用驼峰）。此时也可通过以下两种方式处理字段名和实体类中的属性的映射关系
+<ol>
+<li>可以通过为字段起别名的方式，保证和实体类中的属性名保持一致
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;!--List&lt;Emp&gt; getAllEmp();--&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;select</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;getAllEmp&#34;</span> <span style="color:#a6e22e">resultType=</span><span style="color:#e6db74">&#34;Emp&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>	select eid,emp_name empName,age,sex,email from t_emp
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/select&gt;</span>
+</span></span></code></pre></div>``</li>
+<li>可以在MyBatis的核心配置文件中的<code>setting</code>标签中，设置一个全局配置信息mapUnderscoreToCamelCase，可以在查询表中数据时，自动将_类型的字段名转换为驼峰，例如：字段名user_name，设置了mapUnderscoreToCamelCase，此时字段名就会转换为userName。
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"></code></pre></div></li>
+</ol>
+<!-- raw HTML omitted -->
+</li>
+</ul>
+<h2 id="多对一映射处理">多对一映射处理</h2>
+<blockquote>
+<p>查询员工信息以及员工所对应的部门信息</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Emp</span> <span style="color:#f92672">{</span>  
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> Integer eid<span style="color:#f92672">;</span>  
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> String empName<span style="color:#f92672">;</span>  
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> Integer age<span style="color:#f92672">;</span>  
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> String sex<span style="color:#f92672">;</span>  
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> String email<span style="color:#f92672">;</span>  
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">private</span> Dept dept<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//...构造器、get、set方法等
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><h3 id="级联方式处理映射关系">级联方式处理映射关系</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;resultMap</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;empAndDeptResultMapOne&#34;</span> <span style="color:#a6e22e">type=</span><span style="color:#e6db74">&#34;Emp&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;id</span> <span style="color:#a6e22e">property=</span><span style="color:#e6db74">&#34;eid&#34;</span> <span style="color:#a6e22e">column=</span><span style="color:#e6db74">&#34;eid&#34;</span><span style="color:#f92672">&gt;&lt;/id&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;result</span> <span style="color:#a6e22e">property=</span><span style="color:#e6db74">&#34;empName&#34;</span> <span style="color:#a6e22e">column=</span><span style="color:#e6db74">&#34;emp_name&#34;</span><span style="color:#f92672">&gt;&lt;/result&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;result</span> <span style="color:#a6e22e">property=</span><span style="color:#e6db74">&#34;age&#34;</span> <span style="color:#a6e22e">column=</span><span style="color:#e6db74">&#34;age&#34;</span><span style="color:#f92672">&gt;&lt;/result&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;result</span> <span style="color:#a6e22e">property=</span><span style="color:#e6db74">&#34;sex&#34;</span> <span style="color:#a6e22e">column=</span><span style="color:#e6db74">&#34;sex&#34;</span><span style="color:#f92672">&gt;&lt;/result&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;result</span> <span style="color:#a6e22e">property=</span><span style="color:#e6db74">&#34;email&#34;</span> <span style="color:#a6e22e">column=</span><span style="color:#e6db74">&#34;email&#34;</span><span style="color:#f92672">&gt;&lt;/result&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;result</span> <span style="color:#a6e22e">property=</span><span style="color:#e6db74">&#34;dept.did&#34;</span> <span style="color:#a6e22e">column=</span><span style="color:#e6db74">&#34;did&#34;</span><span style="color:#f92672">&gt;&lt;/result&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;result</span> <span style="color:#a6e22e">property=</span><span style="color:#e6db74">&#34;dept.deptName&#34;</span> <span style="color:#a6e22e">column=</span><span style="color:#e6db74">&#34;dept_name&#34;</span><span style="color:#f92672">&gt;&lt;/result&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/resultMap&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!--Emp getEmpAndDept(@Param(&#34;eid&#34;)Integer eid);--&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;select</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;getEmpAndDept&#34;</span> <span style="color:#a6e22e">resultMap=</span><span style="color:#e6db74">&#34;empAndDeptResultMapOne&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>	select * from t_emp left join t_dept on t_emp.eid = t_dept.did where t_emp.eid = #{eid}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/select&gt;</span>
+</span></span></code></pre></div><h3 id="使用association处理映射关系">使用association处理映射关系</h3>
+<ul>
+<li>association：处理多对一的映射关系</li>
+<li>property：需要处理多对的映射关系的属性名</li>
+<li>javaType：该属性的类型</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;resultMap</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;empAndDeptResultMapTwo&#34;</span> <span style="color:#a6e22e">type=</span><span style="color:#e6db74">&#34;Emp&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;id</span> <span style="color:#a6e22e">property=</span><span style="color:#e6db74">&#34;eid&#34;</span> <span style="color:#a6e22e">column=</span><span style="color:#e6db74">&#34;eid&#34;</span><span style="color:#f92672">&gt;&lt;/id&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;result</span> <span style="color:#a6e22e">property=</span><span style="color:#e6db74">&#34;empName&#34;</span> <span style="color:#a6e22e">column=</span><span style="color:#e6db74">&#34;emp_name&#34;</span><span style="color:#f92672">&gt;&lt;/result&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;result</span> <span style="color:#a6e22e">property=</span><span style="color:#e6db74">&#34;age&#34;</span> <span style="color:#a6e22e">column=</span><span style="color:#e6db74">&#34;age&#34;</span><span style="color:#f92672">&gt;&lt;/result&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;result</span> <span style="color:#a6e22e">property=</span><span style="color:#e6db74">&#34;sex&#34;</span> <span style="color:#a6e22e">column=</span><span style="color:#e6db74">&#34;sex&#34;</span><span style="color:#f92672">&gt;&lt;/result&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;result</span> <span style="color:#a6e22e">property=</span><span style="color:#e6db74">&#34;email&#34;</span> <span style="color:#a6e22e">column=</span><span style="color:#e6db74">&#34;email&#34;</span><span style="color:#f92672">&gt;&lt;/result&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;association</span> <span style="color:#a6e22e">property=</span><span style="color:#e6db74">&#34;dept&#34;</span> <span style="color:#a6e22e">javaType=</span><span style="color:#e6db74">&#34;Dept&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&lt;id</span> <span style="color:#a6e22e">property=</span><span style="color:#e6db74">&#34;did&#34;</span> <span style="color:#a6e22e">column=</span><span style="color:#e6db74">&#34;did&#34;</span><span style="color:#f92672">&gt;&lt;/id&gt;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&lt;result</span> <span style="color:#a6e22e">property=</span><span style="color:#e6db74">&#34;deptName&#34;</span> <span style="color:#a6e22e">column=</span><span style="color:#e6db74">&#34;dept_name&#34;</span><span style="color:#f92672">&gt;&lt;/result&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;/association&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/resultMap&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!--Emp getEmpAndDept(@Param(&#34;eid&#34;)Integer eid);--&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;select</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;getEmpAndDept&#34;</span> <span style="color:#a6e22e">resultMap=</span><span style="color:#e6db74">&#34;empAndDeptResultMapTwo&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>	select * from t_emp left join t_dept on t_emp.eid = t_dept.did where t_emp.eid = #{eid}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/select&gt;</span>
+</span></span></code></pre></div><h3 id="分步查询">分步查询</h3>
+<h4 id="1-查询员工信息">1. 查询员工信息</h4>
+<ul>
+<li>select：设置分布查询的sql的唯一标识（namespace.SQLId或mapper接口的全类名.方法名）</li>
+<li>column：设置分步查询的条件</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">//EmpMapper里的方法
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 通过分步查询，员工及所对应的部门信息
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 分步查询第一步：查询员工信息
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @param  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @return com.atguigu.mybatis.pojo.Emp
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @date 2022/2/27 20:17
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span>Emp <span style="color:#a6e22e">getEmpAndDeptByStepOne</span><span style="color:#f92672">(</span><span style="color:#a6e22e">@Param</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;eid&#34;</span><span style="color:#f92672">)</span> Integer eid<span style="color:#f92672">);</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;resultMap</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;empAndDeptByStepResultMap&#34;</span> <span style="color:#a6e22e">type=</span><span style="color:#e6db74">&#34;Emp&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;id</span> <span style="color:#a6e22e">property=</span><span style="color:#e6db74">&#34;eid&#34;</span> <span style="color:#a6e22e">column=</span><span style="color:#e6db74">&#34;eid&#34;</span><span style="color:#f92672">&gt;&lt;/id&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;result</span> <span style="color:#a6e22e">property=</span><span style="color:#e6db74">&#34;empName&#34;</span> <span style="color:#a6e22e">column=</span><span style="color:#e6db74">&#34;emp_name&#34;</span><span style="color:#f92672">&gt;&lt;/result&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;result</span> <span style="color:#a6e22e">property=</span><span style="color:#e6db74">&#34;age&#34;</span> <span style="color:#a6e22e">column=</span><span style="color:#e6db74">&#34;age&#34;</span><span style="color:#f92672">&gt;&lt;/result&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;result</span> <span style="color:#a6e22e">property=</span><span style="color:#e6db74">&#34;sex&#34;</span> <span style="color:#a6e22e">column=</span><span style="color:#e6db74">&#34;sex&#34;</span><span style="color:#f92672">&gt;&lt;/result&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;result</span> <span style="color:#a6e22e">property=</span><span style="color:#e6db74">&#34;email&#34;</span> <span style="color:#a6e22e">column=</span><span style="color:#e6db74">&#34;email&#34;</span><span style="color:#f92672">&gt;&lt;/result&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;association</span> <span style="color:#a6e22e">property=</span><span style="color:#e6db74">&#34;dept&#34;</span>
+</span></span><span style="display:flex;"><span>				 <span style="color:#a6e22e">select=</span><span style="color:#e6db74">&#34;com.atguigu.mybatis.mapper.DeptMapper.getEmpAndDeptByStepTwo&#34;</span>
+</span></span><span style="display:flex;"><span>				 <span style="color:#a6e22e">column=</span><span style="color:#e6db74">&#34;did&#34;</span><span style="color:#f92672">&gt;&lt;/association&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/resultMap&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!--Emp getEmpAndDeptByStepOne(@Param(&#34;eid&#34;) Integer eid);--&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;select</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;getEmpAndDeptByStepOne&#34;</span> <span style="color:#a6e22e">resultMap=</span><span style="color:#e6db74">&#34;empAndDeptByStepResultMap&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>	select * from t_emp where eid = #{eid}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/select&gt;</span>
+</span></span></code></pre></div><h4 id="2-查询部门信息">2. 查询部门信息</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">//DeptMapper里的方法
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 通过分步查询，员工及所对应的部门信息
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 分步查询第二步：通过did查询员工对应的部门信息
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @param
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @return com.atguigu.mybatis.pojo.Emp
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @date 2022/2/27 20:23
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span>Dept <span style="color:#a6e22e">getEmpAndDeptByStepTwo</span><span style="color:#f92672">(</span><span style="color:#a6e22e">@Param</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;did&#34;</span><span style="color:#f92672">)</span> Integer did<span style="color:#f92672">);</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;!--此处的resultMap仅是处理字段和属性的映射关系--&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;resultMap</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;EmpAndDeptByStepTwoResultMap&#34;</span> <span style="color:#a6e22e">type=</span><span style="color:#e6db74">&#34;Dept&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;id</span> <span style="color:#a6e22e">property=</span><span style="color:#e6db74">&#34;did&#34;</span> <span style="color:#a6e22e">column=</span><span style="color:#e6db74">&#34;did&#34;</span><span style="color:#f92672">&gt;&lt;/id&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;result</span> <span style="color:#a6e22e">property=</span><span style="color:#e6db74">&#34;deptName&#34;</span> <span style="color:#a6e22e">column=</span><span style="color:#e6db74">&#34;dept_name&#34;</span><span style="color:#f92672">&gt;&lt;/result&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/resultMap&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!--Dept getEmpAndDeptByStepTwo(@Param(&#34;did&#34;) Integer did);--&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;select</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;getEmpAndDeptByStepTwo&#34;</span> <span style="color:#a6e22e">resultMap=</span><span style="color:#e6db74">&#34;EmpAndDeptByStepTwoResultMap&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>	select * from t_dept where did = #{did}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/select&gt;</span>
+</span></span></code></pre></div><h2 id="一对多映射处理">一对多映射处理</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Dept</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Integer did<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> String deptName<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> List<span style="color:#f92672">&lt;</span>Emp<span style="color:#f92672">&gt;</span> emps<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//...构造器、get、set方法等
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><h3 id="collection">collection</h3>
+<ul>
+<li>collection：用来处理一对多的映射关系</li>
+<li>ofType：表示该属性对饮的集合中存储的数据的类型</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;resultMap</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;DeptAndEmpResultMap&#34;</span> <span style="color:#a6e22e">type=</span><span style="color:#e6db74">&#34;Dept&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;id</span> <span style="color:#a6e22e">property=</span><span style="color:#e6db74">&#34;did&#34;</span> <span style="color:#a6e22e">column=</span><span style="color:#e6db74">&#34;did&#34;</span><span style="color:#f92672">&gt;&lt;/id&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;result</span> <span style="color:#a6e22e">property=</span><span style="color:#e6db74">&#34;deptName&#34;</span> <span style="color:#a6e22e">column=</span><span style="color:#e6db74">&#34;dept_name&#34;</span><span style="color:#f92672">&gt;&lt;/result&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;collection</span> <span style="color:#a6e22e">property=</span><span style="color:#e6db74">&#34;emps&#34;</span> <span style="color:#a6e22e">ofType=</span><span style="color:#e6db74">&#34;Emp&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&lt;id</span> <span style="color:#a6e22e">property=</span><span style="color:#e6db74">&#34;eid&#34;</span> <span style="color:#a6e22e">column=</span><span style="color:#e6db74">&#34;eid&#34;</span><span style="color:#f92672">&gt;&lt;/id&gt;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&lt;result</span> <span style="color:#a6e22e">property=</span><span style="color:#e6db74">&#34;empName&#34;</span> <span style="color:#a6e22e">column=</span><span style="color:#e6db74">&#34;emp_name&#34;</span><span style="color:#f92672">&gt;&lt;/result&gt;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&lt;result</span> <span style="color:#a6e22e">property=</span><span style="color:#e6db74">&#34;age&#34;</span> <span style="color:#a6e22e">column=</span><span style="color:#e6db74">&#34;age&#34;</span><span style="color:#f92672">&gt;&lt;/result&gt;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&lt;result</span> <span style="color:#a6e22e">property=</span><span style="color:#e6db74">&#34;sex&#34;</span> <span style="color:#a6e22e">column=</span><span style="color:#e6db74">&#34;sex&#34;</span><span style="color:#f92672">&gt;&lt;/result&gt;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&lt;result</span> <span style="color:#a6e22e">property=</span><span style="color:#e6db74">&#34;email&#34;</span> <span style="color:#a6e22e">column=</span><span style="color:#e6db74">&#34;email&#34;</span><span style="color:#f92672">&gt;&lt;/result&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;/collection&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/resultMap&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!--Dept getDeptAndEmp(@Param(&#34;did&#34;) Integer did);--&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;select</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;getDeptAndEmp&#34;</span> <span style="color:#a6e22e">resultMap=</span><span style="color:#e6db74">&#34;DeptAndEmpResultMap&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>	select * from t_dept left join t_emp on t_dept.did = t_emp.did where t_dept.did = #{did}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/select&gt;</span>
+</span></span></code></pre></div><h3 id="分步查询-1">分步查询</h3>
+<h4 id="1-查询部门信息">1. 查询部门信息</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 通过分步查询，查询部门及对应的所有员工信息
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 分步查询第一步：查询部门信息
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @param did 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @return com.atguigu.mybatis.pojo.Dept
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @date 2022/2/27 22:04
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span>Dept <span style="color:#a6e22e">getDeptAndEmpByStepOne</span><span style="color:#f92672">(</span><span style="color:#a6e22e">@Param</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;did&#34;</span><span style="color:#f92672">)</span> Integer did<span style="color:#f92672">);</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;resultMap</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;DeptAndEmpByStepOneResultMap&#34;</span> <span style="color:#a6e22e">type=</span><span style="color:#e6db74">&#34;Dept&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;id</span> <span style="color:#a6e22e">property=</span><span style="color:#e6db74">&#34;did&#34;</span> <span style="color:#a6e22e">column=</span><span style="color:#e6db74">&#34;did&#34;</span><span style="color:#f92672">&gt;&lt;/id&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;result</span> <span style="color:#a6e22e">property=</span><span style="color:#e6db74">&#34;deptName&#34;</span> <span style="color:#a6e22e">column=</span><span style="color:#e6db74">&#34;dept_name&#34;</span><span style="color:#f92672">&gt;&lt;/result&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;collection</span> <span style="color:#a6e22e">property=</span><span style="color:#e6db74">&#34;emps&#34;</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">select=</span><span style="color:#e6db74">&#34;com.atguigu.mybatis.mapper.EmpMapper.getDeptAndEmpByStepTwo&#34;</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">column=</span><span style="color:#e6db74">&#34;did&#34;</span><span style="color:#f92672">&gt;&lt;/collection&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/resultMap&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!--Dept getDeptAndEmpByStepOne(@Param(&#34;did&#34;) Integer did);--&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;select</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;getDeptAndEmpByStepOne&#34;</span> <span style="color:#a6e22e">resultMap=</span><span style="color:#e6db74">&#34;DeptAndEmpByStepOneResultMap&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>	select * from t_dept where did = #{did}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/select&gt;</span>
+</span></span></code></pre></div><h4 id="2-根据部门id查询部门中的所有员工">2. 根据部门id查询部门中的所有员工</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 通过分步查询，查询部门及对应的所有员工信息
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 分步查询第二步：根据部门id查询部门中的所有员工
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @param did
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @return java.util.List&lt;com.atguigu.mybatis.pojo.Emp&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @date 2022/2/27 22:10
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>Emp<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">getDeptAndEmpByStepTwo</span><span style="color:#f92672">(</span><span style="color:#a6e22e">@Param</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;did&#34;</span><span style="color:#f92672">)</span> Integer did<span style="color:#f92672">);</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;!--List&lt;Emp&gt; getDeptAndEmpByStepTwo(@Param(&#34;did&#34;) Integer did);--&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;select</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;getDeptAndEmpByStepTwo&#34;</span> <span style="color:#a6e22e">resultType=</span><span style="color:#e6db74">&#34;Emp&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>	select * from t_emp where did = #{did}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/select&gt;</span>
+</span></span></code></pre></div><h2 id="延迟加载">延迟加载</h2>
+<ul>
+<li>分步查询的优点：可以实现延迟加载，但是必须在核心配置文件中设置全局配置信息：
+<ul>
+<li>lazyLoadingEnabled：延迟加载的全局开关。当开启时，所有关联对象都会延迟加载</li>
+<li>aggressiveLazyLoading：当开启时，任何方法的调用都会加载该对象的所有属性。 否则，每个属性会按需加载</li>
+</ul>
+</li>
+<li>此时就可以实现按需加载，获取的数据是什么，就只会执行相应的sql。此时可通过association和collection中的fetchType属性设置当前的分步查询是否使用延迟加载，fetchType=&ldquo;lazy(延迟加载)|eager(立即加载)&rdquo;</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;settings&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">&lt;!--开启延迟加载--&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;setting</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;lazyLoadingEnabled&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;true&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/settings&gt;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Test</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">getEmpAndDeptByStepOne</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>	SqlSession sqlSession <span style="color:#f92672">=</span> SqlSessionUtils<span style="color:#f92672">.</span><span style="color:#a6e22e">getSqlSession</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>	EmpMapper mapper <span style="color:#f92672">=</span> sqlSession<span style="color:#f92672">.</span><span style="color:#a6e22e">getMapper</span><span style="color:#f92672">(</span>EmpMapper<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>	Emp emp <span style="color:#f92672">=</span> mapper<span style="color:#f92672">.</span><span style="color:#a6e22e">getEmpAndDeptByStepOne</span><span style="color:#f92672">(</span>1<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>	System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>emp<span style="color:#f92672">.</span><span style="color:#a6e22e">getEmpName</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><ul>
+<li>关闭延迟加载，两条SQL语句都运行了</li>
+<li>开启延迟加载，只运行获取emp的SQL语句</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Test</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">getEmpAndDeptByStepOne</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>	SqlSession sqlSession <span style="color:#f92672">=</span> SqlSessionUtils<span style="color:#f92672">.</span><span style="color:#a6e22e">getSqlSession</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>	EmpMapper mapper <span style="color:#f92672">=</span> sqlSession<span style="color:#f92672">.</span><span style="color:#a6e22e">getMapper</span><span style="color:#f92672">(</span>EmpMapper<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>	Emp emp <span style="color:#f92672">=</span> mapper<span style="color:#f92672">.</span><span style="color:#a6e22e">getEmpAndDeptByStepOne</span><span style="color:#f92672">(</span>1<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>	System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>emp<span style="color:#f92672">.</span><span style="color:#a6e22e">getEmpName</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>	System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;----------------&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>	System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>emp<span style="color:#f92672">.</span><span style="color:#a6e22e">getDept</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><ul>
+<li>开启后，需要用到查询dept的时候才会调用相应的SQL语句<img src="Resources/%E5%BB%B6%E8%BF%9F%E5%8A%A0%E8%BD%BD%E6%B5%8B%E8%AF%953.png" alt=""></li>
+<li>fetchType：当开启了全局的延迟加载之后，可以通过该属性手动控制延迟加载的效果，fetchType=&ldquo;lazy(延迟加载)|eager(立即加载)&rdquo;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;resultMap</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;empAndDeptByStepResultMap&#34;</span> <span style="color:#a6e22e">type=</span><span style="color:#e6db74">&#34;Emp&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;id</span> <span style="color:#a6e22e">property=</span><span style="color:#e6db74">&#34;eid&#34;</span> <span style="color:#a6e22e">column=</span><span style="color:#e6db74">&#34;eid&#34;</span><span style="color:#f92672">&gt;&lt;/id&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;result</span> <span style="color:#a6e22e">property=</span><span style="color:#e6db74">&#34;empName&#34;</span> <span style="color:#a6e22e">column=</span><span style="color:#e6db74">&#34;emp_name&#34;</span><span style="color:#f92672">&gt;&lt;/result&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;result</span> <span style="color:#a6e22e">property=</span><span style="color:#e6db74">&#34;age&#34;</span> <span style="color:#a6e22e">column=</span><span style="color:#e6db74">&#34;age&#34;</span><span style="color:#f92672">&gt;&lt;/result&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;result</span> <span style="color:#a6e22e">property=</span><span style="color:#e6db74">&#34;sex&#34;</span> <span style="color:#a6e22e">column=</span><span style="color:#e6db74">&#34;sex&#34;</span><span style="color:#f92672">&gt;&lt;/result&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;result</span> <span style="color:#a6e22e">property=</span><span style="color:#e6db74">&#34;email&#34;</span> <span style="color:#a6e22e">column=</span><span style="color:#e6db74">&#34;email&#34;</span><span style="color:#f92672">&gt;&lt;/result&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;association</span> <span style="color:#a6e22e">property=</span><span style="color:#e6db74">&#34;dept&#34;</span>
+</span></span><span style="display:flex;"><span>				 <span style="color:#a6e22e">select=</span><span style="color:#e6db74">&#34;com.atguigu.mybatis.mapper.DeptMapper.getEmpAndDeptByStepTwo&#34;</span>
+</span></span><span style="display:flex;"><span>				 <span style="color:#a6e22e">column=</span><span style="color:#e6db74">&#34;did&#34;</span>
+</span></span><span style="display:flex;"><span>				 <span style="color:#a6e22e">fetchType=</span><span style="color:#e6db74">&#34;lazy&#34;</span><span style="color:#f92672">&gt;&lt;/association&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/resultMap&gt;</span>
+</span></span></code></pre></div><pre tabindex="0"><code></code></pre></li>
+</ul>
+
+                    
+                    <audio id="audio" loop="1" preload="auto" style="width: 100%;" controls="controls">
+                        <source type="audio/mpeg" src="/mp3/Unicorn.mp3">
+                        <a href="/mp3/Unicorn.mp3">/mp3/Unicorn.mp3</a>
+                    </audio>
+                </div>
+                <div class="comment-wrap">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="relate">
+        <ul>
+            <h3 id="prev_next">
+                <em>相 关 文 章</em>
+                <span>
+                    <a href="javascript: window.scrollTo(0, 0);">
+                    返回顶部</a>
+                    
+                        <a href="http://example.org/posts/springmvc6/" rel="prev">上一篇</a>
+                    
+                    
+                        <a href="http://example.org/posts/mybatis4/" rel="next">下一篇</a>
+                    
+                </span>
+            </h3>
+            
+            
+            
+                
+                    
+                    <li>
+                        <div>
+                            <a class="relatea" href="http://example.org/posts/mybatis1/" title="MyBatis简介与环境搭建">
+                            MyBatis简介与环境搭建</a>
+                            <p>MyBatis简介与环境搭建...</p>
+                        </div>
+                        
+                        <a href="http://example.org/posts/mybatis1/" title="MyBatis简介与环境搭建">
+                            <img class="relateimg" src="/img/kano.jpg" alt="MyBatis简介与环境搭建">
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <div>
+                            <a class="relatea" href="http://example.org/posts/mybatis2/" title="MyBatis的增删改查">
+                            MyBatis的增删改查</a>
+                            <p>MyBatis的增删改查...</p>
+                        </div>
+                        
+                        <a href="http://example.org/posts/mybatis2/" title="MyBatis的增删改查">
+                            <img class="relateimg" src="/img/kano.jpg" alt="MyBatis的增删改查">
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <div>
+                            <a class="relatea" href="http://example.org/posts/mybatis5/" title="MyBatis的逆向工程">
+                            MyBatis的逆向工程</a>
+                            <p>MyBatis的逆向工程...</p>
+                        </div>
+                        
+                        <a href="http://example.org/posts/mybatis5/" title="MyBatis的逆向工程">
+                            <img class="relateimg" src="/img/kano.jpg" alt="MyBatis的逆向工程">
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <div>
+                            <a class="relatea" href="http://example.org/posts/mybatis4/" title="动态SQL与缓存">
+                            动态SQL与缓存</a>
+                            <p>动态SQL与缓存...</p>
+                        </div>
+                        
+                        <a href="http://example.org/posts/mybatis4/" title="动态SQL与缓存">
+                            <img class="relateimg" src="/img/kano.jpg" alt="动态SQL与缓存">
+                        </a>
+                    </li>
+                    
+                
+                    
+                
+            
+        </ul>
+    </div>
+</div>
+<p style="text-align: center;">
+  <a style="color: inherit" target="_blank" href="https://github.com/honjun/hugo-theme-diaspora"></a>
+</p>
+
+<script>
+  var siteTitle = "忆遇惜·真白 的个人博客";
+</script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<script src="/js/custom.js"></script>
+<script src="/js/InsightSearch.js"></script>
+</body>
+</html>
+

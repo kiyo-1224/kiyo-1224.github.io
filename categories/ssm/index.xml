@@ -2,17 +2,62 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>SSM on 忆遇惜·真白 的个人博客</title>
-    <link>https://kiyo-1224.github.io/categories/ssm/</link>
+    <link>http://example.org/categories/ssm/</link>
     <description>Recent content in SSM on 忆遇惜·真白 的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 24 Jun 2022 01:20:00 +0800</lastBuildDate><atom:link href="https://kiyo-1224.github.io/categories/ssm/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 26 Jun 2022 01:11:00 +0800</lastBuildDate><atom:link href="http://example.org/categories/ssm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MyBatis简介与环境搭建</title>
+      <link>http://example.org/posts/mybatis1/</link>
+      <pubDate>Sun, 26 Jun 2022 01:11:00 +0800</pubDate>
+      
+      <guid>http://example.org/posts/mybatis1/</guid>
+      <description>Mybatis简介 MyBatis特性  MyBatis 是支持定制化 SQL、存储过程以及高级映射的优秀的持久层框架 MyBatis 避免了几乎所有的 JDBC 代码和手动设置参数以及获取结果集 MyBatis可以使用简单的XML或注解用于配置和原始映射，将接口和Java的POJO（Plain Old Java Objects，普通的Java对象）映射成数据库中的记录 MyBatis 是一个 半自动的ORM（Object Relation Mapping）框架  和其它持久化层技术对比  JDBC  SQL 夹杂在Java代码中耦合度高，导致硬编码内伤 维护不易且实际开发需求中 SQL 有变化，频繁修改的情况多见 代码冗长，开发效率低   Hibernate 和 JPA  操作简便，开发效率高 程序中的长难复杂 SQL 需要绕过框架 内部自动生产的 SQL，不容易做特殊优化 基于全映射的全自动框架，大量字段的 POJO 进行部分映射时比较困难。 反射操作太多，导致数据库性能下降   MyBatis  轻量级，性能出色 SQL 和 Java 编码分开，功能边界清晰。Java代码专注业务、SQL语句专注数据 开发效率稍逊于HIbernate，但是完全能够接受    搭建MyBatis 配置所需依赖 	&amp;lt;dependencies&amp;gt; 	&amp;lt;!-- Mybatis核心 --&amp;gt; 	&amp;lt;dependency&amp;gt; 	&amp;lt;groupId&amp;gt;org.</description>
+    </item>
+    
+    <item>
+      <title>MyBatis的增删改查</title>
+      <link>http://example.org/posts/mybatis2/</link>
+      <pubDate>Sun, 26 Jun 2022 01:10:00 +0800</pubDate>
+      
+      <guid>http://example.org/posts/mybatis2/</guid>
+      <description>MyBatis的增删改查  添加 &amp;lt;!--int insertUser();--&amp;gt; &amp;lt;insert id=&amp;#34;insertUser&amp;#34;&amp;gt; 	insert into t_user values(null,&amp;#39;admin&amp;#39;,&amp;#39;123456&amp;#39;) &amp;lt;/insert&amp;gt; `` 删除 &amp;lt;!--int deleteUser();--&amp;gt; &amp;lt;delete id=&amp;#34;deleteUser&amp;#34;&amp;gt;  delete from t_user where id = 6 &amp;lt;/delete&amp;gt; `` 修改 &amp;lt;!--int updateUser();--&amp;gt; &amp;lt;update id=&amp;#34;updateUser&amp;#34;&amp;gt;  update t_user set username = &amp;#39;admin&amp;#39; where id = 5 &amp;lt;/update&amp;gt; `` 查询一个实体类对象 &amp;lt;!--User getUserById();--&amp;gt; &amp;lt;select id=&amp;#34;getUserById&amp;#34; resultType=&amp;#34;bean.User&amp;#34;&amp;gt; 	select * from t_user where id = 2 &amp;lt;/select&amp;gt; `` 查询集合 &amp;lt;!--List&amp;lt;User&amp;gt; getUserList();--&amp;gt; &amp;lt;select id=&amp;#34;getUserList&amp;#34; resultType=&amp;#34;bean.User&amp;#34;&amp;gt; 	select * from t_user &amp;lt;/select&amp;gt; ``   注意：  查询的标签select必须设置属性resultType或resultMap，用于设置实体类和数据库表的映射关系  resultType：自动映射，用于属性名和表中字段名一致的情况 resultMap：自定义映射，用于一对多或多对一或字段名和属性名不一致的情况   当查询的数据为多条时，不能使用实体类作为返回值，只能使用集合，否则会抛出异常TooManyResultsException；但是若查询的数据只有一条，可以使用实体类或集合作为返回值    MyBatis获取参数值的两种方式（重点）  MyBatis获取参数值的两种方式：${}和#{} ${}的本质就是字符串拼接，#{}的本质就是占位符赋值 ${}使用字符串拼接的方式拼接sql，若为字符串类型或日期类型的字段进行赋值时，需要手动加单引号；但是#{}使用占位符赋值的方式拼接sql，此时为字符串类型或日期类型的字段进行赋值时，可以自动添加单引号  单个字面量类型的参数  若mapper接口中的方法参数为单个的字面量类型，此时可以使用${}和#{}以任意的名称（最好见名识意）获取参数的值，注意${}需要手动加单引号  &amp;lt;!</description>
+    </item>
+    
+    <item>
+      <title>MyBatis的逆向工程</title>
+      <link>http://example.org/posts/mybatis5/</link>
+      <pubDate>Sun, 26 Jun 2022 01:10:00 +0800</pubDate>
+      
+      <guid>http://example.org/posts/mybatis5/</guid>
+      <description>MyBatis的逆向工程  正向工程：先创建Java实体类，由框架负责根据实体类生成数据库表。Hibernate是支持正向工程的 逆向工程：先创建数据库表，由框架负责根据数据库表，反向生成如下资源：  Java实体类 Mapper接口 Mapper映射文件    创建逆向工程的步骤 添加依赖和插件 &amp;lt;dependencies&amp;gt; 	&amp;lt;!-- MyBatis核心依赖包 --&amp;gt; 	&amp;lt;dependency&amp;gt; 	&amp;lt;groupId&amp;gt;org.mybatis&amp;lt;/groupId&amp;gt; 	&amp;lt;artifactId&amp;gt;mybatis&amp;lt;/artifactId&amp;gt; 	&amp;lt;version&amp;gt;3.5.9&amp;lt;/version&amp;gt; 	&amp;lt;/dependency&amp;gt; 	&amp;lt;!-- junit测试 --&amp;gt; 	&amp;lt;dependency&amp;gt; 	&amp;lt;groupId&amp;gt;junit&amp;lt;/groupId&amp;gt; 	&amp;lt;artifactId&amp;gt;junit&amp;lt;/artifactId&amp;gt; 	&amp;lt;version&amp;gt;4.13.2&amp;lt;/version&amp;gt; 	&amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt; 	&amp;lt;/dependency&amp;gt; 	&amp;lt;!-- MySQL驱动 --&amp;gt; 	&amp;lt;dependency&amp;gt; 	&amp;lt;groupId&amp;gt;mysql&amp;lt;/groupId&amp;gt; 	&amp;lt;artifactId&amp;gt;mysql-connector-java&amp;lt;/artifactId&amp;gt; 	&amp;lt;version&amp;gt;8.0.27&amp;lt;/version&amp;gt; 	&amp;lt;/dependency&amp;gt; 	&amp;lt;!-- log4j日志 --&amp;gt; 	&amp;lt;dependency&amp;gt; 	&amp;lt;groupId&amp;gt;log4j&amp;lt;/groupId&amp;gt; 	&amp;lt;artifactId&amp;gt;log4j&amp;lt;/artifactId&amp;gt; 	&amp;lt;version&amp;gt;1.2.17&amp;lt;/version&amp;gt; 	&amp;lt;/dependency&amp;gt; &amp;lt;/dependencies&amp;gt; &amp;lt;!</description>
+    </item>
+    
+    <item>
+      <title>动态SQL与缓存</title>
+      <link>http://example.org/posts/mybatis4/</link>
+      <pubDate>Sun, 26 Jun 2022 01:10:00 +0800</pubDate>
+      
+      <guid>http://example.org/posts/mybatis4/</guid>
+      <description>动态SQL  Mybatis框架的动态SQL技术是一种根据特定条件动态拼装SQL语句的功能，它存在的意义是为了解决拼接SQL语句字符串时的痛点问题  if  if标签可通过test属性（即传递过来的数据）的表达式进行判断，若表达式的结果为true，则标签中的内容会执行；反之标签中的内容不会执行 在where后面添加一个恒成立条件1=1  这个恒成立条件并不会影响查询的结果 这个1=1可以用来拼接and语句，例如：当empName为null时  如果不加上恒成立条件，则SQL语句为select * from t_emp where and age = ? and sex = ? and email = ?，此时where会与and连用，SQL语句会报错 如果加上一个恒成立条件，则SQL语句为select * from t_emp where 1= 1 and age = ? and sex = ? and email = ?，此时不报错      &amp;lt;!--List&amp;lt;Emp&amp;gt; getEmpByCondition(Emp emp);--&amp;gt; &amp;lt;select id=&amp;#34;getEmpByCondition&amp;#34; resultType=&amp;#34;Emp&amp;#34;&amp;gt; 	select * from t_emp where 1=1 	&amp;lt;if test=&amp;#34;empName != null and empName !</description>
+    </item>
+    
+    <item>
+      <title>自定义映射resultMap</title>
+      <link>http://example.org/posts/mybatis3/</link>
+      <pubDate>Sun, 26 Jun 2022 01:10:00 +0800</pubDate>
+      
+      <guid>http://example.org/posts/mybatis3/</guid>
+      <description>自定义映射resultMap resultMap处理字段和属性的映射关系  resultMap：设置自定义映射  属性：  id：表示自定义映射的唯一标识，不能重复 type：查询的数据要映射的实体类的类型   子标签：  id：设置主键的映射关系 result：设置普通字段的映射关系 子标签属性：  property：设置映射关系中实体类中的属性名 column：设置映射关系中表中的字段名       若字段名和实体类中的属性名不一致，则可以通过resultMap设置自定义映射，即使字段名和属性名一致的属性也要映射，也就是全部属性都要列出来  &amp;lt;resultMap id=&amp;#34;empResultMap&amp;#34; type=&amp;#34;Emp&amp;#34;&amp;gt; 	&amp;lt;id property=&amp;#34;eid&amp;#34; column=&amp;#34;eid&amp;#34;&amp;gt;&amp;lt;/id&amp;gt; 	&amp;lt;result property=&amp;#34;empName&amp;#34; column=&amp;#34;emp_name&amp;#34;&amp;gt;&amp;lt;/result&amp;gt; 	&amp;lt;result property=&amp;#34;age&amp;#34; column=&amp;#34;age&amp;#34;&amp;gt;&amp;lt;/result&amp;gt; 	&amp;lt;result property=&amp;#34;sex&amp;#34; column=&amp;#34;sex&amp;#34;&amp;gt;&amp;lt;/result&amp;gt; 	&amp;lt;result property=&amp;#34;email&amp;#34; column=&amp;#34;email&amp;#34;&amp;gt;&amp;lt;/result&amp;gt; &amp;lt;/resultMap&amp;gt; &amp;lt;!--List&amp;lt;Emp&amp;gt; getAllEmp();--&amp;gt; &amp;lt;select id=&amp;#34;getAllEmp&amp;#34; resultMap=&amp;#34;empResultMap&amp;#34;&amp;gt; 	select * from t_emp &amp;lt;/select&amp;gt;  若字段名和实体类中的属性名不一致，但是字段名符合数据库的规则（使用_），实体类中的属性名符合Java的规则（使用驼峰）。此时也可通过以下两种方式处理字段名和实体类中的属性的映射关系  可以通过为字段起别名的方式，保证和实体类中的属性名保持一致 &amp;lt;!--List&amp;lt;Emp&amp;gt; getAllEmp();--&amp;gt; &amp;lt;select id=&amp;#34;getAllEmp&amp;#34; resultType=&amp;#34;Emp&amp;#34;&amp;gt; 	select eid,emp_name empName,age,sex,email from t_emp &amp;lt;/select&amp;gt; `` 可以在MyBatis的核心配置文件中的setting标签中，设置一个全局配置信息mapUnderscoreToCamelCase，可以在查询表中数据时，自动将_类型的字段名转换为驼峰，例如：字段名user_name，设置了mapUnderscoreToCamelCase，此时字段名就会转换为userName。     多对一映射处理  查询员工信息以及员工所对应的部门信息</description>
+    </item>
+    
     <item>
       <title>SpringMVC执行流程</title>
-      <link>https://kiyo-1224.github.io/posts/springmvc6/</link>
+      <link>http://example.org/posts/springmvc6/</link>
       <pubDate>Fri, 24 Jun 2022 01:20:00 +0800</pubDate>
       
-      <guid>https://kiyo-1224.github.io/posts/springmvc6/</guid>
+      <guid>http://example.org/posts/springmvc6/</guid>
       <description>SpringMVC执行流程 SpringMVC 常用组件  DispatcherServlet：前端控制器，不需要工程师开发，由框架提供 作用：统一处理请求和响应，整个流程控制的中心，由它调用其它组件处理用户的请求 HandlerMapping：处理映射器，不需要工程师开发，由框架提供 作用：根据请求的 url、method 等信息查找 Handler，即控制器方法 Handler：处理器，需要工程师开发 作用：在 DispatcherServlet 的控制下 Handler 对具体的用户请求进行处理 HandlerAdapter：处理器适配器，不需要工程师开发，由框架提供 作用：通过 HandlerAdapter 对处理器(控制器方法) 进行执行 ViewResolver：视图解析器，不需要工程师开发，由框架提供 作用：进行视图解析，得到相应的视图 View：视图，不需要工程师开发，由框架提供 作用：将模型数据通过页面展示给用户  4、SpringMVC的执行流程   用户向服务器发送请求，请求被SpringMVC 前端控制器 DispatcherServlet捕获。
   DispatcherServlet对请求URL进行解析，得到请求资源标识符（URI），判断请求URI对应的映射：
   a) 不存在
@@ -31,10 +76,10 @@ c) 数据格式化：对请求消息进行数据格式化。 如将字符串转�
     
     <item>
       <title>拦截器和异常处理器</title>
-      <link>https://kiyo-1224.github.io/posts/springmvc7/</link>
+      <link>http://example.org/posts/springmvc7/</link>
       <pubDate>Fri, 24 Jun 2022 01:11:00 +0800</pubDate>
       
-      <guid>https://kiyo-1224.github.io/posts/springmvc7/</guid>
+      <guid>http://example.org/posts/springmvc7/</guid>
       <description>拦截器 拦截器的配置 SpringMVC 的拦截器用于拦截控制器方法的执行
 SpringMVC 的拦截器需要实现 HandlerInterceptor 或者继承 HandlerInterceptorAdaoter 类
 SpringMVC 的拦截器必须在 SpringMVC 文件中配置
@@ -55,10 +100,10 @@ SpringMVC 提供了自定义的异常处理器 SimpleMappingExceptionResolver</d
     
     <item>
       <title>HttpMessageConverte</title>
-      <link>https://kiyo-1224.github.io/posts/springmvc5/</link>
+      <link>http://example.org/posts/springmvc5/</link>
       <pubDate>Fri, 24 Jun 2022 01:10:00 +0800</pubDate>
       
-      <guid>https://kiyo-1224.github.io/posts/springmvc5/</guid>
+      <guid>http://example.org/posts/springmvc5/</guid>
       <description>HttpMessageConverter HttpMessageConverter 报文信息转换器，将请求报文转换为 Java 对象，或将 Java 对象转换为响应报文
 HttpMessageConverter 提供了两个注解和两个类型： @RequestBody、@ResponseBody、RequestEntity、ResponesEntity
 @RequestBody @RequestBody 可以获取请求体，需要在控制器方法设置一个形参，使用 @RequestBody 进行标识，当前请求的请求体就会为当前注解所标识的形参赋值
@@ -73,10 +118,10 @@ RequestEntity RequestEntity 封装请求报文的一种类型，需要在控制�
     
     <item>
       <title>SpringMVC RESTFul</title>
-      <link>https://kiyo-1224.github.io/posts/springmvc4/</link>
+      <link>http://example.org/posts/springmvc4/</link>
       <pubDate>Thu, 23 Jun 2022 01:10:00 +0800</pubDate>
       
-      <guid>https://kiyo-1224.github.io/posts/springmvc4/</guid>
+      <guid>http://example.org/posts/springmvc4/</guid>
       <description>RESTFul RESTFul 简介 REST：Representational State Transfer,表现层资源状态转移
 资源：
 资源是一种看待服务器的方式。即，将服务器看作是由很多离散的资源组成，每个资源是服务器上一个可命名的抽象概念。因为资源是一个抽象概念，所以它不仅仅能代表服务器文件系统中的一个文件，数据库中的一张表等等具体的东西，可以将资源设计的要多抽象有多抽象，只要想象力允许而客户端应用开发者能够理解。与面向对象设计类似，资源是以名词为核心来组织的，首先关注的是名词。一个资源可以由一个或多个 URI 来标识。URI即是资源的名称，也是资源在 web 上的地址。对某个资源感兴趣的客户端应用，可以通过资源的 URI 与其进行交互
@@ -92,10 +137,10 @@ user主页面 user添加页面 user更改界面 </description>
     
     <item>
       <title>域对象共享数据和SpringMVC的视图</title>
-      <link>https://kiyo-1224.github.io/posts/springmvc3/</link>
+      <link>http://example.org/posts/springmvc3/</link>
       <pubDate>Thu, 23 Jun 2022 01:10:00 +0800</pubDate>
       
-      <guid>https://kiyo-1224.github.io/posts/springmvc3/</guid>
+      <guid>http://example.org/posts/springmvc3/</guid>
       <description>域对象共享数据 使用 servlet 向 request 域对象共享数据 例： 使用 ModelAndView 向request 域共享对象 使用 ModelAndView 此方法必须以 modelAndView 为返回值类型
 例： 使用 Model 向 request 域对象共享数据 需要在形参中创建 Model 类型的形参
 例： 使用 map 向 request 域对象共享数据 需要在形参中创建 Map 类型的形参
@@ -106,10 +151,10 @@ user主页面 user添加页面 user更改界面 </description>
     
     <item>
       <title>RequestMapping 注解</title>
-      <link>https://kiyo-1224.github.io/posts/springmvc1/</link>
+      <link>http://example.org/posts/springmvc1/</link>
       <pubDate>Wed, 22 Jun 2022 01:10:00 +0800</pubDate>
       
-      <guid>https://kiyo-1224.github.io/posts/springmvc1/</guid>
+      <guid>http://example.org/posts/springmvc1/</guid>
       <description>环境搭建 第一步导入相关依赖，并设置打包方式为 war 第二步在工程中添加 web 模块，并在配置文件中配置前端控制器 第三步在配置文件中配置 thymeleaf 和 注解扫描 第四步在 WEB-INF 下创建 temlates 目录然后在该目录创建 index.html 并在页面中引入 thymeleaf 命名空间 第五步创建控制器 最后启动 Tomcat 访问
 @RequestMapping 注解 @RequestMapping 注解的功能 @RequestMapping 注解的作用是将请求和处理请求的控制器方法关联起来，建立映射关系，SpringMVC 接收到指定的请求，就会来找到在映射关系中对应的控制器方法来处理这个请求
 @RequestMapping 注解的位置 @RequestMapping 标识一个类：设置映射请求的请求路径的初始信息
@@ -123,10 +168,10 @@ user主页面 user添加页面 user更改界面 </description>
     
     <item>
       <title>SpringMVC获取请求参数</title>
-      <link>https://kiyo-1224.github.io/posts/springmvc2/</link>
+      <link>http://example.org/posts/springmvc2/</link>
       <pubDate>Wed, 22 Jun 2022 01:10:00 +0800</pubDate>
       
-      <guid>https://kiyo-1224.github.io/posts/springmvc2/</guid>
+      <guid>http://example.org/posts/springmvc2/</guid>
       <description>SpringMVC获取请求参数 通过 servletAPI 获取 将 HttpServletRquest 作为控制器方法的形参，此时 HttpServletRequest 类型的参数表示封装了当前请求的请求报文对象 例： 通过控制器方法的形参获取参数 在控制器方法的形参位置，设置和请求参数同名的形参，当浏览器发送请求，匹配到请求映射时，在 DisPathcherServlet 中就会将请求参数赋值给相应的形参
 例： 若：
 请求参数所传输的请求参数中有多个同名的请求参数，此时可以在控制器方法的形参中设置字符串或字符串数组类型的形参接收此请求参数 若使用字符串数组类型的形参，此参数的数组中包含了每一个数据 若使用字符串类型的参数，此参数的值为每个数据中间使用逗号拼接的结果
@@ -145,10 +190,10 @@ defaultValue：不管 required 属性值为 true 或 false，当 value 所指定
     
     <item>
       <title>JdbcTemplate和事务操作</title>
-      <link>https://kiyo-1224.github.io/posts/jdbctemplate/</link>
+      <link>http://example.org/posts/jdbctemplate/</link>
       <pubDate>Fri, 17 Jun 2022 01:10:00 +0800</pubDate>
       
-      <guid>https://kiyo-1224.github.io/posts/jdbctemplate/</guid>
+      <guid>http://example.org/posts/jdbctemplate/</guid>
       <description>JdbcTemplate和事务操作 JdbcTemplate JdbcTemplate(概念和准备) 概念：
 JdbcTemplate Spring 框架对 JDBC 进行封装，使用 JdbcTemplate 方便实现对数据库操作
 准备工资 导入相关依赖
@@ -184,10 +229,10 @@ JdbcTeplate 操作数据库 首先创建相应的实体类，随后在service Da
     
     <item>
       <title>AOP</title>
-      <link>https://kiyo-1224.github.io/posts/aop/</link>
+      <link>http://example.org/posts/aop/</link>
       <pubDate>Fri, 10 Jun 2022 01:10:00 +0800</pubDate>
       
-      <guid>https://kiyo-1224.github.io/posts/aop/</guid>
+      <guid>http://example.org/posts/aop/</guid>
       <description>AOP(面向切面编程) 什么是AOP: 面向切面编程，利用AOP可以对业务逻辑的各个部分进行隔离，从而使得业务逻辑各部分之间的耦合度降低，提高程序的可重用性，同时提高了开发的效率（即不通过修改源代码方式，在主干功能里添加新功能）
 AOP底层原理：
  有接口,使用 JDK 动态代理。创建接口实现类代理对象，增强类的方法 无接口,使用 CGLIB 动态代理。创建子类的代理对象，增强类的方法  AOP(JDK 动态代理) 使用 JDK 动态代理，需要使用 Proxy 类里面的方法创建代理对象
@@ -204,10 +249,10 @@ AspectJ：AspectJ 不是 Spring 组成部分，是一个独立的 AOP 框架，�
     
     <item>
       <title>IOC容器</title>
-      <link>https://kiyo-1224.github.io/posts/ioc/</link>
+      <link>http://example.org/posts/ioc/</link>
       <pubDate>Fri, 10 Jun 2022 01:10:00 +0800</pubDate>
       
-      <guid>https://kiyo-1224.github.io/posts/ioc/</guid>
+      <guid>http://example.org/posts/ioc/</guid>
       <description>IOC的概念 IOC(控制反转)，把对象创建和对象之间的调用过程，交给Spring进行管理，其目的为降低耦合度
 IOC底层使用：xml解析、工厂模式、反射
  IOC接口(BeanFactory) Spring 提供IOC容器实现方式有两种：

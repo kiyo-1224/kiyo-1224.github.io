@@ -81,6 +81,51 @@
         ]
     },
     {
+        "uri": "/posts/mybatis1",
+        "title": "MyBatis简介与环境搭建",
+        "content": "MyBatis简介与环境搭建",
+        "tags": [
+            "技术",
+            "mybatis"
+        ]
+    },
+    {
+        "uri": "/posts/mybatis2",
+        "title": "MyBatis的增删改查",
+        "content": "MyBatis的增删改查",
+        "tags": [
+            "技术",
+            "mybatis"
+        ]
+    },
+    {
+        "uri": "/posts/mybatis3",
+        "title": "自定义映射resultMap",
+        "content": "自定义映射resultMap",
+        "tags": [
+            "技术",
+            "mybatis"
+        ]
+    },
+    {
+        "uri": "/posts/mybatis4",
+        "title": "动态SQL与缓存",
+        "content": "动态SQL与缓存",
+        "tags": [
+            "技术",
+            "mybatis"
+        ]
+    },
+    {
+        "uri": "/posts/mybatis5",
+        "title": "MyBatis的逆向工程",
+        "content": "MyBatis的逆向工程",
+        "tags": [
+            "技术",
+            "mybatis"
+        ]
+    },
+    {
         "uri": "/posts/newHugoPage",
         "title": "hugo博客的搭建",
         "content": "感谢您花费宝贵的时间前来阅读我的第一篇博客，这篇博客是我在搭建好博客之后，对于搭建个人博客所做的记录",

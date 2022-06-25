@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html><head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate">
+  <title>MyBatis的逆向工程 &middot; 忆遇惜·真白 的个人博客</title>
+  <meta name="keywords" content="素锦, inspiration, customization, rainmeter, design, web, 壁纸, 设计, 收集, wallpaper, collection, jaku, icon">
+  <meta name="description" content="世界上每个角落都有人过着相似的人生">
+  <meta name="author" content="iyu_mashiro">
+  <link rel="icon" type="image/png" href="">
+  <link rel="stylesheet" href="/css/diaspora.css">
+  <link rel="stylesheet" href="/css/insight.css">
+  <link rel="stylesheet" href="/css/custom.css">
+</head><body class="loading">
+        <div id="loading"></div>
+				<div id="nav"></div>
+				<div class="nav-user"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+        <div class="bar">
+        </div>
+        <a class="icon-icon" href="javascript:history.back()">
+        </a>
+        <div title="播放/暂停" class="icon-play">
+        </div>
+        
+        <h3 class="subtitle" style="display: none;">
+        MyBatis的逆向工程</h3>
+        <div class="social">
+            <div>
+                <div class="share">
+                    <a title="获取二维码" class="icon-wechat" href="javascript:;"></a>
+                </div>
+                <div id="qr"></div>
+            </div>
+        </div>
+        <div class="scrollbar" style="width: 1.1636%;"></div>
+    </div>
+    <div class="section">
+        <div class="article">
+            <div>
+                <h1 class="title">
+                MyBatis的逆向工程</h1>
+                <div class="stuff">
+                    
+                    <span>June 26, 2022</span>
+                    <span>字数 1262</span>
+                    
+                    
+                </div>
+                <div class="content">
+                    <h1 id="mybatis的逆向工程">MyBatis的逆向工程</h1>
+<ul>
+<li>正向工程：先创建Java实体类，由框架负责根据实体类生成数据库表。Hibernate是支持正向工程的</li>
+<li>逆向工程：先创建数据库表，由框架负责根据数据库表，反向生成如下资源：
+<ul>
+<li>Java实体类</li>
+<li>Mapper接口</li>
+<li>Mapper映射文件</li>
+</ul>
+</li>
+</ul>
+<h2 id="创建逆向工程的步骤">创建逆向工程的步骤</h2>
+<h3 id="添加依赖和插件">添加依赖和插件</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;dependencies&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">&lt;!-- MyBatis核心依赖包 --&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;dependency&gt;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&lt;groupId&gt;</span>org.mybatis<span style="color:#f92672">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&lt;artifactId&gt;</span>mybatis<span style="color:#f92672">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&lt;version&gt;</span>3.5.9<span style="color:#f92672">&lt;/version&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;/dependency&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">&lt;!-- junit测试 --&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;dependency&gt;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&lt;groupId&gt;</span>junit<span style="color:#f92672">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&lt;artifactId&gt;</span>junit<span style="color:#f92672">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&lt;version&gt;</span>4.13.2<span style="color:#f92672">&lt;/version&gt;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&lt;scope&gt;</span>test<span style="color:#f92672">&lt;/scope&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;/dependency&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">&lt;!-- MySQL驱动 --&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;dependency&gt;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&lt;groupId&gt;</span>mysql<span style="color:#f92672">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&lt;artifactId&gt;</span>mysql-connector-java<span style="color:#f92672">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&lt;version&gt;</span>8.0.27<span style="color:#f92672">&lt;/version&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;/dependency&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">&lt;!-- log4j日志 --&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;dependency&gt;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&lt;groupId&gt;</span>log4j<span style="color:#f92672">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&lt;artifactId&gt;</span>log4j<span style="color:#f92672">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&lt;version&gt;</span>1.2.17<span style="color:#f92672">&lt;/version&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;/dependency&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/dependencies&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- 控制Maven在构建过程中相关配置 --&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;build&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">&lt;!-- 构建过程中用到的插件 --&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;plugins&gt;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">&lt;!-- 具体插件，逆向工程的操作是以构建过程中插件形式出现的 --&gt;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&lt;plugin&gt;</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#f92672">&lt;groupId&gt;</span>org.mybatis.generator<span style="color:#f92672">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#f92672">&lt;artifactId&gt;</span>mybatis-generator-maven-plugin<span style="color:#f92672">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#f92672">&lt;version&gt;</span>1.3.0<span style="color:#f92672">&lt;/version&gt;</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">&lt;!-- 插件的依赖 --&gt;</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#f92672">&lt;dependencies&gt;</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#75715e">&lt;!-- 逆向工程的核心依赖 --&gt;</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#f92672">&lt;dependency&gt;</span>
+</span></span><span style="display:flex;"><span>					<span style="color:#f92672">&lt;groupId&gt;</span>org.mybatis.generator<span style="color:#f92672">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>					<span style="color:#f92672">&lt;artifactId&gt;</span>mybatis-generator-core<span style="color:#f92672">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span>					<span style="color:#f92672">&lt;version&gt;</span>1.3.2<span style="color:#f92672">&lt;/version&gt;</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#f92672">&lt;/dependency&gt;</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#75715e">&lt;!-- 数据库连接池 --&gt;</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#f92672">&lt;dependency&gt;</span>
+</span></span><span style="display:flex;"><span>					<span style="color:#f92672">&lt;groupId&gt;</span>com.mchange<span style="color:#f92672">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>					<span style="color:#f92672">&lt;artifactId&gt;</span>c3p0<span style="color:#f92672">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span>					<span style="color:#f92672">&lt;version&gt;</span>0.9.2<span style="color:#f92672">&lt;/version&gt;</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#f92672">&lt;/dependency&gt;</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#75715e">&lt;!-- MySQL驱动 --&gt;</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#f92672">&lt;dependency&gt;</span>
+</span></span><span style="display:flex;"><span>					<span style="color:#f92672">&lt;groupId&gt;</span>mysql<span style="color:#f92672">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>					<span style="color:#f92672">&lt;artifactId&gt;</span>mysql-connector-java<span style="color:#f92672">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span>					<span style="color:#f92672">&lt;version&gt;</span>8.0.27<span style="color:#f92672">&lt;/version&gt;</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#f92672">&lt;/dependency&gt;</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#f92672">&lt;/dependencies&gt;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&lt;/plugin&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;/plugins&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/build&gt;</span>
+</span></span></code></pre></div><h3 id="创建mybatis的核心配置文件">创建MyBatis的核心配置文件</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; ?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE configuration
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        PUBLIC &#34;-//mybatis.org//DTD Config 3.0//EN&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        &#34;http://mybatis.org/dtd/mybatis-3-config.dtd&#34;&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;configuration&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;properties</span> <span style="color:#a6e22e">resource=</span><span style="color:#e6db74">&#34;jdbc.properties&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;typeAliases&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;package</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/typeAliases&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;environments</span> <span style="color:#a6e22e">default=</span><span style="color:#e6db74">&#34;development&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;environment</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;development&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;transactionManager</span> <span style="color:#a6e22e">type=</span><span style="color:#e6db74">&#34;JDBC&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;dataSource</span> <span style="color:#a6e22e">type=</span><span style="color:#e6db74">&#34;POOLED&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;driver&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;${jdbc.driver}&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;url&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;${jdbc.url}&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;username&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;${jdbc.username}&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;password&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;${jdbc.password}&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;/dataSource&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;/environment&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/environments&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;mappers&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;package</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/mappers&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/configuration&gt;</span>
+</span></span></code></pre></div><h3 id="创建逆向工程的配置文件">创建逆向工程的配置文件</h3>
+<ul>
+<li>文件名必须是：<code>generatorConfig.xml</code></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE generatorConfiguration
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        PUBLIC &#34;-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        &#34;http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd&#34;&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;generatorConfiguration&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!--
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    targetRuntime: 执行生成的逆向工程的版本
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    MyBatis3Simple: 生成基本的CRUD（清新简洁版）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    MyBatis3: 生成带条件的CRUD（奢华尊享版）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    --&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;context</span> <span style="color:#a6e22e">id=</span><span style="color:#e6db74">&#34;DB2Tables&#34;</span> <span style="color:#a6e22e">targetRuntime=</span><span style="color:#e6db74">&#34;MyBatis3Simple&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">&lt;!-- 数据库的连接信息 --&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;jdbcConnection</span> <span style="color:#a6e22e">driverClass=</span><span style="color:#e6db74">&#34;com.mysql.cj.jdbc.Driver&#34;</span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">connectionURL=</span><span style="color:#e6db74">&#34;jdbc:mysql://localhost:3306/mybatis&#34;</span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">userId=</span><span style="color:#e6db74">&#34;root&#34;</span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">password=</span><span style="color:#e6db74">&#34;123456&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;/jdbcConnection&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">&lt;!-- javaBean的生成策略--&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;javaModelGenerator</span> <span style="color:#a6e22e">targetPackage=</span><span style="color:#e6db74">&#34;com.atguigu.mybatis.pojo&#34;</span> <span style="color:#a6e22e">targetProject=</span><span style="color:#e6db74">&#34;.\src\main\java&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;enableSubPackages&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;true&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;trimStrings&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;true&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;/javaModelGenerator&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">&lt;!-- SQL映射文件的生成策略 --&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;sqlMapGenerator</span> <span style="color:#a6e22e">targetPackage=</span><span style="color:#e6db74">&#34;com.atguigu.mybatis.mapper&#34;</span>
+</span></span><span style="display:flex;"><span>                         <span style="color:#a6e22e">targetProject=</span><span style="color:#e6db74">&#34;.\src\main\resources&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;enableSubPackages&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;true&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;/sqlMapGenerator&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">&lt;!-- Mapper接口的生成策略 --&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;javaClientGenerator</span> <span style="color:#a6e22e">type=</span><span style="color:#e6db74">&#34;XMLMAPPER&#34;</span>
+</span></span><span style="display:flex;"><span>                             <span style="color:#a6e22e">targetPackage=</span><span style="color:#e6db74">&#34;com.atguigu.mybatis.mapper&#34;</span> <span style="color:#a6e22e">targetProject=</span><span style="color:#e6db74">&#34;.\src\main\java&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;enableSubPackages&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;true&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;/javaClientGenerator&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">&lt;!-- 逆向分析的表 --&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">&lt;!-- tableName设置为*号，可以对应所有表，此时不写domainObjectName --&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">&lt;!-- domainObjectName属性指定生成出来的实体类的类名 --&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;table</span> <span style="color:#a6e22e">tableName=</span><span style="color:#e6db74">&#34;t_emp&#34;</span> <span style="color:#a6e22e">domainObjectName=</span><span style="color:#e6db74">&#34;Emp&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;table</span> <span style="color:#a6e22e">tableName=</span><span style="color:#e6db74">&#34;t_dept&#34;</span> <span style="color:#a6e22e">domainObjectName=</span><span style="color:#e6db74">&#34;Dept&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/context&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/generatorConfiguration&gt;</span>
+</span></span></code></pre></div><h3 id="执行mbg插件的generate目标">执行MBG插件的generate目标</h3>
+<ul>
+<li><img src="/Resources/%E6%89%A7%E8%A1%8CMBG%E6%8F%92%E4%BB%B6%E7%9A%84generate%E7%9B%AE%E6%A0%87.png" alt=""></li>
+<li>如果出现报错：<code>Exception getting JDBC Driver</code>，可能是pom.xml中，数据库驱动配置错误
+<ul>
+<li>dependency中的驱动<img src="/Resources/dependency%E4%B8%AD%E7%9A%84%E9%A9%B1%E5%8A%A8.png" alt=""></li>
+<li>mybatis-generator-maven-plugin插件中的驱动<img src="/Resources/%E6%8F%92%E4%BB%B6%E4%B8%AD%E7%9A%84%E9%A9%B1%E5%8A%A8.png" alt=""></li>
+<li>两者的驱动版本应该相同</li>
+</ul>
+</li>
+<li>执行结果<img src="/Resources/%E9%80%86%E5%90%91%E6%89%A7%E8%A1%8C%E7%BB%93%E6%9E%9C.png" alt=""></li>
+</ul>
+<h2 id="qbc">QBC</h2>
+<h3 id="查询">查询</h3>
+<ul>
+<li><code>selectByExample</code>：按条件查询，需要传入一个example对象或者null；如果传入一个null，则表示没有条件，也就是查询所有数据</li>
+<li><code>example.createCriteria().xxx</code>：创建条件对象，通过andXXX方法为SQL添加查询添加，每个条件之间是and关系</li>
+<li><code>example.or().xxx</code>：将之前添加的条件通过or拼接其他条件
+<img src="/Resources/example%E7%9A%84%E6%96%B9%E6%B3%95.png" alt=""></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Test</span> <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">testMBG</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">throws</span> IOException <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>	InputStream is <span style="color:#f92672">=</span> Resources<span style="color:#f92672">.</span><span style="color:#a6e22e">getResourceAsStream</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;mybatis-config.xml&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>	SqlSessionFactoryBuilder sqlSessionFactoryBuilder <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SqlSessionFactoryBuilder<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>	SqlSessionFactory sqlSessionFactory <span style="color:#f92672">=</span> sqlSessionFactoryBuilder<span style="color:#f92672">.</span><span style="color:#a6e22e">build</span><span style="color:#f92672">(</span>is<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>	SqlSession sqlSession <span style="color:#f92672">=</span> sqlSessionFactory<span style="color:#f92672">.</span><span style="color:#a6e22e">openSession</span><span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>	EmpMapper mapper <span style="color:#f92672">=</span> sqlSession<span style="color:#f92672">.</span><span style="color:#a6e22e">getMapper</span><span style="color:#f92672">(</span>EmpMapper<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>	EmpExample example <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> EmpExample<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//名字为张三，且年龄大于等于20
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	example<span style="color:#f92672">.</span><span style="color:#a6e22e">createCriteria</span><span style="color:#f92672">().</span><span style="color:#a6e22e">andEmpNameEqualTo</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;张三&#34;</span><span style="color:#f92672">).</span><span style="color:#a6e22e">andAgeGreaterThanOrEqualTo</span><span style="color:#f92672">(</span>20<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//或者did不为空
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	example<span style="color:#f92672">.</span><span style="color:#a6e22e">or</span><span style="color:#f92672">().</span><span style="color:#a6e22e">andDidIsNotNull</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>	List<span style="color:#f92672">&lt;</span>Emp<span style="color:#f92672">&gt;</span> emps <span style="color:#f92672">=</span> mapper<span style="color:#f92672">.</span><span style="color:#a6e22e">selectByExample</span><span style="color:#f92672">(</span>example<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>	emps<span style="color:#f92672">.</span><span style="color:#a6e22e">forEach</span><span style="color:#f92672">(</span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">::</span>println<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p><img src="/Resources/example%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9E%9C.png" alt=""></p>
+<h3 id="增改">增改</h3>
+<ul>
+<li><code>updateByPrimaryKey</code>：通过主键进行数据修改，如果某一个值为null，也会将对应的字段改为null
+<ul>
+<li><code>mapper.updateByPrimaryKey(new Emp(1,&quot;admin&quot;,22,null,&quot;456@qq.com&quot;,3));</code></li>
+<li><img src="/Resources/%E5%A2%9E%E5%88%A0%E6%94%B9%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9E%9C1.png" alt=""></li>
+</ul>
+</li>
+<li><code>updateByPrimaryKeySelective()</code>：通过主键进行选择性数据修改，如果某个值为null，则不修改这个字段
+<ul>
+<li><code>mapper.updateByPrimaryKeySelective(new Emp(2,&quot;admin2&quot;,22,null,&quot;456@qq.com&quot;,3));</code></li>
+<li><img src="/Resources/%E5%A2%9E%E5%88%A0%E6%94%B9%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9E%9C2.png" alt=""></li>
+</ul>
+</li>
+</ul>
+
+                    
+                    <audio id="audio" loop="1" preload="auto" style="width: 100%;" controls="controls">
+                        <source type="audio/mpeg" src="/mp3/Unicorn.mp3">
+                        <a href="/mp3/Unicorn.mp3">/mp3/Unicorn.mp3</a>
+                    </audio>
+                </div>
+                <div class="comment-wrap">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="relate">
+        <ul>
+            <h3 id="prev_next">
+                <em>相 关 文 章</em>
+                <span>
+                    <a href="javascript: window.scrollTo(0, 0);">
+                    返回顶部</a>
+                    
+                        <a href="http://example.org/posts/mybatis4/" rel="prev">上一篇</a>
+                    
+                    
+                        <a href="http://example.org/posts/mybatis2/" rel="next">下一篇</a>
+                    
+                </span>
+            </h3>
+            
+            
+            
+                
+                    
+                    <li>
+                        <div>
+                            <a class="relatea" href="http://example.org/posts/mybatis1/" title="MyBatis简介与环境搭建">
+                            MyBatis简介与环境搭建</a>
+                            <p>MyBatis简介与环境搭建...</p>
+                        </div>
+                        
+                        <a href="http://example.org/posts/mybatis1/" title="MyBatis简介与环境搭建">
+                            <img class="relateimg" src="/img/kano.jpg" alt="MyBatis简介与环境搭建">
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <div>
+                            <a class="relatea" href="http://example.org/posts/mybatis2/" title="MyBatis的增删改查">
+                            MyBatis的增删改查</a>
+                            <p>MyBatis的增删改查...</p>
+                        </div>
+                        
+                        <a href="http://example.org/posts/mybatis2/" title="MyBatis的增删改查">
+                            <img class="relateimg" src="/img/kano.jpg" alt="MyBatis的增删改查">
+                        </a>
+                    </li>
+                    
+                
+                    
+                
+                    
+                    <li>
+                        <div>
+                            <a class="relatea" href="http://example.org/posts/mybatis4/" title="动态SQL与缓存">
+                            动态SQL与缓存</a>
+                            <p>动态SQL与缓存...</p>
+                        </div>
+                        
+                        <a href="http://example.org/posts/mybatis4/" title="动态SQL与缓存">
+                            <img class="relateimg" src="/img/kano.jpg" alt="动态SQL与缓存">
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <div>
+                            <a class="relatea" href="http://example.org/posts/mybatis3/" title="自定义映射resultMap">
+                            自定义映射resultMap</a>
+                            <p>自定义映射resultMap...</p>
+                        </div>
+                        
+                        <a href="http://example.org/posts/mybatis3/" title="自定义映射resultMap">
+                            <img class="relateimg" src="/img/kano.jpg" alt="自定义映射resultMap">
+                        </a>
+                    </li>
+                    
+                
+            
+        </ul>
+    </div>
+</div>
+<p style="text-align: center;">
+  <a style="color: inherit" target="_blank" href="https://github.com/honjun/hugo-theme-diaspora"></a>
+</p>
+
+<script>
+  var siteTitle = "忆遇惜·真白 的个人博客";
+</script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<script src="/js/custom.js"></script>
+<script src="/js/InsightSearch.js"></script>
+</body>
+</html>
+
