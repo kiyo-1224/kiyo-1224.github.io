@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>SpringMVC on 忆遇惜·真白 的个人博客</title>
-    <link>http://example.org/tags/springmvc/</link>
+    <link>https://kiyo-1224.github.io/tags/springmvc/</link>
     <description>Recent content in SpringMVC on 忆遇惜·真白 的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 24 Jun 2022 01:20:00 +0800</lastBuildDate><atom:link href="http://example.org/tags/springmvc/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 24 Jun 2022 01:20:00 +0800</lastBuildDate><atom:link href="https://kiyo-1224.github.io/tags/springmvc/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>SpringMVC执行流程</title>
-      <link>http://example.org/posts/springmvc6/</link>
+      <link>https://kiyo-1224.github.io/posts/springmvc6/</link>
       <pubDate>Fri, 24 Jun 2022 01:20:00 +0800</pubDate>
       
-      <guid>http://example.org/posts/springmvc6/</guid>
+      <guid>https://kiyo-1224.github.io/posts/springmvc6/</guid>
       <description>SpringMVC执行流程 SpringMVC 常用组件  DispatcherServlet：前端控制器，不需要工程师开发，由框架提供 作用：统一处理请求和响应，整个流程控制的中心，由它调用其它组件处理用户的请求 HandlerMapping：处理映射器，不需要工程师开发，由框架提供 作用：根据请求的 url、method 等信息查找 Handler，即控制器方法 Handler：处理器，需要工程师开发 作用：在 DispatcherServlet 的控制下 Handler 对具体的用户请求进行处理 HandlerAdapter：处理器适配器，不需要工程师开发，由框架提供 作用：通过 HandlerAdapter 对处理器(控制器方法) 进行执行 ViewResolver：视图解析器，不需要工程师开发，由框架提供 作用：进行视图解析，得到相应的视图 View：视图，不需要工程师开发，由框架提供 作用：将模型数据通过页面展示给用户  4、SpringMVC的执行流程   用户向服务器发送请求，请求被SpringMVC 前端控制器 DispatcherServlet捕获。
   DispatcherServlet对请求URL进行解析，得到请求资源标识符（URI），判断请求URI对应的映射：
   a) 不存在
@@ -31,10 +31,10 @@ c) 数据格式化：对请求消息进行数据格式化。 如将字符串转�
     
     <item>
       <title>拦截器和异常处理器</title>
-      <link>http://example.org/posts/springmvc7/</link>
+      <link>https://kiyo-1224.github.io/posts/springmvc7/</link>
       <pubDate>Fri, 24 Jun 2022 01:11:00 +0800</pubDate>
       
-      <guid>http://example.org/posts/springmvc7/</guid>
+      <guid>https://kiyo-1224.github.io/posts/springmvc7/</guid>
       <description>拦截器 拦截器的配置 SpringMVC 的拦截器用于拦截控制器方法的执行
 SpringMVC 的拦截器需要实现 HandlerInterceptor 或者继承 HandlerInterceptorAdaoter 类
 SpringMVC 的拦截器必须在 SpringMVC 文件中配置
@@ -55,10 +55,10 @@ SpringMVC 提供了自定义的异常处理器 SimpleMappingExceptionResolver</d
     
     <item>
       <title>HttpMessageConverte</title>
-      <link>http://example.org/posts/springmvc5/</link>
+      <link>https://kiyo-1224.github.io/posts/springmvc5/</link>
       <pubDate>Fri, 24 Jun 2022 01:10:00 +0800</pubDate>
       
-      <guid>http://example.org/posts/springmvc5/</guid>
+      <guid>https://kiyo-1224.github.io/posts/springmvc5/</guid>
       <description>HttpMessageConverter HttpMessageConverter 报文信息转换器，将请求报文转换为 Java 对象，或将 Java 对象转换为响应报文
 HttpMessageConverter 提供了两个注解和两个类型： @RequestBody、@ResponseBody、RequestEntity、ResponesEntity
 @RequestBody @RequestBody 可以获取请求体，需要在控制器方法设置一个形参，使用 @RequestBody 进行标识，当前请求的请求体就会为当前注解所标识的形参赋值
@@ -73,10 +73,10 @@ RequestEntity RequestEntity 封装请求报文的一种类型，需要在控制�
     
     <item>
       <title>SpringMVC RESTFul</title>
-      <link>http://example.org/posts/springmvc4/</link>
+      <link>https://kiyo-1224.github.io/posts/springmvc4/</link>
       <pubDate>Thu, 23 Jun 2022 01:10:00 +0800</pubDate>
       
-      <guid>http://example.org/posts/springmvc4/</guid>
+      <guid>https://kiyo-1224.github.io/posts/springmvc4/</guid>
       <description>RESTFul RESTFul 简介 REST：Representational State Transfer,表现层资源状态转移
 资源：
 资源是一种看待服务器的方式。即，将服务器看作是由很多离散的资源组成，每个资源是服务器上一个可命名的抽象概念。因为资源是一个抽象概念，所以它不仅仅能代表服务器文件系统中的一个文件，数据库中的一张表等等具体的东西，可以将资源设计的要多抽象有多抽象，只要想象力允许而客户端应用开发者能够理解。与面向对象设计类似，资源是以名词为核心来组织的，首先关注的是名词。一个资源可以由一个或多个 URI 来标识。URI即是资源的名称，也是资源在 web 上的地址。对某个资源感兴趣的客户端应用，可以通过资源的 URI 与其进行交互
@@ -92,10 +92,10 @@ user主页面 user添加页面 user更改界面 </description>
     
     <item>
       <title>域对象共享数据和SpringMVC的视图</title>
-      <link>http://example.org/posts/springmvc3/</link>
+      <link>https://kiyo-1224.github.io/posts/springmvc3/</link>
       <pubDate>Thu, 23 Jun 2022 01:10:00 +0800</pubDate>
       
-      <guid>http://example.org/posts/springmvc3/</guid>
+      <guid>https://kiyo-1224.github.io/posts/springmvc3/</guid>
       <description>域对象共享数据 使用 servlet 向 request 域对象共享数据 例： 使用 ModelAndView 向request 域共享对象 使用 ModelAndView 此方法必须以 modelAndView 为返回值类型
 例： 使用 Model 向 request 域对象共享数据 需要在形参中创建 Model 类型的形参
 例： 使用 map 向 request 域对象共享数据 需要在形参中创建 Map 类型的形参
@@ -106,10 +106,10 @@ user主页面 user添加页面 user更改界面 </description>
     
     <item>
       <title>RequestMapping 注解</title>
-      <link>http://example.org/posts/springmvc1/</link>
+      <link>https://kiyo-1224.github.io/posts/springmvc1/</link>
       <pubDate>Wed, 22 Jun 2022 01:10:00 +0800</pubDate>
       
-      <guid>http://example.org/posts/springmvc1/</guid>
+      <guid>https://kiyo-1224.github.io/posts/springmvc1/</guid>
       <description>环境搭建 第一步导入相关依赖，并设置打包方式为 war 第二步在工程中添加 web 模块，并在配置文件中配置前端控制器 第三步在配置文件中配置 thymeleaf 和 注解扫描 第四步在 WEB-INF 下创建 temlates 目录然后在该目录创建 index.html 并在页面中引入 thymeleaf 命名空间 第五步创建控制器 最后启动 Tomcat 访问
 @RequestMapping 注解 @RequestMapping 注解的功能 @RequestMapping 注解的作用是将请求和处理请求的控制器方法关联起来，建立映射关系，SpringMVC 接收到指定的请求，就会来找到在映射关系中对应的控制器方法来处理这个请求
 @RequestMapping 注解的位置 @RequestMapping 标识一个类：设置映射请求的请求路径的初始信息
@@ -123,10 +123,10 @@ user主页面 user添加页面 user更改界面 </description>
     
     <item>
       <title>SpringMVC获取请求参数</title>
-      <link>http://example.org/posts/springmvc2/</link>
+      <link>https://kiyo-1224.github.io/posts/springmvc2/</link>
       <pubDate>Wed, 22 Jun 2022 01:10:00 +0800</pubDate>
       
-      <guid>http://example.org/posts/springmvc2/</guid>
+      <guid>https://kiyo-1224.github.io/posts/springmvc2/</guid>
       <description>SpringMVC获取请求参数 通过 servletAPI 获取 将 HttpServletRquest 作为控制器方法的形参，此时 HttpServletRequest 类型的参数表示封装了当前请求的请求报文对象 例： 通过控制器方法的形参获取参数 在控制器方法的形参位置，设置和请求参数同名的形参，当浏览器发送请求，匹配到请求映射时，在 DisPathcherServlet 中就会将请求参数赋值给相应的形参
 例： 若：
 请求参数所传输的请求参数中有多个同名的请求参数，此时可以在控制器方法的形参中设置字符串或字符串数组类型的形参接收此请求参数 若使用字符串数组类型的形参，此参数的数组中包含了每一个数据 若使用字符串类型的参数，此参数的值为每个数据中间使用逗号拼接的结果

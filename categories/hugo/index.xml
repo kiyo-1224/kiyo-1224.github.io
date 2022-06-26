@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>hugo on 忆遇惜·真白 的个人博客</title>
-    <link>http://example.org/categories/hugo/</link>
+    <link>https://kiyo-1224.github.io/categories/hugo/</link>
     <description>Recent content in hugo on 忆遇惜·真白 的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 01 Jun 2022 00:17:00 +0800</lastBuildDate><atom:link href="http://example.org/categories/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 01 Jun 2022 00:17:00 +0800</lastBuildDate><atom:link href="https://kiyo-1224.github.io/categories/hugo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>hugo博客的搭建</title>
-      <link>http://example.org/posts/newhugopage/</link>
+      <link>https://kiyo-1224.github.io/posts/newhugopage/</link>
       <pubDate>Wed, 01 Jun 2022 00:17:00 +0800</pubDate>
       
-      <guid>http://example.org/posts/newhugopage/</guid>
+      <guid>https://kiyo-1224.github.io/posts/newhugopage/</guid>
       <description>Welcom  Welcom to iyu_mashiro&amp;rsquo;s Blog感谢您花费宝贵的时间前来阅读我的第一篇博客，这篇博客是我在搭建好博客之后，对于搭建个人博客所做的记录，希望能帮助到您,如果文章内容有错误，请发送邮件至：iyu_mashiro@163.com 我将不胜感激
 前言  此篇博客为我的第一篇博客，原本只耗费了一个小时便完成了博客的基本搭建，但因后续对主题设置的不满，便对主题进行了修改导致后续出现了一系列的问题，使得我最终花费了六个小时才完善博客的搭建
 初次搭建个人博客 使用 Hugo+github 部署的方案 通过 Hugo 可以快速搭建静态网站,然后将其部署到GitHub上，使其可以在公网访问到
@@ -26,10 +26,10 @@
     
     <item>
       <title>hugo博客的更新</title>
-      <link>http://example.org/posts/addblogcontent/</link>
+      <link>https://kiyo-1224.github.io/posts/addblogcontent/</link>
       <pubDate>Wed, 01 Jun 2022 00:17:00 +0800</pubDate>
       
-      <guid>http://example.org/posts/addblogcontent/</guid>
+      <guid>https://kiyo-1224.github.io/posts/addblogcontent/</guid>
       <description>博客的更新 在更新了博客的内容之后，我们需要对远端也进行一次更新操作
 0.预览博客的更新内容 在博客根目录下，使用命令对更新的内容进行预览
  hugo server --theme=你的主题名 --buildDrafts
